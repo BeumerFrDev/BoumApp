@@ -26,7 +26,8 @@ public class SplashScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("../vues/Login.fxml"));
+            Parent fxml;
+            fxml = FXMLLoader.load(getClass().getResource("/main/vues/Login.fxml"));
             makeStageDrageable();
             animationGenerator = new AnimationGenerator();
             animationGenerator.applyFadeAnimationOn01(parent, 1000, 1, 0.2, 1, (e) -> {

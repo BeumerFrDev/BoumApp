@@ -22,7 +22,8 @@ public class Launch extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("vues/SplashScreen.fxml"));
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("vues/SplashScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);

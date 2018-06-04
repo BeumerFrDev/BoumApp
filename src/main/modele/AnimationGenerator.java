@@ -1,4 +1,4 @@
-package main;
+package main.modele;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
