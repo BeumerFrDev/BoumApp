@@ -5,9 +5,8 @@
         <group>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/assets/images/background-01.jpg</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/modele/AnimationGenerator.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/controleurs/SplashScreenController.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/Launch.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/controleurs/LoginController.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/controleurs/SplashScreenController.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/vues/SplashScreen.fxml</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/assets/styles/css.css</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/main/vues/Login.fxml</file>

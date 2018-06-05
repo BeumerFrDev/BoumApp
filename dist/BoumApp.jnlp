@@ -8,12 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="BoumApp.jar" size="97323" download="eager" />
+    <jar href="BoumApp.jar" size="97340" download="eager" />
     <jar href="lib\fontawesomefx-8.91.jar" size="571068" download="eager" />
-    <jar href="lib\fontawesomefx-commons-9.1.2.jar" size="24064" download="eager" />
-    <jar href="lib\fontawesomefx-controls-9.1.2.jar" size="4173" download="eager" />
     <jar href="lib\jfoenix-8.0.4.jar" size="2487326" download="eager" />
-    <jar href="lib\jvxfx.jar" size="419840" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="BoumApp" >
     <param name="requiredFXVersion" value="8.0+"/>
