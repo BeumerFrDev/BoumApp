@@ -26,6 +26,9 @@
 .signup-link{
     -fx-text-fill:#42E24F;
 }
+.signup-link{
+    -fx-text-fill:#af2f2f;
+}
 .pane{
 
 }
