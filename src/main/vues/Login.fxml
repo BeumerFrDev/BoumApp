@@ -25,7 +25,7 @@
             <Font name="Calibri Light" size="14.0" />
          </font>
       </PasswordField>
-      <JFXButton fx:id="login" buttonType="RAISED" layoutX="363.0" layoutY="342.0" onAction="#close_app" prefHeight="35.0" prefWidth="100.0" ripplerFill="WHITE" styleClass="buttons" text="Sign In">
+      <JFXButton fx:id="login" buttonType="RAISED" layoutX="363.0" layoutY="342.0" onAction="#processLogin" prefHeight="35.0" prefWidth="100.0" ripplerFill="WHITE" styleClass="buttons" text="Sign In">
          <font>
             <Font name="Calibri Light" size="14.0" />
          </font>
@@ -45,7 +45,7 @@
             <Font name="Calibri Light" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="exit" buttonType="RAISED" layoutX="975.0" layoutY="8.0" onAction="#processLogin" text="Exit" />
+      <JFXButton fx:id="exit" buttonType="RAISED" layoutX="975.0" layoutY="8.0" onAction="#close_app" text="Exit" />
       <Label fx:id="errorMessage" layoutX="288.0" layoutY="282.0" styleClass="signup-link">
          <font>
             <Font name="Calibri Light" size="14.0" />

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="BoumApp.jar" size="111093" download="eager" />
+    <jar href="BoumApp.jar" size="111200" download="eager" />
     <jar href="lib\fontawesomefx-8.91.jar" size="571068" download="eager" />
     <jar href="lib\jfoenix-8.0.4.jar" size="2487326" download="eager" />
   </resources>

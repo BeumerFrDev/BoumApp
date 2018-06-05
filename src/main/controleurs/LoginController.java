@@ -39,7 +39,7 @@ public class LoginController implements Initializable {
         
     }
 
-    @FXML  private void close_app(MouseEvent event) {
+    @FXML  private void close_app() {
         exit();
         
        
@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
         this.application = application;
     }
      
-         public void processLogin(ActionEvent event) {
+      @FXML   public void processLogin() {
         if (application == null){
             // We are running in isolated FXML, possibly in Scene Builder.
             // NO-OP.

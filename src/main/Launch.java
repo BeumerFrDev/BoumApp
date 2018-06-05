@@ -44,16 +44,21 @@ public class Launch extends Application {
     public void start(Stage stage) throws Exception {
         Parent root;
         root = FXMLLoader.load(getClass().getResource("vues/SplashScreen.fxml"));
+        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
         stage.show();
+     
         
-           
-      //  gotoLogin();
-         Individus indii = new Directeur("AOUALI","Salim","H",new Date(),"Bizerte","L3MIAGE","Informatique","Etudiant",new Adresses(),"Arabe","FR","..\\assets\\image\\salim.jpg","","","0638441611","ben.aissa.ouadie@gmail.com");
-             Affectations afff = new Affectations(3,"CDI","directeur","pass",new Date(),new Date(),"Prof","c://",indii);
+          Individus indii = new Directeur("AOUALI","Salim","H",new Date(),"Bizerte","L3MIAGE","Informatique","Etudiant",new Adresses(),"Arabe","FR","..\\assets\\image\\salim.jpg","","","0638441611","ben.aissa.ouadie@gmail.com");
+         Affectations afff = new Affectations(3,"CDI","directeur","pass",new Date(),new Date(),"Prof","c://",indii);
+         
+          System.out.println("1ffffffffffffffff"); 
+         
+          //gotoLogin();
+          System.out.println("bbbbb");
            
     }
 
@@ -87,7 +92,7 @@ public class Launch extends Application {
     public void gotoAdminView() {
         try {
             AdminViewController adminView;
-            adminView = (AdminViewController) replaceSceneContent("vue/adminview.fxml");
+            adminView = (AdminViewController) replaceSceneContent("vues/adminview.fxml");
           
             adminView.setApp(this);
         } catch (Exception ex) {
@@ -95,10 +100,18 @@ public class Launch extends Application {
         }
     }
     
-       private void gotoLogin() {
+       public void gotoLogin() {
         try {
-            LoginController login = (LoginController) replaceSceneContent("vues/login.fxml");
-            login.setApp(this);
+            LoginController login = (LoginController) replaceSceneContent("/dmain/vues/login.fxml");
+            login.setApp( this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+       public void gotoLogin(Launch app ) {
+        try {
+            LoginController login = (LoginController) replaceSceneContent("/dmain/vues/login.fxml");
+            login.setApp( app);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -114,13 +127,15 @@ public class Launch extends Application {
         try {
             page = (AnchorPane) loader.load(in);
         } finally {
-            System.out.println("test2"+fxml+"**"+Launch.class.getResource(fxml));
+           System.out.println("test2"+fxml+"**"+Launch.class.getResource(fxml));
              in.close();
             
         } 
         Scene scene = new Scene(page, 1024, 743);
+        scene = new Scene(page);
         stage.setScene(scene);
-        stage.sizeToScene();
+        stage.initStyle(StageStyle.UNDECORATED);
+        this.stage = stage;
         return (Initializable) loader.getController();
     }
 }

@@ -22,12 +22,18 @@ public class SplashScreenController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-
+    private Launch application;
+    
+    
+    public void setApp(Launch application){
+        this.application = application;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             Parent fxml;
             fxml = FXMLLoader.load(getClass().getResource("/main/vues/Login.fxml"));
+            
             makeStageDrageable();
             animationGenerator = new AnimationGenerator();
             animationGenerator.applyFadeAnimationOn01(parent, 1000, 1, 0.2, 1, (e) -> {
@@ -36,6 +42,7 @@ public class SplashScreenController implements Initializable {
                     parent.getChildren().setAll(fxml);
                 });
             });
+           
         } catch (IOException ex) {
             Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
