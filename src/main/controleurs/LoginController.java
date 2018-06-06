@@ -31,6 +31,7 @@ public class LoginController implements Initializable {
     Label errorMessage;
 
     private Launch application;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           errorMessage.setText("");
@@ -42,7 +43,6 @@ public class LoginController implements Initializable {
     @FXML  private void close_app() {
         exit();
         
-       
     }
     
      public void setApp(Launch application){

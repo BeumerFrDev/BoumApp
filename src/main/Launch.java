@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import main.controleurs.AdminViewController;
 import main.controleurs.LoginController;
+import main.controleurs.SplashScreenController;
 import main.modele.Adresses;
 import main.modele.Affectations;
 import main.modele.Directeur;
@@ -31,8 +32,8 @@ import main.modele.Individus;
  */
 public class Launch extends Application {
 
-    public static Stage stage = null;
-
+    public  Stage stage = null;
+    public  String test = "valid";
     
     private Individus loggedUser;
 
@@ -43,7 +44,12 @@ public class Launch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root;
-        root = FXMLLoader.load(getClass().getResource("vues/SplashScreen.fxml"));
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("vues/SplashScreen.fxml"));
+         root = (Parent) loader.load();
+         SplashScreenController ctrl = loader.getController();
+         ctrl.setApp(this);
+          
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -54,8 +60,7 @@ public class Launch extends Application {
         
           Individus indii = new Directeur("AOUALI","Salim","H",new Date(),"Bizerte","L3MIAGE","Informatique","Etudiant",new Adresses(),"Arabe","FR","..\\assets\\image\\salim.jpg","","","0638441611","ben.aissa.ouadie@gmail.com");
          Affectations afff = new Affectations(3,"CDI","directeur","pass",new Date(),new Date(),"Prof","c://",indii);
-         
-          System.out.println("1ffffffffffffffff"); 
+        
          
           //gotoLogin();
           System.out.println("bbbbb");

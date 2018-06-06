@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import main.modele.AnimationGenerator;
 import main.Launch;
 
-public class SplashScreenController implements Initializable {
+public class SplashScreenController extends AnchorPane implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -27,17 +27,18 @@ public class SplashScreenController implements Initializable {
     
     public void setApp(Launch application){
         this.application = application;
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        try {
+          try {
             Parent fxml;
-            fxml = FXMLLoader.load(getClass().getResource("/main/vues/Login.fxml"));
-            
+              
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/vues/Login.fxml"));
+         fxml = (Parent) loader.load();
+         LoginController ctrl = loader.getController();
+         ctrl.setApp(application);
+          
             makeStageDrageable();
             animationGenerator = new AnimationGenerator();
-            animationGenerator.applyFadeAnimationOn01(parent, 1000, 1, 0.2, 1, (e) -> {
-                animationGenerator.applyFadeAnimationOn02(parent, 1000, 0.2, 1, 1, (e2) -> {
+            animationGenerator.applyFadeAnimationOn01(parent, 2000, 1, 0.2, 1, (e) -> {
+                animationGenerator.applyFadeAnimationOn02(parent, 2000, 0.2, 1, 1, (e2) -> {
                     parent.getChildren().removeAll();
                     parent.getChildren().setAll(fxml);
                 });
@@ -46,6 +47,12 @@ public class SplashScreenController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    
     }
 
     public void makeStageDrageable() {
@@ -59,16 +66,16 @@ public class SplashScreenController implements Initializable {
         parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Launch.stage.setX(event.getScreenX() - xOffset);
-                Launch.stage.setY(event.getScreenY() - yOffset);
-                Launch.stage.setOpacity(0.7f);
+                application.stage.setX(event.getScreenX() - xOffset);
+                application.stage.setY(event.getScreenY() - yOffset);
+                application.stage.setOpacity(0.7f);
             }
         });
         parent.setOnDragDone((e) -> {
-            Launch.stage.setOpacity(1.0f);
+            application.stage.setOpacity(1.0f);
         });
         parent.setOnMouseReleased((e) -> {
-            Launch.stage.setOpacity(1.0f);
+            application.stage.setOpacity(1.0f);
         });
     }
 
