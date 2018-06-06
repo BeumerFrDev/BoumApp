@@ -25,6 +25,7 @@ import fr.bg.main.modele.Adresses;
 import fr.bg.main.modele.Affectations;
 import fr.bg.main.modele.Directeur;
 import fr.bg.main.modele.Individus;
+import fr.bg.main.modele.plandetri.Parc;
 
 /**
  *
@@ -60,8 +61,8 @@ public class Launch extends Application {
         
           Individus indii = new Directeur("AOUALI","Salim","H",new Date(),"Bizerte","L3MIAGE","Informatique","Etudiant",new Adresses(),"Arabe","FR","..\\assets\\image\\salim.jpg","","","0638441611","ben.aissa.ouadie@gmail.com");
          Affectations afff = new Affectations(3,"CDI","directeur","pass",new Date(),new Date(),"Prof","c://",indii);
-        
-         
+        Parc parc = new Parc(Long.parseLong("5"),"Relais Colis");
+         System.out.println(parc.getId());
           //gotoLogin();
           System.out.println("bbbbb");
            
