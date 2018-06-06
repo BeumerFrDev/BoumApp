@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.controleurs;
+package fr.bg.main.controleurs;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -12,8 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.MenuItem;
-import main.Launch;
-import main.modele.Individus;
+import fr.bg.main.Launch;
+import fr.bg.main.modele.Individus;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;

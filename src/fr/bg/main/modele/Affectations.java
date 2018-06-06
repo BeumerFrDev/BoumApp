@@ -1,5 +1,5 @@
 
-package main.modele;
+package fr.bg.main.modele;
 
 
 import java.util.Date;

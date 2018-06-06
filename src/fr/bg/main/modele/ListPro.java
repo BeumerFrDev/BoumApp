@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.modele;
+package fr.bg.main.modele;
 
 import java.util.Collection;
 import java.util.HashSet;

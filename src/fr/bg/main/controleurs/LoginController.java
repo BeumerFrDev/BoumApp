@@ -1,4 +1,4 @@
-package main.controleurs;
+package fr.bg.main.controleurs;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import main.Launch;
+import fr.bg.main.Launch;
 
 public class LoginController implements Initializable {
 

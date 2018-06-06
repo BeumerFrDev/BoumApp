@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package fr.bg.main;
 
 import java.io.InputStream;
 import java.util.Date;
@@ -18,13 +18,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import main.controleurs.AdminViewController;
-import main.controleurs.LoginController;
-import main.controleurs.SplashScreenController;
-import main.modele.Adresses;
-import main.modele.Affectations;
-import main.modele.Directeur;
-import main.modele.Individus;
+import fr.bg.main.controleurs.AdminViewController;
+import fr.bg.main.controleurs.LoginController;
+import fr.bg.main.controleurs.SplashScreenController;
+import fr.bg.main.modele.Adresses;
+import fr.bg.main.modele.Affectations;
+import fr.bg.main.modele.Directeur;
+import fr.bg.main.modele.Individus;
 
 /**
  *

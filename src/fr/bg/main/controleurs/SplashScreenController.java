@@ -1,4 +1,4 @@
-package main.controleurs;
+package fr.bg.main.controleurs;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,8 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import main.modele.AnimationGenerator;
-import main.Launch;
+import fr.bg.main.modele.AnimationGenerator;
+import fr.bg.main.Launch;
 
 public class SplashScreenController extends AnchorPane implements Initializable {
 
@@ -30,7 +30,7 @@ public class SplashScreenController extends AnchorPane implements Initializable 
           try {
             Parent fxml;
               
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/vues/Login.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/bg/main/vues/Login.fxml"));
          fxml = (Parent) loader.load();
          LoginController ctrl = loader.getController();
          ctrl.setApp(application);

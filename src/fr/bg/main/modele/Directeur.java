@@ -1,8 +1,8 @@
  
-package main.modele;
+package fr.bg.main.modele;
 
 import java.util.Date;
-import main.modele.Individus;
+import fr.bg.main.modele.Individus;
 
 /**
  *
