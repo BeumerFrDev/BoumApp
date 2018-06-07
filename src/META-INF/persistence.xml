@@ -6,6 +6,7 @@
     <class>fr.bg.main.modele.plandetri.Blocks</class>
     <class>fr.bg.main.modele.plandetri.Machines</class>
     <class>fr.bg.main.modele.plandetri.Pieces</class>
+    <class>fr.bg.main.modele.plandetri.Caracteristique</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boumap?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

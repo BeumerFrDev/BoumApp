@@ -6,7 +6,9 @@
 package fr.bg.main.modele.plandetri;
 
 import fr.bg.main.modele.Adresses;
+import fr.bg.main.modele.Individus;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +26,10 @@ public class Parc implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomParc;
-
-    public Parc(Long id, String nomParc) {
-        this.id = id;
-        this.nomParc = nomParc;
-    }
+    private Adresses adresseParc;
+    private Individus contact1;
+    private Individus contact2;
+    private Collection<Blocks> listeBlocks;
     
     
     public Long getId() {

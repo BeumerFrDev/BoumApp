@@ -16,17 +16,12 @@ import javax.persistence.Id;
  * @author Ouadie
  */
 @Entity
-public class Machines implements Serializable {
+public class Caracteristique implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nomMachine;
-    private String referenceMachine;
-    
-    private Caracteristique caracteristique ;
-    
 
     public Long getId() {
         return id;
@@ -46,10 +41,10 @@ public class Machines implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Machines)) {
+        if (!(object instanceof Caracteristique)) {
             return false;
         }
-        Machines other = (Machines) object;
+        Caracteristique other = (Caracteristique) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -58,7 +53,7 @@ public class Machines implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.modele.plandetri.Machines[ id=" + id + " ]";
+        return "fr.bg.main.modele.plandetri.Caracteristique[ id=" + id + " ]";
     }
     
 }
