@@ -6,6 +6,7 @@
 package fr.bg.main.modele.plandetri;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,41 +17,30 @@ import javax.persistence.Id;
  * @author Ouadie
  */
 @Entity
-public class Pieces implements Serializable {
+public class Type implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String libellePiece;
-    private String referencePiece;
-    private String image;
-    private Type type;
-    private int dureDeVie;
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Long referenceType;
+    private String libelle;
+    private Collection<Caracteristique> listeCaracteristique;
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (referenceType != null ? referenceType.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pieces)) {
+        if (!(object instanceof Type)) {
             return false;
         }
-        Pieces other = (Pieces) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        Type other = (Type) object;
+        if ((this.referenceType == null && other.referenceType != null) || (this.referenceType != null && !this.referenceType.equals(other.referenceType))) {
             return false;
         }
         return true;
@@ -58,7 +48,7 @@ public class Pieces implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.modele.plandetri.Pieces[ id=" + id + " ]";
+        return "fr.bg.main.modele.plandetri.Type[ referenceType=" + referenceType + " ]";
     }
     
 }

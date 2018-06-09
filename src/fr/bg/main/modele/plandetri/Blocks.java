@@ -6,6 +6,7 @@
 package fr.bg.main.modele.plandetri;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,12 @@ public class Blocks implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelleBlock;
+    private String reference ;
+    private String image;
+    private Type typeBlock;
+    private Collection<Pieces> listePieces ;
+    private Collection<Blocks> listeSousBlocks;
+    
     
     public Long getId() {
         return id;
