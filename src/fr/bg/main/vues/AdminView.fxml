@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="adminview" prefHeight="768.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.AdminViewController">
+    <stylesheets>
+        <URL value="@../assets/styles/css.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="768.0" prefWidth="1024.0" stylesheets="">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="132.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/admin.png" />
+                     </image>
+                  </ImageView>
+                  <MenuButton fx:id="menuButon" mnemonicParsing="false" prefHeight="19.0" prefWidth="25.0" styleClass="back-transparent">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#processLogout" text="Deconnexion" />
+                      <MenuItem mnemonicParsing="false" text="Voir mon profil" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

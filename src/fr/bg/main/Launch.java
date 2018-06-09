@@ -101,7 +101,7 @@ public class Launch extends Application {
     public void gotoAdminView() {
         try {
             AdminViewController adminView;
-            adminView = (AdminViewController) replaceSceneContent("vues/adminview.fxml");
+            adminView = (AdminViewController) replaceSceneContent("vues/AdminView.fxml");
           
             adminView.setApp(this);
         } catch (Exception ex) {
@@ -111,7 +111,7 @@ public class Launch extends Application {
     
        public void gotoLogin() {
         try {
-            LoginController login = (LoginController) replaceSceneContent("/dmain/vues/login.fxml");
+            LoginController login = (LoginController) replaceSceneContent("/main/vues/login.fxml");
             login.setApp( this);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,7 +119,7 @@ public class Launch extends Application {
     }    
        public void gotoLogin(Launch app ) {
         try {
-            LoginController login = (LoginController) replaceSceneContent("/dmain/vues/login.fxml");
+            LoginController login = (LoginController) replaceSceneContent("vues/login.fxml");
             login.setApp( app);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,6 +140,8 @@ public class Launch extends Application {
              in.close();
             
         } 
+        
+        
         Scene scene = new Scene(page, 1024, 743);
         scene = new Scene(page);
         stage.setScene(scene);

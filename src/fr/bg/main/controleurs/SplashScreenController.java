@@ -15,6 +15,13 @@ import javafx.scene.layout.AnchorPane;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.Launch;
 
+/**
+ * FXML Controller class
+ *
+ * 
+ * @author Ouadie
+ */
+
 public class SplashScreenController extends AnchorPane implements Initializable {
 
     private double xOffset = 0;

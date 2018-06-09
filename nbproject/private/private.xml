@@ -3,15 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/ConsignationSecurites.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Adresses.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/AdminView.fxml</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/build/generated-sources/ap-source-output/fr/bg/main/modele/plandetri/Caracteristique_.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Pieces.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/Reglages.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Individus.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/SplashScreen.fxml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Type.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Caracteristique.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/Outils.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/MontageDemontages.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/SplashScreenController.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Launch.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/build/generated-sources/ap-source-output/fr/bg/main/modele/plandetri/Parc_.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/Login.fxml</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/build/generated-sources/ap-source-output/fr/bg/main/modele/plandetri/Machines_.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/LoginController.java</file>
@@ -19,7 +25,7 @@
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/build/generated-sources/ap-source-output/fr/bg/main/modele/plandetri/Blocks_.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/ListPro.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Parc.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Machines.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/modeOperatoires.java</file>
         </group>
     </open-files>
 </project-private>

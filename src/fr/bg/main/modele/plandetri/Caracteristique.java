@@ -22,7 +22,7 @@ public class Caracteristique implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private String nomCaracteristique;
     public Long getId() {
         return id;
     }

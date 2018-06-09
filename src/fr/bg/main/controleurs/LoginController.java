@@ -15,6 +15,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import fr.bg.main.Launch;
 
+/**
+ * FXML Controller class
+ *
+ * 
+ * @author Ouadie
+ */
 public class LoginController implements Initializable {
 
     @FXML
