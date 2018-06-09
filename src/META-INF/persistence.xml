@@ -4,7 +4,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>fr.bg.main.modele.plandetri.Parc</class>
     <class>fr.bg.main.modele.plandetri.Blocks</class>
-    <class>fr.bg.main.modele.plandetri.Machines</class>
     <class>fr.bg.main.modele.plandetri.Pieces</class>
     <class>fr.bg.main.modele.plandetri.Caracteristique</class>
     <class>fr.bg.main.modele.plandetri.Type</class>

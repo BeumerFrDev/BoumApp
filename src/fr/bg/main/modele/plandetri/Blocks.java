@@ -29,6 +29,83 @@ public class Blocks implements Serializable {
     private Type typeBlock;
     private Collection<Pieces> listePieces ;
     private Collection<Blocks> listeSousBlocks;
+
+    public Blocks() {
+    }
+
+    public Blocks(Long id) {
+        this.id = id;
+    }
+
+    public Blocks(Long id, String libelleBlock, String reference, String image, Type typeBlock, Collection<Pieces> listePieces, Collection<Blocks> listeSousBlocks) {
+        this.id = id;
+        this.libelleBlock = libelleBlock;
+        this.reference = reference;
+        this.image = image;
+        this.typeBlock = typeBlock;
+        this.listePieces = listePieces;
+        this.listeSousBlocks = listeSousBlocks;
+    }
+
+    public Blocks(Long id, String libelleBlock, String reference, String image, Type typeBlock, Collection<Pieces> listePieces) {
+        this.id = id;
+        this.libelleBlock = libelleBlock;
+        this.reference = reference;
+        this.image = image;
+        this.typeBlock = typeBlock;
+        this.listePieces = listePieces;
+    }
+
+    public String getLibelleBlock() {
+        return libelleBlock;
+    }
+
+    public void setLibelleBlock(String libelleBlock) {
+        this.libelleBlock = libelleBlock;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Type getTypeBlock() {
+        return typeBlock;
+    }
+
+    public void setTypeBlock(Type typeBlock) {
+        this.typeBlock = typeBlock;
+    }
+
+    public Collection<Pieces> getListePieces() {
+        return listePieces;
+    }
+
+    public void setListePieces(Collection<Pieces> listePieces) {
+        this.listePieces = listePieces;
+    }
+
+    public Collection<Blocks> getListeSousBlocks() {
+        return listeSousBlocks;
+    }
+
+    public void setListeSousBlocks(Collection<Blocks> listeSousBlocks) {
+        this.listeSousBlocks = listeSousBlocks;
+    }
+
+
+
     
     
     public Long getId() {

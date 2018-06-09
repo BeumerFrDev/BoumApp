@@ -27,6 +27,71 @@ public class Pieces implements Serializable {
     private String image;
     private Type type;
     private int dureDeVie;
+
+    public Pieces() {
+    }
+
+    public Pieces(Long id) {
+        this.id = id;
+    }
+
+    public Pieces(Long id, String libellePiece, String referencePiece, Type type, int dureDeVie) {
+        this.id = id;
+        this.libellePiece = libellePiece;
+        this.referencePiece = referencePiece;
+        this.type = type;
+        this.dureDeVie = dureDeVie;
+    }
+
+    public Pieces(Long id, String libellePiece, String referencePiece, String image, Type type, int dureDeVie) {
+        this.id = id;
+        this.libellePiece = libellePiece;
+        this.referencePiece = referencePiece;
+        this.image = image;
+        this.type = type;
+        this.dureDeVie = dureDeVie;
+    }
+
+    public String getLibellePiece() {
+        return libellePiece;
+    }
+
+    public void setLibellePiece(String libellePiece) {
+        this.libellePiece = libellePiece;
+    }
+
+    public String getReferencePiece() {
+        return referencePiece;
+    }
+
+    public void setReferencePiece(String referencePiece) {
+        this.referencePiece = referencePiece;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public int getDureDeVie() {
+        return dureDeVie;
+    }
+
+    public void setDureDeVie(int dureDeVie) {
+        this.dureDeVie = dureDeVie;
+    }
+    
     
     public Long getId() {
         return id;

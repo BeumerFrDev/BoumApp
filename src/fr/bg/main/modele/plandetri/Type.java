@@ -6,7 +6,7 @@
 package fr.bg.main.modele.plandetri;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,8 +24,46 @@ public class Type implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long referenceType;
     private String libelle;
-    private Collection<Caracteristique> listeCaracteristique;
+    private HashMap<Caracteristique,String> listeCaracteristique;
+    public Type() {
+    }
 
+    public Type(Long referenceType, String libelle, HashMap<Caracteristique, String> listeCaracteristique) {
+        this.referenceType = referenceType;
+        this.libelle = libelle;
+        this.listeCaracteristique = listeCaracteristique;
+    }
+
+    
+ 
+    public Long getReferenceType() {
+        return referenceType;
+    }
+
+    public void setReferenceType(Long referenceType) {
+        this.referenceType = referenceType;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public HashMap<Caracteristique, String> getListeCaracteristique() {
+        return listeCaracteristique;
+    }
+
+    public void setListeCaracteristique(HashMap<Caracteristique, String> listeCaracteristique) {
+        this.listeCaracteristique = listeCaracteristique;
+    }
+
+
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

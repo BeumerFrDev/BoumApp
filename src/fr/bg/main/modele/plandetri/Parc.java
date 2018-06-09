@@ -30,6 +30,60 @@ public class Parc implements Serializable {
     private Individus contact1;
     private Individus contact2;
     private Collection<Blocks> listeBlocks;
+
+    public Parc(Long id, String nomParc) {
+        this.id = id;
+        this.nomParc = nomParc;
+    }
+
+    public Parc(Long id, String nomParc, Adresses adresseParc, Individus contact1, Individus contact2, Collection<Blocks> listeBlocks) {
+        this.id = id;
+        this.nomParc = nomParc;
+        this.adresseParc = adresseParc;
+        this.contact1 = contact1;
+        this.contact2 = contact2;
+        this.listeBlocks = listeBlocks;
+    }
+
+    public String getNomParc() {
+        return nomParc;
+    }
+
+    public void setNomParc(String nomParc) {
+        this.nomParc = nomParc;
+    }
+
+    public Adresses getAdresseParc() {
+        return adresseParc;
+    }
+
+    public void setAdresseParc(Adresses adresseParc) {
+        this.adresseParc = adresseParc;
+    }
+
+    public Individus getContact1() {
+        return contact1;
+    }
+
+    public void setContact1(Individus contact1) {
+        this.contact1 = contact1;
+    }
+
+    public Individus getContact2() {
+        return contact2;
+    }
+
+    public void setContact2(Individus contact2) {
+        this.contact2 = contact2;
+    }
+
+    public Collection<Blocks> getListeBlocks() {
+        return listeBlocks;
+    }
+
+    public void setListeBlocks(Collection<Blocks> listeBlocks) {
+        this.listeBlocks = listeBlocks;
+    }
     
     
     public Long getId() {
