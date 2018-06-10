@@ -75,6 +75,7 @@ public class AdminViewController implements Initializable {
 
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
+        makeStageDrageable();
         loggedUser = application.getLoggedUser();
         System.out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));

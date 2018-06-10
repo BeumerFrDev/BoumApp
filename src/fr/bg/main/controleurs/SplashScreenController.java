@@ -34,6 +34,7 @@ public class SplashScreenController extends AnchorPane implements Initializable 
     
     public void setApp(Launch application){
         this.application = application;
+        makeStageDrageable();
           try {
             
               

@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import fr.bg.main.Launch;
+import fr.bg.main.modele.AnimationGenerator;
+import javafx.event.EventHandler;
 
 /**
  * FXML Controller class
@@ -22,7 +24,9 @@ import fr.bg.main.Launch;
  * @author Ouadie
  */
 public class LoginController implements Initializable {
-
+    private double xOffset = 0;
+    private double yOffset = 0;
+    AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
     @FXML
@@ -66,5 +70,27 @@ public class LoginController implements Initializable {
             }
         }
     }
-  
+  public void makeStageDrageable() {
+        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                application.stage.setX(event.getScreenX() - xOffset);
+                application.stage.setY(event.getScreenY() - yOffset);
+                application.stage.setOpacity(0.7f);
+            }
+        });
+        parent.setOnDragDone((e) -> {
+            application.stage.setOpacity(1.0f);
+        });
+        parent.setOnMouseReleased((e) -> {
+            application.stage.setOpacity(1.0f);
+        });
+    }
 }
