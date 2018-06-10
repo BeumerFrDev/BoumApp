@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="adminview" prefHeight="768.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.AdminViewController">
+<AnchorPane id="adminview" fx:id="parent" prefHeight="768.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.AdminViewController">
     <stylesheets>
         <URL value="@../assets/styles/css.css" />
     </stylesheets>
    <children>
-      <BorderPane prefHeight="768.0" prefWidth="1024.0" stylesheets="">
+      <BorderPane layoutX="-6.0" prefHeight="768.0" prefWidth="1024.0" stylesheets="">
          <top>
             <HBox prefHeight="100.0" prefWidth="132.0" BorderPane.alignment="CENTER">
                <children>

@@ -35,14 +35,15 @@ public class SplashScreenController extends AnchorPane implements Initializable 
     public void setApp(Launch application){
         this.application = application;
           try {
-            Parent fxml;
+            
               
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/bg/main/vues/Login.fxml"));
-         fxml = (Parent) loader.load();
+         Parent fxml = (Parent) loader.load();
          LoginController ctrl = loader.getController();
          ctrl.setApp(application);
           
-            makeStageDrageable();
+            
+         
             animationGenerator = new AnimationGenerator();
             animationGenerator.applyFadeAnimationOn01(parent, 2000, 1, 0.2, 1, (e) -> {
                 animationGenerator.applyFadeAnimationOn02(parent, 2000, 0.2, 1, 1, (e2) -> {

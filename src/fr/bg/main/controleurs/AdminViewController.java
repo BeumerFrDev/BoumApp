@@ -6,6 +6,7 @@
 package fr.bg.main.controleurs;
 
 import fr.bg.main.Launch;
+import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -15,6 +16,7 @@ import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +31,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -54,13 +57,12 @@ public class AdminViewController implements Initializable {
     private MenuButton menuButon;
     @FXML
     private ImageView imageView;
+    private double xOffset = 0;
+    private double yOffset = 0;
+    AnimationGenerator animationGenerator = null;
+    @FXML
+    private AnchorPane parent;
 
-    @FXML
-    PieChart pieChart;
-    @FXML
-    private HBox GrandFenetreHbox;
-    @FXML
-    Tab reporting;
 
     /**
      * Initializes the controller class.
@@ -68,7 +70,7 @@ public class AdminViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        System.out.println("fff");
     }
 
     public void setApp(Launch application) throws FileNotFoundException {
@@ -77,7 +79,7 @@ public class AdminViewController implements Initializable {
         System.out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
-
+        makeStageDrageable() ;
     }
 /*
     public Initializable replaceSceneContent(String fxml) throws Exception {
@@ -162,4 +164,31 @@ public class AdminViewController implements Initializable {
         ft.setToValue(1);
         ft.play();
     }
+    
+   public void makeStageDrageable() {
+        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                application.stage.setX(event.getScreenX() - xOffset);
+                application.stage.setY(event.getScreenY() - yOffset);
+                application.stage.setOpacity(0.7f);
+            }
+        });
+        parent.setOnDragDone((e) -> {
+            application.stage.setOpacity(1.0f);
+        });
+        parent.setOnMouseReleased((e) -> {
+            application.stage.setOpacity(1.0f);
+        });
+    }   
+    
+    
+    
 }

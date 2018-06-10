@@ -62,7 +62,7 @@ public class Launch extends Application {
       
         
           Individus indii = new Directeur("AOUALI","Salim","H",new Date(),"Bizerte","L3MIAGE","Informatique","Etudiant",new Adresses(),"Arabe","FR","..\\assets\\image\\salim.jpg","","","0638441611","ben.aissa.ouadie@gmail.com");
-         Affectations afff = new Affectations(3,"CDI","directeur","pass",new Date(),new Date(),"Prof","c://",indii);
+         Affectations afff = new Affectations(3,"CDI","","",new Date(),new Date(),"Prof","c://",indii);
        
        
      
@@ -109,22 +109,22 @@ public class Launch extends Application {
         }
     }
     
+    
+    
+    
        public void gotoLogin() {
         try {
-            LoginController login = (LoginController) replaceSceneContent("/main/vues/login.fxml");
+            LoginController login = (LoginController) replaceSceneContent("vues/Login.fxml");
             login.setApp( this);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-       public void gotoLogin(Launch app ) {
-        try {
-            LoginController login = (LoginController) replaceSceneContent("vues/login.fxml");
-            login.setApp( app);
-        } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+       
+       
+      
+       
+       
        
      public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -142,11 +142,11 @@ public class Launch extends Application {
         } 
         
         
-        Scene scene = new Scene(page, 1024, 743);
-        scene = new Scene(page);
+        Scene scene = new Scene(page, 1366, 768);
+      
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        this.stage = stage;
+        //stage.initStyle(StageStyle.UNDECORATED);
+     
         return (Initializable) loader.getController();
     }
 }
