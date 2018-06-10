@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 
 <AnchorPane fx:id="parent" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@../assets/styles/css.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.LoginController">
    <children>
@@ -15,6 +16,7 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </Label>
+      
       <TextField fx:id="userId" alignment="CENTER" layoutX="288.0" layoutY="212.0" prefHeight="30.0" prefWidth="250.0" promptText="Email/Username" styleClass="textfields">
          <font>
             <Font name="Calibri Light" size="14.0" />

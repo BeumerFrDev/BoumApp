@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import fr.bg.main.controleurs.AdminViewController;
+import fr.bg.main.controleurs.DashbordController;
 import fr.bg.main.controleurs.LoginController;
 import fr.bg.main.controleurs.SplashScreenController;
 import fr.bg.main.modele.Adresses;
@@ -81,7 +82,7 @@ public class Launch extends Application {
             loggedUser = Affectations.of(userId);
             System.out.println(loggedUser.getClass());
             if (loggedUser.getClass().toString().endsWith("Directeur")) {
-                gotoAdminView();
+                gotoDashbord();
             } else {
                 userLogout();
             }
@@ -106,7 +107,16 @@ public class Launch extends Application {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+  public void gotoDashbord() {
+        try {
+            DashbordController adminView;
+            adminView = (DashbordController) replaceSceneContent("vues/dashbord.fxml", 0);
 
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void gotoLogin() {
         try {
             LoginController login = (LoginController) replaceSceneContent("vues/Login.fxml", 0);

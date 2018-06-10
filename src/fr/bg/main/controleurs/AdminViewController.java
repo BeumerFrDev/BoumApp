@@ -20,11 +20,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -43,7 +39,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * 
+ *
  * @author Ouadie
  */
 public class AdminViewController implements Initializable {
@@ -63,7 +59,6 @@ public class AdminViewController implements Initializable {
     @FXML
     private AnchorPane parent;
 
-
     /**
      * Initializes the controller class.
      */
@@ -80,9 +75,10 @@ public class AdminViewController implements Initializable {
         System.out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
-        makeStageDrageable() ;
+        makeStageDrageable();
     }
-/*
+
+    /*
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Launch.class.getResourceAsStream(fxml);
@@ -109,7 +105,7 @@ public class AdminViewController implements Initializable {
         application.init();
         return (Initializable) loader.getController();
     }
-*/
+     */
     @FXML
     public void processLogout(ActionEvent event) {
         if (application == null) {
@@ -134,17 +130,14 @@ public class AdminViewController implements Initializable {
     }
 
     private void affichePhotoLoggedUser() throws FileNotFoundException {
-        Image image = null;
-        Exception exception = null;
-        try {
-            image = new Image(getClass().getResource(loggedUser.getPhotoIndividu()).toString());
-        } catch (Exception e) {
-
-        }
-        if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
-            image = new Image(getClass().getResource("..\\assets\\image\\admin.png").toString());
-        }
-        imageView.setImage(image);
+        
+      
+      //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
+       // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
+          //image = new Image("../assets/images/admin.png".toString(), true);
+        
+//    }
+//imageView= new ImageView(getClass().getResource("url:https://avatars0.githubusercontent.com/u/15785708?s=460&v=4").toExternalForm());
 
         imageView.setFitWidth(45);
         imageView.setFitHeight(45);
@@ -157,6 +150,7 @@ public class AdminViewController implements Initializable {
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
+
     }
 
     private void animateMessage() {
@@ -165,8 +159,8 @@ public class AdminViewController implements Initializable {
         ft.setToValue(1);
         ft.play();
     }
-    
-   public void makeStageDrageable() {
+
+    public void makeStageDrageable() {
         parent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -188,8 +182,6 @@ public class AdminViewController implements Initializable {
         parent.setOnMouseReleased((e) -> {
             application.stage.setOpacity(1.0f);
         });
-    }   
-    
-    
-    
+    }
+
 }
