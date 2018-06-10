@@ -81,7 +81,14 @@ public class Launch extends Application {
         public Individus getLoggedUser() {
         return loggedUser;
     }
-        
+    public void changeStage(){
+        Stage stageS = null;
+        stageS.initStyle(StageStyle.UNDECORATED);
+        this.stage = stage;
+        stage.show();
+    }
+    
+    
     public boolean userLogging(String userId, String password){
         if (Affectations.validate(userId, password)) {
            loggedUser =Affectations.of(userId);
@@ -101,7 +108,7 @@ public class Launch extends Application {
     public void gotoAdminView() {
         try {
             AdminViewController adminView;
-            adminView = (AdminViewController) replaceSceneContent("vues/AdminView.fxml");
+            adminView = (AdminViewController) replaceSceneContentP1("vues/AdminView.fxml",1);
           
             adminView.setApp(this);
         } catch (Exception ex) {
@@ -143,10 +150,43 @@ public class Launch extends Application {
         
         
         Scene scene = new Scene(page, 1366, 768);
-      
+        
         stage.setScene(scene);
         //stage.initStyle(StageStyle.UNDECORATED);
      
+        return (Initializable) loader.getController();
+    }
+     
+     
+      public Initializable replaceSceneContentP1(String fxml,int a) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Launch.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Launch.class.getResource(fxml));
+       
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load(in);
+        } finally {
+           System.out.println("test2"+fxml+"**"+Launch.class.getResource(fxml));
+             in.close();
+            
+        } 
+        
+        
+        Scene scene = new Scene(page, 1366, 768);
+        if(a==1) {
+            Stage stage1;
+            stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.initStyle(StageStyle.DECORATED);
+            stage.hide();
+            stage1.show();
+            stage=stage1;
+        }else{
+        stage.setScene(scene);
+        //stage.initStyle(StageStyle.UNDECORATED);
+        }
         return (Initializable) loader.getController();
     }
 }
