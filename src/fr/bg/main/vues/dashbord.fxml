@@ -2,6 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -16,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parent" prefHeight="600" prefWidth="1024.0" styleClass="parent" stylesheets="@../assets/styles/dashbord.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="fr.bg.main.controleurs.DashbordController">
+<AnchorPane fx:id="parent" prefHeight="600" prefWidth="1024.0" styleClass="parent" stylesheets="@../assets/styles/dashbord.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.DashbordController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar">
             <children>
@@ -65,7 +68,7 @@
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
                        
-                        <Label text="Projects" textFill="#7c8184">
+                        <Label text="Gestion d'utilisateur" textFill="#7c8184">
                             <font>
                                 <Font name="Calibri Light" size="15.0" />
                             </font>
@@ -79,9 +82,24 @@
                     </padding>
                   
                 </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <Label text="gestion de planning" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
-                         <Label text="Users" textFill="#7c8184">
+                         <Label text="Gestion du parc" textFill="#7c8184">
                             <font>
                                 <Font name="Calibri Light" size="15.0" />
                             </font>
@@ -97,7 +115,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
-                        <Label text="Resource" textFill="#7c8184">
+                        <Label text="gestion de stock" textFill="#7c8184">
                             <font>
                                 <Font name="Calibri Light" size="15.0" />
                             </font>
@@ -111,6 +129,21 @@
                     </padding>
                    
                 </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <Label text="gestion d'intervention" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <Label text="Documents" textFill="#7c8184">
@@ -127,7 +160,7 @@
                     </padding>
                  
                 </HBox>
-                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="box" VBox.vgrow="ALWAYS">
+                <VBox prefHeight="200.0" prefWidth="300.0" styleClass="box" VBox.vgrow="ALWAYS">
                     <children>
                         <Label text="TEAM INVOLVED" textFill="#7c8184">
                             <font>
@@ -143,12 +176,12 @@
                                 </ImageView>
                                 <VBox>
                                     <children>
-                                        <Label text="Andrew" textFill="#7c8184">
+                                        <Label text="Farid Ouazzane" textFill="#7c8184">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
                                         </Label>
-                                        <Label layoutX="10.0" layoutY="10.0" text=".Net Developer" textFill="#7c8184">
+                                        <Label layoutX="10.0" layoutY="10.0" text="Responsable de maintenance" textFill="#7c8184">
                                             <font>
                                                 <Font size="10.0" />
                                             </font>
@@ -172,7 +205,7 @@
                                 </ImageView>
                                 <VBox>
                                     <children>
-                                        <Label text="Lissa" textFill="#7c8184">
+                                        <Label text="Sebastian" textFill="#7c8184">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -215,32 +248,7 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="84.0">
-                            <children>
-                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../assets/images/avatar-04.jpg" />
-                                    </image>
-                                </ImageView>
-                                <VBox>
-                                    <children>
-                                        <Label text="Patrick" textFill="#7c8184">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="10.0" layoutY="10.0" text="UI / UX Designer" textFill="#7c8184">
-                                            <font>
-                                                <Font size="10.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                </VBox>
-                            </children>
-                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="84.0" />
                     </children>
                     <VBox.margin>
                         <Insets />
@@ -294,11 +302,14 @@
                   </MenuButton>
                     </children>
                 </Pane>
-                <ImageView fitHeight="250.0" fitWidth="724.0" pickOnBounds="true" smooth="false">
-                    <image>
-                        <Image url="@../assets/images/line-chart.jpg" />
-                    </image>
-                </ImageView>
+            <AreaChart prefHeight="250.0" prefWidth="620.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
                 <HBox alignment="CENTER">
                     <children>
                         <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="230.0" styleClass="card-01" HBox.hgrow="ALWAYS">
