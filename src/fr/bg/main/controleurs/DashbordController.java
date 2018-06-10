@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
+import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,7 +63,10 @@ public class DashbordController implements Initializable {
         // TODO
         System.out.println("fff");
     }
-
+ @FXML  private void close_app() {
+        exit();
+        
+    }
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();

@@ -291,6 +291,7 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#processLogout" text="Deconnexion" />
                         <MenuItem mnemonicParsing="false" text="Voir mon profil" />
+                        <MenuItem mnemonicParsing="false" onAction="#close_app" text="Sortir" />
                      </items>
                      <graphic>
                         <ImageView fx:id="imageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true">
