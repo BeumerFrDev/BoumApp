@@ -10,5 +10,7 @@ package fr.bg.stock.modele;
  * @author lyess
  */
 public class Rayon {
+    private int idRayon;
+    private String nomRayon;
     
 }

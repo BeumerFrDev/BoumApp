@@ -11,4 +11,7 @@ package fr.bg.stock.modele;
  */
 public class TypeArticle {
     
+    private String nomType;
+    private String description;
+    
 }
