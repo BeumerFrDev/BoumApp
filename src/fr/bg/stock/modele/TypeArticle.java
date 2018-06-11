@@ -9,13 +9,6 @@ package fr.bg.stock.modele;
  *
  * @author lyess
  */
-public class Article {
-   private int idArticle;
-   private String nomArticle;
-   private String libelleArticle;
-   private String refStockArticle;
-   private int qteStock; 
-   TypeArticle type;
-   Fournisseur fournisseur;
-   Rayon rayon;
+public class TypeArticle {
+    
 }
