@@ -10,5 +10,14 @@ package fr.bg.stock.modele;
  * @author lyess
  */
 public class Fournisseur {
+private String idFournisseur;
+private String nomFournisseur;
+private String adresseFournisseur;
+private String codePFournisseur;
+private String villeFournisseur;
+private String payeFournisseur;
+private String telFournisseur;
+private String faxFournisseur;
+private String emailFournisseur;
     
 }

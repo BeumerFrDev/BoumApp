@@ -5,10 +5,16 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Date;
+
 /**
  *
  * @author lyess
  */
 public class Commande {
     
+    private int numCommande;
+    private Date dateCommande;
+    private String etatCommande;
+        
 }

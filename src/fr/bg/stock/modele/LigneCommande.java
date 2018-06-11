@@ -11,4 +11,8 @@ package fr.bg.stock.modele;
  */
 public class LigneCommande {
     
+    private int index;
+    private int qteCommandee;
+    private double prixU;
+    private double montant;
 }

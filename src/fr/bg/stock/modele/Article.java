@@ -19,3 +19,4 @@ public class Article {
    Fournisseur fournisseur;
    Rayon rayon;
 }
+
