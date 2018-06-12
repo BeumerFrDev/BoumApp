@@ -9,6 +9,6 @@ package fr.bg.stock.modele;
  *
  * @author lyess
  */
-class Entree {
+public class Reception {
     
 }
