@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -16,6 +17,13 @@ class Entree {
         private String idEntree;
         private int qteEntree;
         private Double prixEntree;
+        
+        private Collection <Entree> listeEntree;
+        private Collection <Entree> listeEntreeAAjouter;
+        private Collection <Entree> listeEntreeAModifier;
+        private Collection <Entree> listeEntreeASupprimer;
+        
+        
 
     public Entree(String idEntree, int qteEntree, Double prixEntree) {
         this.idEntree = idEntree;
@@ -86,7 +94,24 @@ class Entree {
     }
     
     
+     // Methode ajouter entrer
+    
+    public  Entree ajouterEntree(String idEntree, int qteEntree, Double prixEntree){
         
+        Entree E = new Entree(idEntree,qteEntree,prixEntree);
+        return E;
+           
+    }
+    
+    //Methode modifier entree
+    
+    public void modifierEntree(String idEntree, int qteEntree, Double prixEntree){
+        
+        this.idEntree = idEntree;
+        this.qteEntree = qteEntree;
+        this.prixEntree = prixEntree;
+    
+}
         
 
     

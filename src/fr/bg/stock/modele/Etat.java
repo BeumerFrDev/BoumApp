@@ -68,6 +68,24 @@ class Etat {
         return "Etat{" + "idEtat=" + idEtat + ", nomEtat=" + nomEtat + '}';
     }
     
+    //methode ajouter Etat
+    
+    public Etat ajouterEtat(String idEtat, String nomEtat){
+        
+        Etat E = new Etat(idEtat,nomEtat);
+        return E;
+    }
+    
+    //Methode modifier Etat
+    
+    public void modifierEtat(String idEtat, String nomEtat){
+        this.idEtat = idEtat;
+        this.nomEtat = nomEtat;
+        
+    }
+            
+            
+    
     
     
     

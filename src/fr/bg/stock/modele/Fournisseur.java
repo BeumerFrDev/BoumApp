@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -22,6 +23,11 @@ public class Fournisseur {
  private String telFournisseur;
  private String faxeFournisseur;
  private String emailFournisseur;
+ public Collection <Fournisseur> listeFournisseur;
+ public Collection <Fournisseur> listeFournisseurAAjouter;
+ public Collection <Fournisseur> listeFournisseurAModifier;
+ public Collection <Fournisseur> listeFournisseurASupprimer;
+ 
 
     public Fournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
