@@ -4,6 +4,7 @@ import fr.bg.main.Launch;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -42,7 +45,13 @@ import javafx.util.Duration;
 public class GestionParcController implements Initializable {
 
    private Individus loggedUser;
+   @FXML
+    private VBox content_area;
+    @FXML
+    private HBox menubar;
 
+    
+    boolean flag = true;
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -133,6 +142,19 @@ public class GestionParcController implements Initializable {
         Stage stage = application.stage;
         System.out.println("Full Screen");
        stage.setFullScreen(!stage.isFullScreen());
+    }
+      @FXML
+    private void open_sidebar(ActionEvent event) throws IOException {
+        BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
+        if (flag == true) {
+            Parent sidebar = FXMLLoader.load(getClass().getResource("Sidebar.fxml"));
+            border_pane.setLeft(sidebar);
+            flag = false;
+        } else {
+            border_pane.setLeft(null);
+            flag = true;
+        }
+        
     }
     
     private void affichePhotoLoggedUser() throws FileNotFoundException {

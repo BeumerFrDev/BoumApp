@@ -287,7 +287,7 @@
                             </font>
                         </Label>
                   <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="419.0" styleClass="card-03" HBox.hgrow="ALWAYS" />
-                  <FXButton onAction="#handleMenuFullScreen" styleClass="btns1" text="Full Screen" />
+                  <FXButton onAction="#open_sidebar" onDragDone="#handleMenuFullScreen" styleClass="btns1" text="Full Screen" />
                                            <Label alignment="CENTER" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round-lbl" text="8" textAlignment="RIGHT" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
