@@ -6,7 +6,6 @@
 package fr.bg.stock.modele;
 
 import fr.bg.main.modele.plandetri.Type;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 

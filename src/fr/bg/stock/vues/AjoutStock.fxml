@@ -8,9 +8,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -33,9 +30,9 @@
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
                      <children>
-                        <ImageView fitHeight="139.0" fitWidth="441.0" nodeOrientation="INHERIT" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="139.0" fitWidth="441.0" nodeOrientation="INHERIT" opacity="0.83" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="1.0" />
                            </HBox.margin>
                            <image>
                               <Image url="@../assets/images/Beumer_Group_Log50.png" />
@@ -66,6 +63,9 @@
                                  <HBox.margin>
                                     <Insets right="1.0" top="9.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ComboBox>
                            </children>
                            <HBox.margin>
@@ -86,28 +86,6 @@
                         <Insets left="1.0" right="1.0" />
                      </opaqueInsets>
                   </HBox>
-                  <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="22.0" prefWidth="1018.0">
-                    <menus>
-                      <Menu mnemonicParsing="false" text="File">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Close" />
-                        </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Edit">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Delete" />
-                        </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="About" />
-                        </items>
-                      </Menu>
-                    </menus>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </MenuBar>
                </children>
                <BorderPane.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" />
@@ -152,14 +130,16 @@
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
                   </TextField>
-                  <DatePicker layoutX="179.0" layoutY="127.0" prefHeight="26.0" prefWidth="297.0" />
+                  <DatePicker layoutX="179.0" layoutY="127.0" prefHeight="26.0" prefWidth="297.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></DatePicker>
                   <TextField layoutX="179.0" layoutY="201.0" prefHeight="26.0" prefWidth="294.0" />
                   <TextField layoutX="179.0" layoutY="272.0" prefHeight="26.0" prefWidth="294.0">
                      <padding>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
                   </TextField>
-                  <TextField layoutX="181.0" layoutY="272.0" prefHeight="26.0" prefWidth="294.0" />
                   <ComboBox layoutX="179.0" layoutY="344.0" prefHeight="28.0" prefWidth="297.0" />
                   <ComboBox layoutX="179.0" layoutY="421.0" prefHeight="28.0" prefWidth="297.0" />
                   <Button layoutX="517.0" layoutY="333.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" styleClass="back-transparent" text=" Nouveau fournisseur">
@@ -173,6 +153,14 @@
                   <Button layoutX="517.0" layoutY="410.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" styleClass="back-transparent" text=" Nouveau rayon">
                      <font>
                         <Font size="8.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="36.0" layoutY="508.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" styleClass="back-transparent" text="+   Ajouter">
+                     <font>
+                        <Font size="10.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
