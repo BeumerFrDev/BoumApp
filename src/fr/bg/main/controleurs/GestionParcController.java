@@ -23,6 +23,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +39,7 @@ import javafx.util.Duration;
  *
  * @author Ouadie
  */
-public class DashbordController implements Initializable {
+public class GestionParcController implements Initializable {
 
    private Individus loggedUser;
 
@@ -54,8 +55,7 @@ public class DashbordController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-    @FXML HBox gestionParcHBox ;
-    @FXML Label gestionParcLabel ;   
+
     /**
      * Initializes the controller class.
      */
@@ -67,15 +67,6 @@ public class DashbordController implements Initializable {
  @FXML  private void close_app() {
         exit();
         
-    }
- 
-  @FXML public void gotoGestionParc() {
-      application.gotoGestionParc();
-  }
-   @FXML
-    private void handleMenuFullScreen(ActionEvent event) {
-        
-        application.stage.setFullScreen(!application.stage.isFullScreen());
     }
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
@@ -137,7 +128,13 @@ public class DashbordController implements Initializable {
 
         animateMessage();
     }
-
+  @FXML
+    private void handleMenuFullScreen(ActionEvent  event) {
+        Stage stage = application.stage;
+        System.out.println("Full Screen");
+       stage.setFullScreen(!stage.isFullScreen());
+    }
+    
     private void affichePhotoLoggedUser() throws FileNotFoundException {
         
       

@@ -25,6 +25,8 @@ public class ListPro<T> implements Collection {
      * extraire tout nos donners si on veut et pour tracker
      * les differents actions afin de les enregistrer dans notre base 
      */
+
+    
 private HashSet<T> metier  ;
 private HashSet<T> asupprimer ;
 private HashSet<T> amodifier ;

@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import fr.bg.main.controleurs.AdminViewController;
 import fr.bg.main.controleurs.DashbordController;
+import fr.bg.main.controleurs.GestionParcController;
 import fr.bg.main.controleurs.LoginController;
 import fr.bg.main.controleurs.SplashScreenController;
 import fr.bg.main.modele.Adresses;
@@ -59,7 +60,7 @@ public class Launch extends Application {
         this.stage = stage;
         stage.show();
 
-        Individus indii = new Directeur("AOUALI", "Salim", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
+        Individus indii = new Directeur("fARID", "eeee", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
         Affectations afff = new Affectations(3, "CDI", "", "", new Date(), new Date(), "Prof", "c://", indii);
 
         //gotoLogin();
@@ -82,7 +83,7 @@ public class Launch extends Application {
             loggedUser = Affectations.of(userId);
             System.out.println(loggedUser.getClass());
             if (loggedUser.getClass().toString().endsWith("Directeur")) {
-                gotoDashbord();
+                gotoGestionParc();
             } else {
                 userLogout();
             }
@@ -113,6 +114,16 @@ public class Launch extends Application {
             adminView = (DashbordController) replaceSceneContent("vues/dashbord.fxml", 0);
 
             adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void gotoGestionParc() {
+        try {
+            GestionParcController gestionParc;
+            gestionParc = (GestionParcController) replaceSceneContent("vues/gestionParc.fxml", 0);
+
+            gestionParc.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -23,14 +23,23 @@
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar">
             <children>
-                <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Admin Panel" textFill="WHITE">
-                    <padding>
+            <HBox prefHeight="35.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Admin Panel" textFill="WHITE">
+                     <padding>
                         <Insets left="10.0" />
-                    </padding>
-                    <font>
+                     </padding>
+                     <font>
                         <Font name="Ebrima" size="18.0" />
-                    </font>
-                </Label>
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="27.0" fitWidth="142.0">
+                     <image>
+                        <Image url="@../assets/images/Beumer_Group_Log50.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
                 <HBox alignment="CENTER_LEFT">
                     <children>
                         <TextField promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #fff;" HBox.hgrow="ALWAYS">
@@ -97,9 +106,9 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                <HBox fx:id="gestionParcHBox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#gotoGestionParc" onDragDone="#gotoGestionParc" onDragDropped="#gotoGestionParc" onDragEntered="#gotoGestionParc" onDragExited="#gotoGestionParc" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
-                         <Label text="Gestion du parc" textFill="#7c8184">
+                         <Label fx:id="gestionParcLabel" onDragDetected="#gotoGestionParc" onDragDone="#gotoGestionParc" onDragDropped="#gotoGestionParc" onDragEntered="#gotoGestionParc" onDragExited="#gotoGestionParc" text="Gestion du parc" textFill="#7c8184">
                             <font>
                                 <Font name="Calibri Light" size="15.0" />
                             </font>

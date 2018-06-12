@@ -4,14 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/AdminViewController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Launch.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/SplashScreenController.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/GestionParcController.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/AdminView.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/dashbord.fxml</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/assets/styles/css.css</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/SplashScreen.fxml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/gestionParc.fxml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/Outils.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/SplashScreenController.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Launch.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/dashbord.fxml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/Login.fxml</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/LoginController.java</file>
             <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/DashbordController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/SplashScreen.fxml</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Parc.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/ListPro.java</file>
+            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Directeur.java</file>
         </group>
     </open-files>
 </project-private>
