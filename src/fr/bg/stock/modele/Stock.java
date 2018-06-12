@@ -7,6 +7,7 @@ package fr.bg.stock.modele;
 
 import fr.bg.main.modele.plandetri.Type;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -16,10 +17,10 @@ import java.util.Objects;
 public class Stock {
     
    private Type typeArticle;
-   private Entree listeEntree[];
-   private Sortie listeSortie[];
+   private Collection<Entree> listeEntree;
+   private Collection<Sortie> listeSortie;
 
-    public Stock(Type typeArticle, Entree[] listeEntree, Sortie[] listeSortie) {
+    public Stock(Type typeArticle, Collection<Entree> listeEntree, Collection<Sortie> listeSortie) {
         this.typeArticle = typeArticle;
         this.listeEntree = listeEntree;
         this.listeSortie = listeSortie;
@@ -29,32 +30,32 @@ public class Stock {
         return typeArticle;
     }
 
-    public Entree[] getListeEntree() {
-        return listeEntree;
-    }
-
-    public Sortie[] getListeSortie() {
-        return listeSortie;
-    }
-
     public void setTypeArticle(Type typeArticle) {
         this.typeArticle = typeArticle;
     }
 
-    public void setListeEntree(Entree[] listeEntree) {
+    public Collection<Entree> getListeEntree() {
+        return listeEntree;
+    }
+
+    public void setListeEntree(Collection<Entree> listeEntree) {
         this.listeEntree = listeEntree;
     }
 
-    public void setListeSortie(Sortie[] listeSortie) {
+    public Collection<Sortie> getListeSortie() {
+        return listeSortie;
+    }
+
+    public void setListeSortie(Collection<Sortie> listeSortie) {
         this.listeSortie = listeSortie;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.typeArticle);
-        hash = 13 * hash + Arrays.deepHashCode(this.listeEntree);
-        hash = 13 * hash + Arrays.deepHashCode(this.listeSortie);
+        hash = 67 * hash + Objects.hashCode(this.typeArticle);
+        hash = 67 * hash + Objects.hashCode(this.listeEntree);
+        hash = 67 * hash + Objects.hashCode(this.listeSortie);
         return hash;
     }
 
@@ -73,10 +74,10 @@ public class Stock {
         if (!Objects.equals(this.typeArticle, other.typeArticle)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.listeEntree, other.listeEntree)) {
+        if (!Objects.equals(this.listeEntree, other.listeEntree)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.listeSortie, other.listeSortie)) {
+        if (!Objects.equals(this.listeSortie, other.listeSortie)) {
             return false;
         }
         return true;
@@ -86,6 +87,10 @@ public class Stock {
     public String toString() {
         return "Stock{" + "typeArticle=" + typeArticle + ", listeEntree=" + listeEntree + ", listeSortie=" + listeSortie + '}';
     }
+
+   
+
+   
     
     
     
