@@ -76,10 +76,7 @@ public class Commande {
         if (!Objects.equals(this.dateCommande, other.dateCommande)) {
             return false;
         }
-        if (!Objects.equals(this.etatCommande, other.etatCommande)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.etatCommande, other.etatCommande);
     }
 
     @Override

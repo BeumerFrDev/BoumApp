@@ -89,10 +89,7 @@ public class LingneCommande {
         if (!Objects.equals(this.prix, other.prix)) {
             return false;
         }
-        if (!Objects.equals(this.montant, other.montant)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.montant, other.montant);
     }
 
     @Override

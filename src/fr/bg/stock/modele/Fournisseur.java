@@ -158,10 +158,7 @@ public class Fournisseur {
         if (!Objects.equals(this.faxeFournisseur, other.faxeFournisseur)) {
             return false;
         }
-        if (!Objects.equals(this.emailFournisseur, other.emailFournisseur)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.emailFournisseur, other.emailFournisseur);
     }
 
     @Override

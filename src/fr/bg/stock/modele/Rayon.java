@@ -60,10 +60,7 @@ public class Rayon {
         if (!Objects.equals(this.idRayon, other.idRayon)) {
             return false;
         }
-        if (!Objects.equals(this.nomRayon, other.nomRayon)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.nomRayon, other.nomRayon);
     }
 
     @Override

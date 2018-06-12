@@ -75,10 +75,7 @@ public class Sortie {
         if (!Objects.equals(this.idSortie, other.idSortie)) {
             return false;
         }
-        if (!Objects.equals(this.dateSortie, other.dateSortie)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.dateSortie, other.dateSortie);
     }
 
     @Override

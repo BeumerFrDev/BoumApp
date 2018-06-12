@@ -60,10 +60,7 @@ class Etat {
         if (!Objects.equals(this.idEtat, other.idEtat)) {
             return false;
         }
-        if (!Objects.equals(this.nomEtat, other.nomEtat)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.nomEtat, other.nomEtat);
     }
 
     @Override

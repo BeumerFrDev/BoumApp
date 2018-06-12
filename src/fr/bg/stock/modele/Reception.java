@@ -75,10 +75,7 @@ public class Reception {
         if (this.qteLivree != other.qteLivree) {
             return false;
         }
-        if (!Objects.equals(this.dateReception, other.dateReception)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.dateReception, other.dateReception);
     }
 
     @Override
