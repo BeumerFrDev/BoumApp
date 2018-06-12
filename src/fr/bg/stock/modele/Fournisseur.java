@@ -23,7 +23,9 @@ public class Fournisseur {
  private String faxeFournisseur;
  private String emailFournisseur;
 
-    public Fournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur, String codePFournisseur, String villeFournisseur, String payeFournisseur, String telFournisseur, String faxeFournisseur, String emailFournisseur) {
+    public Fournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur,
+            String codePFournisseur, String villeFournisseur, String payeFournisseur,
+            String telFournisseur, String faxeFournisseur, String emailFournisseur) {
         this.idFournisseur = idFournisseur;
         this.nomFournisseur = nomFournisseur;
         this.adresseFournisseur = adresseFournisseur;
@@ -166,10 +168,51 @@ public class Fournisseur {
         return "Fournisseur{" + "idFournisseur=" + idFournisseur + ", nomFournisseur=" + nomFournisseur + ", adresseFournisseur=" + adresseFournisseur + ", codePFournisseur=" + codePFournisseur + ", villeFournisseur=" + villeFournisseur + ", payeFournisseur=" + payeFournisseur + ", telFournisseur=" + telFournisseur + ", faxeFournisseur=" + faxeFournisseur + ", emailFournisseur=" + emailFournisseur + '}';
     }
  
+ //Methode ajout fournisseur
  
  
+ public Fournisseur ajouterFournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur,
+            String codePFournisseur, String villeFournisseur, String payeFournisseur,
+            String telFournisseur, String faxeFournisseur, String emailFournisseur){
+     
+     Fournisseur F = new Fournisseur(idFournisseur,nomFournisseur,adresseFournisseur,codePFournisseur,villeFournisseur,
+             payeFournisseur,telFournisseur,faxeFournisseur,emailFournisseur);
+     
+     return F;
+     
+ }
  
+ //Methode modifier fournisseur
  
+    /**
+     *
+     * @param idFournisseur
+     * @param nomFournisseur
+     * @param adresseFournisseur
+     * @param codePFournisseur
+     * @param villeFournisseur
+     * @param payeFournisseur
+     * @param telFournisseur
+     * @param faxeFournisseur
+     * @param emailFournisseur
+     */
  
+    public void modiferFournisseur (String idFournisseur, String nomFournisseur, String adresseFournisseur,
+            String codePFournisseur, String villeFournisseur, String payeFournisseur,
+            String telFournisseur, String faxeFournisseur, String emailFournisseur){
+     
+     
+         this.idFournisseur = idFournisseur;
+        this.nomFournisseur = nomFournisseur;
+        this.adresseFournisseur = adresseFournisseur;
+        this.codePFournisseur = codePFournisseur;
+        this.villeFournisseur = villeFournisseur;
+        this.payeFournisseur = payeFournisseur;
+        this.telFournisseur = telFournisseur;
+        this.faxeFournisseur = faxeFournisseur;
+        this.emailFournisseur = emailFournisseur;
+     
+        
+ }   
  
-}
+ }
