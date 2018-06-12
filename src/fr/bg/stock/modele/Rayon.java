@@ -100,6 +100,6 @@ public class Rayon {
         
     }
     
-    
+    // Methode supprimer Rayon
     
 }

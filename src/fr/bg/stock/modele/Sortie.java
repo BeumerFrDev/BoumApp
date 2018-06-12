@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,9 +18,17 @@ public class Sortie {
     private String idSortie;
     private int qteSortie;
     private Date dateSortie;
+    
+    
+    public Collection<Sortie> listeSortie;
+    
+    public Collection<Sortie> listeSortieAAjouter;
+    public Collection<Sortie> listeSortieAModifier;
+    public Collection<Sortie> listeSortieASupprimer;
+    
 
-    public Sortie(String idSortie, int qteSortie, Date dateSortie) {
-        this.idSortie = idSortie;
+    public Sortie(int qteSortie, Date dateSortie) {
+        
         this.qteSortie = qteSortie;
         this.dateSortie = dateSortie;
     }
@@ -82,6 +91,42 @@ public class Sortie {
     public String toString() {
         return "Sortie{" + "idSortie=" + idSortie + ", qteSortie=" + qteSortie + ", dateSortie=" + dateSortie + '}';
     }
+    
+    // Methode ajouter Sortie
+    
+    
+    public Sortie ajouterSortie(int qteSortie, Date dateSortie){
+        
+        Sortie S = new Sortie(qteSortie,dateSortie);
+        
+        return S;
+             
+    }
+    
+    
+    
+
+    
+    // Methode modifier Sortie
+    
+    public void modifierSortie(int qteSortie, Date dateSortie){
+        
+        this.qteSortie = qteSortie;
+        this.dateSortie = dateSortie;
+        
+        
+    }
+    
+    
+    
+    
+
+    
+    
+    // Methode supprimer Sortie
+    
+    
+    
     
     
     

@@ -110,7 +110,12 @@ public class Commande {
         
         this.dateCommande = dateCommande;
         this.etatCommande = etatCommande;
-        
-        
+              
     }
+    
+    
+    
+    // Methode supprimer Commande
+    
+    
 }

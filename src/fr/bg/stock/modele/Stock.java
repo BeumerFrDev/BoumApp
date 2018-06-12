@@ -86,10 +86,7 @@ public class Stock {
         if (!Objects.equals(this.listeEntree, other.listeEntree)) {
             return false;
         }
-        if (!Objects.equals(this.listeSortie, other.listeSortie)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.listeSortie, other.listeSortie);
     }
 
     @Override

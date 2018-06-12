@@ -113,6 +113,6 @@ class Entree {
     
 }
         
-
+// Methode supprimer entree
     
 }
