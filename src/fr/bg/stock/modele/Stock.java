@@ -19,6 +19,15 @@ public class Stock {
    private Type typeArticle;
    private Collection<Entree> listeEntree;
    private Collection<Sortie> listeSortie;
+   
+   
+   
+   
+   public Collection<Stock> listeStock;
+   
+   public Collection<Stock> listeStockAAjouter;
+   public Collection<Stock> listeStockAModifier;
+   public Collection<Stock> listeStockASupprimer;
 
     public Stock(Type typeArticle, Collection<Entree> listeEntree, Collection<Sortie> listeSortie) {
         this.typeArticle = typeArticle;

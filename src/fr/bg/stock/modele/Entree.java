@@ -18,15 +18,15 @@ class Entree {
         private int qteEntree;
         private Double prixEntree;
         
-        private Collection <Entree> listeEntree;
-        private Collection <Entree> listeEntreeAAjouter;
-        private Collection <Entree> listeEntreeAModifier;
-        private Collection <Entree> listeEntreeASupprimer;
+        public Collection <Entree> listeEntree;
+        public Collection <Entree> listeEntreeAAjouter;
+        public Collection <Entree> listeEntreeAModifier;
+        public Collection <Entree> listeEntreeASupprimer;
         
         
 
-    public Entree(String idEntree, int qteEntree, Double prixEntree) {
-        this.idEntree = idEntree;
+    public Entree(int qteEntree, Double prixEntree) {
+     
         this.qteEntree = qteEntree;
         this.prixEntree = prixEntree;
     }
@@ -96,18 +96,18 @@ class Entree {
     
      // Methode ajouter entrer
     
-    public  Entree ajouterEntree(String idEntree, int qteEntree, Double prixEntree){
+    public  Entree ajouterEntree(int qteEntree, Double prixEntree){
         
-        Entree E = new Entree(idEntree,qteEntree,prixEntree);
+        Entree E = new Entree(qteEntree,prixEntree);
         return E;
            
     }
     
     //Methode modifier entree
     
-    public void modifierEntree(String idEntree, int qteEntree, Double prixEntree){
+    public void modifierEntree(int qteEntree, Double prixEntree){
         
-        this.idEntree = idEntree;
+       
         this.qteEntree = qteEntree;
         this.prixEntree = prixEntree;
     

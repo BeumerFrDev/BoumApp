@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -15,9 +16,15 @@ class Etat {
     
     private String idEtat;
     private String nomEtat;
+    
+    public Collection <Etat> listeEtat;
+    
+    public Collection <Etat> listeEtatAAjouter;
+    public Collection <Etat> listeEtatAModifier;
+    public Collection <Etat> listeEtatASupprimer;
 
-    public Etat(String idEtat, String nomEtat) {
-        this.idEtat = idEtat;
+    public Etat(String nomEtat) {
+        
         this.nomEtat = nomEtat;
     }
 
@@ -70,16 +77,16 @@ class Etat {
     
     //methode ajouter Etat
     
-    public Etat ajouterEtat(String idEtat, String nomEtat){
+    public Etat ajouterEtat(String nomEtat){
         
-        Etat E = new Etat(idEtat,nomEtat);
+        Etat E = new Etat(nomEtat);
         return E;
     }
     
     //Methode modifier Etat
     
-    public void modifierEtat(String idEtat, String nomEtat){
-        this.idEtat = idEtat;
+    public void modifierEtat( String nomEtat){
+       
         this.nomEtat = nomEtat;
         
     }
@@ -87,7 +94,7 @@ class Etat {
             
     
     
-    
+    //Methode supprimer etat
     
     
     

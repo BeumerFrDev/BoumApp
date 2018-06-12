@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,9 +18,16 @@ public class Commande {
     private  int numCommande;
     private  Date dateCommande;
     private Etat etatCommande;
+    
+    public Collection<Commande> listeCommande;
+    
+    public Collection<Commande> listeCommandeAAjouter;
+    public Collection<Commande> listeCommandeAModifier;
+    public Collection<Commande> listeCommandeASupprimer;
+    
 
-    public Commande(int numCommande, Date dateCommande, Etat etatCommande) {
-        this.numCommande = numCommande;
+    public Commande( Date dateCommande, Etat etatCommande) {
+        
         this.dateCommande = dateCommande;
         this.etatCommande = etatCommande;
         
@@ -86,7 +94,23 @@ public class Commande {
     
     
     
+    //Methode ajouter commande
     
+    public Commande ajouterCommande(int numCommande, Date dateCommande, Etat etatCommande){
+        
+        Commande C = new Commande (dateCommande,etatCommande);
+        return C;
+        
+    }
     
+    //Methode modifier commande
     
+    public void modifierCommande( Date dateCommande, Etat etatCommande){
+        
+        
+        this.dateCommande = dateCommande;
+        this.etatCommande = etatCommande;
+        
+        
+    }
 }

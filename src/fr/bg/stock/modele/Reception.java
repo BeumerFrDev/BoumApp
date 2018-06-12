@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,9 +18,17 @@ public class Reception {
    private int numReception;
    private Date dateReception;
    private int qteLivree;
+   
+   
+   public Collection<Reception> listeReception;
+   
+   public Collection<Reception> listeReceptionAAjouter;
+   public Collection<Reception> listeReceptionAModifier;
+   public Collection<Reception> listeReceptionASupprimer;
+    
 
-    public Reception(int numReception, Date dateReception, int qteLivree) {
-        this.numReception = numReception;
+    public Reception( Date dateReception, int qteLivree) {
+        
         this.dateReception = dateReception;
         this.qteLivree = qteLivree;
     }
@@ -85,6 +94,24 @@ public class Reception {
    
    
    
-   
     
+    //Methode ajouter Reception
+    
+    public Reception ajouterreception(Date dateReception, int qteLivree){
+        
+        Reception R = new Reception( dateReception, qteLivree);
+        return R;
+    }
+    
+    
+    //Methode modifier Reception
+    
+    public void modifierReception(Date dateReception, int qteLivree){
+        
+        this.dateReception = dateReception;
+        this.qteLivree = qteLivree;
+        
+    }
+   
+    // Methode supprimer Reception
 }

@@ -5,6 +5,7 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -15,9 +16,21 @@ public class Rayon {
     
     private String idRayon;
     private String nomRayon;
+    
+    public Collection<Rayon> listeRayon;
+    
+    public Collection<Rayon> listeRayonAAjouter;
+    public Collection<Rayon> listeRayonAModifier;
+    public Collection<Rayon> listeRayonASupprimer;
+     
+    
+    
+    
+    
+    
 
-    public Rayon(String idRayon, String nomRayon) {
-        this.idRayon = idRayon;
+    public Rayon( String nomRayon) {
+        
         this.nomRayon = nomRayon;
     }
 
@@ -69,7 +82,23 @@ public class Rayon {
     }
     
     
+    //Methode ajouter Rayon
     
+    public Rayon ajouterRayon( String nomRayon){
+        
+        Rayon R = new Rayon( nomRayon);
+        
+        return R; 
+        
+    }
+    
+    //Methode modifier Rayon
+    
+    public void modifierRayon( String nomRayon){
+        
+        this.nomRayon = nomRayon;
+        
+    }
     
     
     

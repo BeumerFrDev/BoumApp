@@ -5,20 +5,31 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Collection;
 import java.util.Objects;
+import java.lang.String;
 
 /**
  *
  * @author lyess
  */
-public class LingneCommande {
+public class LigneCommande {
     
     private String index;
     private String qteCommande;
     private Double prix;
     private Double montant;
+    
+    public Collection<LigneCommande> listeLigneCommande;
+    
+    public Collection<LigneCommande> listeLigneCommandeAAjouter;
+    public Collection<LigneCommande> listeLigneCommandeAModifier;
+    public Collection<LigneCommande> listeLigneCommandeASupprimer;
+   
+ 
 
-    public LingneCommande(String index, String qteCommande, Double prix, Double montant) {
+    
+    public LigneCommande(String index, String qteCommande, Double prix, Double montant) {
         this.index = index;
         this.qteCommande = qteCommande;
         this.prix = prix;
@@ -79,7 +90,7 @@ public class LingneCommande {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final LingneCommande other = (LingneCommande) obj;
+        final LigneCommande other = (LigneCommande) obj;
         if (!Objects.equals(this.index, other.index)) {
             return false;
         }
@@ -98,7 +109,26 @@ public class LingneCommande {
     }
     
     
+    //Methode ajouter ligneCommande
     
+    public LigneCommande ajouterLigneCommande(String index, String qteCommande, Double prix, Double montant){
+        
+        LigneCommande L = new LigneCommande (index, qteCommande, prix, montant);
+                
+        return L;
+        
+    }
+    
+    //Methode modifier Ligne Commande
+    
+    public void modifierLigneCommande(String index, String qteCommande, Double prix, Double montant){
+        
+        this.index = index;
+        this.qteCommande = qteCommande;
+        this.prix = prix;
+        this.montant = montant;
+        
+    }
     
     
     

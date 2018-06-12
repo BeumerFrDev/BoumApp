@@ -23,16 +23,18 @@ public class Fournisseur {
  private String telFournisseur;
  private String faxeFournisseur;
  private String emailFournisseur;
+ 
  public Collection <Fournisseur> listeFournisseur;
+ 
  public Collection <Fournisseur> listeFournisseurAAjouter;
  public Collection <Fournisseur> listeFournisseurAModifier;
  public Collection <Fournisseur> listeFournisseurASupprimer;
  
 
-    public Fournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur,
+    public Fournisseur( String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
             String telFournisseur, String faxeFournisseur, String emailFournisseur) {
-        this.idFournisseur = idFournisseur;
+        
         this.nomFournisseur = nomFournisseur;
         this.adresseFournisseur = adresseFournisseur;
         this.codePFournisseur = codePFournisseur;
@@ -177,12 +179,12 @@ public class Fournisseur {
  //Methode ajout fournisseur
  
  
- public Fournisseur ajouterFournisseur(String idFournisseur, String nomFournisseur, String adresseFournisseur,
+ public Fournisseur ajouterFournisseur(String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
             String telFournisseur, String faxeFournisseur, String emailFournisseur){
      
-     Fournisseur F = new Fournisseur(idFournisseur,nomFournisseur,adresseFournisseur,codePFournisseur,villeFournisseur,
-             payeFournisseur,telFournisseur,faxeFournisseur,emailFournisseur);
+     Fournisseur F = new Fournisseur(nomFournisseur,adresseFournisseur,codePFournisseur,villeFournisseur,
+                                      payeFournisseur,telFournisseur,faxeFournisseur,emailFournisseur);
      
      return F;
      
@@ -203,12 +205,12 @@ public class Fournisseur {
      * @param emailFournisseur
      */
  
-    public void modiferFournisseur (String idFournisseur, String nomFournisseur, String adresseFournisseur,
+    public void modiferFournisseur ( String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
             String telFournisseur, String faxeFournisseur, String emailFournisseur){
      
      
-         this.idFournisseur = idFournisseur;
+         
         this.nomFournisseur = nomFournisseur;
         this.adresseFournisseur = adresseFournisseur;
         this.codePFournisseur = codePFournisseur;
@@ -220,5 +222,7 @@ public class Fournisseur {
      
         
  }   
+    
+    // Methode supprimer fournisseur
  
  }
