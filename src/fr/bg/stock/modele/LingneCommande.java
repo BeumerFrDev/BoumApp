@@ -11,9 +11,38 @@ package fr.bg.stock.modele;
  */
 public class LingneCommande {
     
-    private String index;
-    private String qteCommande;
-    private Double prix;
-    private Double montant;
+    private final String index;
+    private final String qteCommande;
+    private final Double prix;
+    private final Double montant;
+
+    public LingneCommande(String index, String qteCommande, Double prix, Double montant) {
+        this.index = index;
+        this.qteCommande = qteCommande;
+        this.prix = prix;
+        this.montant = montant;
+        
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public String getQteCommande() {
+        return qteCommande;
+    }
+
+    public Double getPrix() {
+        return prix;
+    }
+
+    public Double getMontant() {
+        return montant;
+    }
+    
+    
+    
+    
+    
     
 }

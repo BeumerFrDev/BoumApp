@@ -13,5 +13,31 @@ class Etat {
     
     private String idEtat;
     private String nomEtat;
+
+    public Etat(String idEtat, String nomEtat) {
+        this.idEtat = idEtat;
+        this.nomEtat = nomEtat;
+    }
+
+    public String getIdEtat() {
+        return idEtat;
+    }
+
+    public String getNomEtat() {
+        return nomEtat;
+    }
+
+    public void setIdEtat(String idEtat) {
+        this.idEtat = idEtat;
+    }
+
+    public void setNomEtat(String nomEtat) {
+        this.nomEtat = nomEtat;
+    }
+    
+    
+    
+    
+    
     
 }

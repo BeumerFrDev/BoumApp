@@ -13,9 +13,32 @@ import java.util.Date;
  */
 public class Commande {
     
-    private int numCommande;
-    private Date dateCommande;
-    private Etat etatCommande;
+    private final int numCommande;
+    private final Date dateCommande;
+    private final Etat etatCommande;
+
+    public Commande(int numCommande, Date dateCommande, Etat etatCommande) {
+        this.numCommande = numCommande;
+        this.dateCommande = dateCommande;
+        this.etatCommande = etatCommande;
+        
+    }
+
+    public int getNumCommande() {
+        return numCommande;
+    }
+
+    public Date getDateCommande() {
+        return dateCommande;
+    }
+
+    public Etat getEtatCommande() {
+        return etatCommande;
+    }
+    
+    
+    
+    
     
     
 }
