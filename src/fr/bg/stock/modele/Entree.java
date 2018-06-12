@@ -5,17 +5,15 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Date;
-
 /**
  *
  * @author lyess
  */
-public class Entree {
-  
-    private String idEntree;
-    private int qteEntree;
-    private Date dateEntree;
-    private double prixEntree;
+public class Entree{ 
+        
+        private String idEntree;
+        private int qteEntree;
+        private Double prixEntree;
+
     
 }

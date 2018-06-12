@@ -5,16 +5,15 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Date;
-
 /**
  *
  * @author lyess
  */
-public class Reception {
+public class LingneCommande {
     
-    private int numReception;
-    private Date dateReception;
-    private int qteLivree;
+    private String index;
+    private String qteCommande;
+    private Double prix;
+    private Double montant;
     
 }

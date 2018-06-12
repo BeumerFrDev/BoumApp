@@ -12,8 +12,9 @@ import java.util.Date;
  * @author lyess
  */
 public class Sortie {
-  private String idSortie;
-  private int qteSortie;
-  private Date dateSortie;   
+    
+    private String idSortie;
+    private int qteSortie;
+    private Date dateSortie;
     
 }

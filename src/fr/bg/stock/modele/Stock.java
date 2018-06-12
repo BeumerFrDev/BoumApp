@@ -5,14 +5,16 @@
  */
 package fr.bg.stock.modele;
 
+import fr.bg.main.modele.plandetri.Type;
+
 /**
  *
  * @author lyess
  */
-public class LigneCommande {
+public class Stock {
     
-    private int index;
-    private int qteCommandee;
-    private double prixU;
-    private double montant;
+   private Type typeArticle;
+   private Entree listeEntree[];
+   private Sortie listeSortie[];
+    
 }

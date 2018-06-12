@@ -9,9 +9,9 @@ package fr.bg.stock.modele;
  *
  * @author lyess
  */
-public class TypeArticle {
+class Etat {
     
-    private String nomType;
-    private String description;
+    private String idEtat;
+    private String nomEtat;
     
 }

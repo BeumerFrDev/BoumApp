@@ -15,6 +15,8 @@ public class Commande {
     
     private int numCommande;
     private Date dateCommande;
-    private String etatCommande;
-        
+    private Etat etatCommande;
+    
+    
 }
+
