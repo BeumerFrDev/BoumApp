@@ -6,6 +6,7 @@
 package fr.bg.stock.modele;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -13,9 +14,9 @@ import java.util.Date;
  */
 public class Commande {
     
-    private final int numCommande;
-    private final Date dateCommande;
-    private final Etat etatCommande;
+    private  int numCommande;
+    private  Date dateCommande;
+    private Etat etatCommande;
 
     public Commande(int numCommande, Date dateCommande, Etat etatCommande) {
         this.numCommande = numCommande;
@@ -34,6 +35,56 @@ public class Commande {
 
     public Etat getEtatCommande() {
         return etatCommande;
+    }
+
+    public void setNumCommande(int numCommande) {
+        this.numCommande = numCommande;
+    }
+
+    public void setDateCommande(Date dateCommande) {
+        this.dateCommande = dateCommande;
+    }
+
+    public void setEtatCommande(Etat etatCommande) {
+        this.etatCommande = etatCommande;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + this.numCommande;
+        hash = 47 * hash + Objects.hashCode(this.dateCommande);
+        hash = 47 * hash + Objects.hashCode(this.etatCommande);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Commande other = (Commande) obj;
+        if (this.numCommande != other.numCommande) {
+            return false;
+        }
+        if (!Objects.equals(this.dateCommande, other.dateCommande)) {
+            return false;
+        }
+        if (!Objects.equals(this.etatCommande, other.etatCommande)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" + "numCommande=" + numCommande + ", dateCommande=" + dateCommande + ", etatCommande=" + etatCommande + '}';
     }
     
     

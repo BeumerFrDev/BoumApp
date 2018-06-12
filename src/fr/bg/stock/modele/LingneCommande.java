@@ -5,16 +5,18 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Objects;
+
 /**
  *
  * @author lyess
  */
 public class LingneCommande {
     
-    private final String index;
-    private final String qteCommande;
-    private final Double prix;
-    private final Double montant;
+    private String index;
+    private String qteCommande;
+    private Double prix;
+    private Double montant;
 
     public LingneCommande(String index, String qteCommande, Double prix, Double montant) {
         this.index = index;
@@ -38,6 +40,64 @@ public class LingneCommande {
 
     public Double getMontant() {
         return montant;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public void setQteCommande(String qteCommande) {
+        this.qteCommande = qteCommande;
+    }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
+    }
+
+    public void setMontant(Double montant) {
+        this.montant = montant;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.index);
+        hash = 97 * hash + Objects.hashCode(this.qteCommande);
+        hash = 97 * hash + Objects.hashCode(this.prix);
+        hash = 97 * hash + Objects.hashCode(this.montant);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LingneCommande other = (LingneCommande) obj;
+        if (!Objects.equals(this.index, other.index)) {
+            return false;
+        }
+        if (!Objects.equals(this.qteCommande, other.qteCommande)) {
+            return false;
+        }
+        if (!Objects.equals(this.prix, other.prix)) {
+            return false;
+        }
+        if (!Objects.equals(this.montant, other.montant)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "LingneCommande{" + "index=" + index + ", qteCommande=" + qteCommande + ", prix=" + prix + ", montant=" + montant + '}';
     }
     
     

@@ -5,6 +5,8 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Objects;
+
 /**
  *
  * @author lyess
@@ -103,6 +105,68 @@ public class Fournisseur {
 
     public void setEmailFournisseur(String emailFournisseur) {
         this.emailFournisseur = emailFournisseur;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.idFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.nomFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.adresseFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.codePFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.villeFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.payeFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.telFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.faxeFournisseur);
+        hash = 97 * hash + Objects.hashCode(this.emailFournisseur);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Fournisseur other = (Fournisseur) obj;
+        if (!Objects.equals(this.idFournisseur, other.idFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.nomFournisseur, other.nomFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.adresseFournisseur, other.adresseFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.codePFournisseur, other.codePFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.villeFournisseur, other.villeFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.payeFournisseur, other.payeFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.telFournisseur, other.telFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.faxeFournisseur, other.faxeFournisseur)) {
+            return false;
+        }
+        if (!Objects.equals(this.emailFournisseur, other.emailFournisseur)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "idFournisseur=" + idFournisseur + ", nomFournisseur=" + nomFournisseur + ", adresseFournisseur=" + adresseFournisseur + ", codePFournisseur=" + codePFournisseur + ", villeFournisseur=" + villeFournisseur + ", payeFournisseur=" + payeFournisseur + ", telFournisseur=" + telFournisseur + ", faxeFournisseur=" + faxeFournisseur + ", emailFournisseur=" + emailFournisseur + '}';
     }
  
  

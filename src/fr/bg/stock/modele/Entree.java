@@ -5,6 +5,8 @@
  */
 package fr.bg.stock.modele;
 
+import java.util.Objects;
+
 /**
  *
  * @author lyess
@@ -43,6 +45,44 @@ class Entree {
 
     public void setPrixEntree(Double prixEntree) {
         this.prixEntree = prixEntree;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.idEntree);
+        hash = 71 * hash + this.qteEntree;
+        hash = 71 * hash + Objects.hashCode(this.prixEntree);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Entree other = (Entree) obj;
+        if (this.qteEntree != other.qteEntree) {
+            return false;
+        }
+        if (!Objects.equals(this.idEntree, other.idEntree)) {
+            return false;
+        }
+        if (!Objects.equals(this.prixEntree, other.prixEntree)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Entree{" + "idEntree=" + idEntree + ", qteEntree=" + qteEntree + ", prixEntree=" + prixEntree + '}';
     }
     
     
