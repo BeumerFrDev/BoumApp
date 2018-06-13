@@ -144,13 +144,15 @@ public class LigneCommande {
     
     //Methode ajouter ligne de commande
     
-    public LigneCommande ajouterLigneCommande(String qteCommande, Double prix, Double montant, Commande commandeLigneCommande,
+    public void ajouterLigneCommande(String qteCommande, Double prix, Double montant, Commande commandeLigneCommande,
             Fournisseur fournisseurLigneCommande){
         
         LigneCommande LC = new LigneCommande(qteCommande, prix, montant, commandeLigneCommande,
              fournisseurLigneCommande);
         
-        return LC;
+        listeLigneCommandeAAjouter.add(LC);
+        
+       
         
         
     }
@@ -165,6 +167,9 @@ public class LigneCommande {
         this.montant= montant;
         this.commandeLigneCommande = commandeLigneCommande;
         this.fournisseurLigneCommande = fournisseurLigneCommande;
+        
+        
+        listeLigneCommandeAModifier.add(this);
       
     }
  
@@ -173,7 +178,7 @@ public class LigneCommande {
     
     public void supprimerLigneCommande(LigneCommande LC){
         
-        
+        listeLigneCommandeASupprimer.add(LC);
         
     }
    

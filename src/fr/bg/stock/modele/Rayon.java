@@ -84,11 +84,13 @@ public class Rayon {
     
     //Methode ajouter Rayon
     
-    public Rayon ajouterRayon( String nomRayon){
+    public void ajouterRayon( String nomRayon){
         
         Rayon R = new Rayon( nomRayon);
         
-        return R; 
+        listeRayonAAjouter.add(R);
+        
+        
         
     }
     
@@ -98,12 +100,15 @@ public class Rayon {
         
         this.nomRayon = nomRayon;
         
+        listeRayonAModifier.add(this);
+        
     }
     
     // Methode supprimer Rayon
     
     public void supprimerRayon(Rayon R){
         
+        listeRayonASupprimer.add(R);
         
     }
     

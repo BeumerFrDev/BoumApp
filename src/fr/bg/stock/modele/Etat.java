@@ -77,10 +77,11 @@ class Etat {
     
     //methode ajouter Etat
     
-    public Etat ajouterEtat(String nomEtat){
+    public void ajouterEtat(String nomEtat){
         
         Etat E = new Etat(nomEtat);
-        return E;
+        listeEtatAAjouter.add(E);
+       
     }
     
     //Methode modifier Etat
@@ -89,12 +90,21 @@ class Etat {
        
         this.nomEtat = nomEtat;
         
+        listeEtatAModifier.add(this);
+        
     }
             
             
     
     
     //Methode supprimer etat
+    
+    public void supprimerEtat(Etat E){
+        
+        listeEtatASupprimer.add(E);
+        
+            
+    }
     
     
     

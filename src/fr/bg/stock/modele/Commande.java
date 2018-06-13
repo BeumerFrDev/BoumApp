@@ -113,12 +113,11 @@ public class Commande {
     //Methode ajouter une commande
     
     
-    public Commande ajouterCommande(Date dateCommande, Etat etatCommande, Reception receptionCommande){
+    public void ajouterCommande(Date dateCommande, Etat etatCommande, Reception receptionCommande){
      
         Commande C = new Commande(dateCommande,etatCommande,receptionCommande);
         
-        return C;
-        
+        listeCommandeAAjouter.add(C);
     }
     
     //Methode modifier Commande
@@ -129,12 +128,16 @@ public class Commande {
         this.etatCommande= etatCommande;
         this.receptionCommande = receptionCommande;
         
+        listeCommandeAModifier.add(this);
+        
         
     }
     
     //Methode supprimer commande
     
     public void supprimerCommande(Commande c){
+        
+        listeCommandeASupprimer.add(c);
         
         
     }

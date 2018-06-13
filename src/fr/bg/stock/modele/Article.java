@@ -241,7 +241,7 @@ public class Article {
     
    // Methode Ajouter Article
     
-    public Article ajouterArticle(String nomArticle, Type typeArticle, String libelleArticle,
+    public void ajouterArticle(String nomArticle, Type typeArticle, String libelleArticle,
             String referenceArticle, Fournisseur fournisseurArticle, Rayon rayonArticle, 
             int qteStock, String imageArticle, Entree entreeArticle, Sortie sortieArticle){
         
@@ -250,7 +250,8 @@ public class Article {
              referenceArticle, fournisseurArticle, rayonArticle, 
              qteStock, imageArticle, entreeArticle, sortieArticle);
         
-        return A;
+       
+        listeArticleAAjouter.add(A);
   
          }
     
@@ -275,12 +276,17 @@ public class Article {
         this.entreeArticle = entreeArticle;
         this.sortieArticle = sortieArticle;
         
+        
+        listeArticleAModifier.add(this);
+        
         }
     
     
     //Methode supprimer article
     
     public void supprimerArticle(Article A){
+        
+        listeArticleASupprimer.add(A);
         
         
     }

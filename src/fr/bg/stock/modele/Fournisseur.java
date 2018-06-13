@@ -62,9 +62,6 @@ public class Fournisseur {
      String telFournisseur, String faxeFournisseur, String emailFournisseur) {
         
         this.nomFournisseur = nomFournisseur;
-        this.adresseFournisseur = adresseFournisseur;
-        this.codePFournisseur = codePFournisseur;
-        this.villeFournisseur = villeFournisseur;
         this.payeFournisseur = payeFournisseur;
         this.telFournisseur = telFournisseur;
         this.faxeFournisseur = faxeFournisseur;
@@ -206,31 +203,20 @@ public class Fournisseur {
  //Methode ajout fournisseur
  
  
- public Fournisseur ajouterFournisseur(String nomFournisseur, String adresseFournisseur,
+ public void ajouterFournisseur(String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
             String telFournisseur, String faxeFournisseur, String emailFournisseur){
      
      Fournisseur F = new Fournisseur(nomFournisseur,adresseFournisseur,codePFournisseur,villeFournisseur,
                                       payeFournisseur,telFournisseur,faxeFournisseur,emailFournisseur);
      
-     return F;
+     listeFournisseurAAjouter.add(F);
      
  }
  
  //Methode modifier fournisseur
  
-    /**
-     *
-     * @param idFournisseur
-     * @param nomFournisseur
-     * @param adresseFournisseur
-     * @param codePFournisseur
-     * @param villeFournisseur
-     * @param payeFournisseur
-     * @param telFournisseur
-     * @param faxeFournisseur
-     * @param emailFournisseur
-     */
+  
  
     public void modiferFournisseur ( String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
@@ -247,6 +233,7 @@ public class Fournisseur {
         this.faxeFournisseur = faxeFournisseur;
         this.emailFournisseur = emailFournisseur;
      
+         listeFournisseurAModifier.add(this);
         
  }   
     
@@ -256,6 +243,8 @@ public class Fournisseur {
     
     
     public void supprimerFournisseur(Fournisseur F){
+        
+        listeFournisseurASupprimer.add(F);
         
         
         

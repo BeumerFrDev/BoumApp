@@ -111,11 +111,11 @@ class Entree {
 
 //Methode ajouter entree
 
-public Entree ajouterEntree(int qteEntree, Double prixEntree, Article entreeArticle){
+public void ajouterEntree(int qteEntree, Double prixEntree, Article entreeArticle){
     
     Entree E = new Entree(qteEntree, prixEntree,entreeArticle);
     
-    return E;
+    listeEntreeAAjouter.add(E);
     
     
 }    
@@ -129,11 +129,15 @@ public void modifierEntree(int qteEntree, Double prixEntree, Article entreeArtic
     this.prixEntree = prixEntree;
     this.entreeArticle = entreeArticle;
     
+    listeEntreeAModifier.add(this);
+    
 }
 
 //Methode supprimer entree
 
-public void supprimerEntree(Entree e){
+public void supprimerEntree(Entree E){
+    
+    listeEntreeASupprimer.add(E);
     
     
 }

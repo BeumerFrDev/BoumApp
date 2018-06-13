@@ -97,10 +97,12 @@ public class Reception {
     
     //Methode ajouter Reception
     
-    public Reception ajouterreception(Date dateReception, int qteLivree){
+    public void ajouterreception(Date dateReception, int qteLivree){
         
         Reception R = new Reception( dateReception, qteLivree);
-        return R;
+        
+        listeReceptionAAjouter.add(R);
+        
     }
     
     
@@ -111,12 +113,16 @@ public class Reception {
         this.dateReception = dateReception;
         this.qteLivree = qteLivree;
         
+        listeReceptionAModifier.add(this);
+        
     }
    
     // Methode supprimer Reception
     
     
     public void supprimerReception(Reception R){
+        
+        listeReceptionASupprimer.add(R);
         
         
         

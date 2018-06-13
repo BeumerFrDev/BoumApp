@@ -111,10 +111,11 @@ public class Sortie {
     
     //Methode ajouter sortie
     
-    public Sortie ajouterSortie(int qteSortie, Date dateSortie, Article sortieArticle){
+    public void ajouterSortie(int qteSortie, Date dateSortie, Article sortieArticle){
         
         Sortie S = new Sortie( qteSortie, dateSortie, sortieArticle);
-        return S;
+        
+        listeSortieAAjouter.add(S);
         
     }
     
@@ -128,11 +129,15 @@ public class Sortie {
         this.dateSortie = dateSortie;
         this.sortieArticle = sortieArticle;
          
+        
+        listeSortieAModifier.add(this);
     }
     
     //Methode supprimer sortie
     
     public void supprimerSortie(Sortie s){
+        
+        listeSortieASupprimer.add(s);
         
         
     }

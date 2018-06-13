@@ -3,43 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/controleurs/AjoutStockController.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/plandetri/Blocks.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Stock.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/AnimationGenerator.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/styles/ajoutstock.css</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/ListPro.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Fournisseur.java</file>
             <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Entree.java</file>
             <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Commande.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/Adresses.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/controleurs/AdminViewController.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/Directeur.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/Affectations.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/modele/Individus.java</file>
-            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/main/Launch.java</file>
-=======
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/AdminViewController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/GestionParcController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/AdminView.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/assets/styles/css.css</file>
-            <file>jar:file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/lib/fontawesomefx-8.9-sources.jar!/de/jensd/fx/glyphs/fontawesome/FontAwesomeIcon.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/SplashScreen.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/gestionParc.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/Sidebar.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/modeoperatoire/Outils.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/SplashScreenController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Launch.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/dashbord.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/vues/Login.fxml</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/assets/styles/dashbord.css</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/LoginController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/controleurs/DashbordController.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/plandetri/Parc.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/ListPro.java</file>
-            <file>file:/C:/Users/Ouadie/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Directeur.java</file>
->>>>>>> 6b28d7c47652798aaf77908557c9389fa2b1479e
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Sortie.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/LigneCommande.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Reception.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Article.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Etat.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Rayon.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp-master/BoumApp/src/fr/bg/stock/modele/Fournisseur.java</file>
         </group>
     </open-files>
 </project-private>
