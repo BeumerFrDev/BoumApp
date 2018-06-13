@@ -255,7 +255,7 @@ public class Fournisseur {
     
     
     
-    public void supprimerFournisseur(){
+    public void supprimerFournisseur(Fournisseur F){
         
         
         

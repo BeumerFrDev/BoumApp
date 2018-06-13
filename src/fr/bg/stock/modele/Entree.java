@@ -17,50 +17,60 @@ class Entree {
         private String idEntree;
         private int qteEntree;
         private Double prixEntree;
+        private Article entreeArticle;
+        
         
         public Collection <Entree> listeEntree;
         public Collection <Entree> listeEntreeAAjouter;
         public Collection <Entree> listeEntreeAModifier;
         public Collection <Entree> listeEntreeASupprimer;
-        
-        
 
-    public Entree(int qteEntree, Double prixEntree){
-     
+    public Entree(int qteEntree, Double prixEntree, Article entreeArticle) {
+       
         this.qteEntree = qteEntree;
         this.prixEntree = prixEntree;
+        this.entreeArticle = entreeArticle;
     }
 
-    public String getIdEntree(){
+    public String getIdEntree() {
         return idEntree;
-    }
-
-    public int getQteEntree() {
-        return qteEntree;
-    }
-
-    public Double getPrixEntree() {
-        return prixEntree;
     }
 
     public void setIdEntree(String idEntree) {
         this.idEntree = idEntree;
     }
 
+    public int getQteEntree() {
+        return qteEntree;
+    }
+
     public void setQteEntree(int qteEntree) {
         this.qteEntree = qteEntree;
+    }
+
+    public Double getPrixEntree() {
+        return prixEntree;
     }
 
     public void setPrixEntree(Double prixEntree) {
         this.prixEntree = prixEntree;
     }
 
+    public Article getEntreeArticle() {
+        return entreeArticle;
+    }
+
+    public void setEntreeArticle(Article entreeArticle) {
+        this.entreeArticle = entreeArticle;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.idEntree);
-        hash = 71 * hash + this.qteEntree;
-        hash = 71 * hash + Objects.hashCode(this.prixEntree);
+        hash = 97 * hash + Objects.hashCode(this.idEntree);
+        hash = 97 * hash + this.qteEntree;
+        hash = 97 * hash + Objects.hashCode(this.prixEntree);
+        hash = 97 * hash + Objects.hashCode(this.entreeArticle);
         return hash;
     }
 
@@ -85,34 +95,51 @@ class Entree {
         if (!Objects.equals(this.prixEntree, other.prixEntree)) {
             return false;
         }
+        if (!Objects.equals(this.entreeArticle, other.entreeArticle)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Entree{" + "idEntree=" + idEntree + ", qteEntree=" + qteEntree + ", prixEntree=" + prixEntree + '}';
+        return "Entree{" + "idEntree=" + idEntree + ", qteEntree=" + qteEntree + ", prixEntree=" + prixEntree + ", entreeArticle=" + entreeArticle + '}';
     }
-    
-    
-     // Methode ajouter entrer
-    
-    public  Entree ajouterEntree(int qteEntree, Double prixEntree){
         
-        Entree E = new Entree(qteEntree,prixEntree);
-        return E;
-           
-    }
+      
     
-    //Methode modifier entree
+
+//Methode ajouter entree
+
+public Entree ajouterEntree(int qteEntree, Double prixEntree, Article entreeArticle){
     
-    public void modifierEntree(int qteEntree, Double prixEntree){
-        
-       
-        this.qteEntree = qteEntree;
-        this.prixEntree = prixEntree;
+    Entree E = new Entree(qteEntree, prixEntree,entreeArticle);
+    
+    return E;
+    
+    
+}    
+
+//Methode modifier entree
+
+
+public void modifierEntree(int qteEntree, Double prixEntree, Article entreeArticle){
+    
+    this.qteEntree = qteEntree;
+    this.prixEntree = prixEntree;
+    this.entreeArticle = entreeArticle;
     
 }
-        
-// Methode supprimer entree
+
+//Methode supprimer entree
+
+public void supprimerEntree(Entree e){
+    
     
 }
+
+}
+        
+        
+
+   

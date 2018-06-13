@@ -102,4 +102,9 @@ public class Rayon {
     
     // Methode supprimer Rayon
     
+    public void supprimerRayon(Rayon R){
+        
+        
+    }
+    
 }

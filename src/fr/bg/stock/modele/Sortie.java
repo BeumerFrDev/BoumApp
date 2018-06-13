@@ -18,6 +18,7 @@ public class Sortie {
     private String idSortie;
     private int qteSortie;
     private Date dateSortie;
+    private Article sortieArticle;
     
     
     public Collection<Sortie> listeSortie;
@@ -25,12 +26,12 @@ public class Sortie {
     public Collection<Sortie> listeSortieAAjouter;
     public Collection<Sortie> listeSortieAModifier;
     public Collection<Sortie> listeSortieASupprimer;
-    
 
-    public Sortie(int qteSortie, Date dateSortie) {
+    public Sortie( int qteSortie, Date dateSortie, Article sortieArticle) {
         
         this.qteSortie = qteSortie;
         this.dateSortie = dateSortie;
+        this.sortieArticle = sortieArticle;
     }
 
     public String getIdSortie() {
@@ -57,12 +58,21 @@ public class Sortie {
         this.dateSortie = dateSortie;
     }
 
+    public Article getSortieArticle() {
+        return sortieArticle;
+    }
+
+    public void setSortieArticle(Article sortieArticle) {
+        this.sortieArticle = sortieArticle;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idSortie);
-        hash = 97 * hash + this.qteSortie;
-        hash = 97 * hash + Objects.hashCode(this.dateSortie);
+        hash = 53 * hash + Objects.hashCode(this.idSortie);
+        hash = 53 * hash + this.qteSortie;
+        hash = 53 * hash + Objects.hashCode(this.dateSortie);
+        hash = 53 * hash + Objects.hashCode(this.sortieArticle);
         return hash;
     }
 
@@ -84,51 +94,47 @@ public class Sortie {
         if (!Objects.equals(this.idSortie, other.idSortie)) {
             return false;
         }
-        return Objects.equals(this.dateSortie, other.dateSortie);
+        if (!Objects.equals(this.dateSortie, other.dateSortie)) {
+            return false;
+        }
+        if (!Objects.equals(this.sortieArticle, other.sortieArticle)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Sortie{" + "idSortie=" + idSortie + ", qteSortie=" + qteSortie + ", dateSortie=" + dateSortie + '}';
+        return "Sortie{" + "idSortie=" + idSortie + ", qteSortie=" + qteSortie + ", dateSortie=" + dateSortie + ", sortieArticle=" + sortieArticle + '}';
     }
     
-    // Methode ajouter Sortie
     
+    //Methode ajouter sortie
     
-    public Sortie ajouterSortie(int qteSortie, Date dateSortie){
+    public Sortie ajouterSortie(int qteSortie, Date dateSortie, Article sortieArticle){
         
-        Sortie S = new Sortie(qteSortie,dateSortie);
-        
+        Sortie S = new Sortie( qteSortie, dateSortie, sortieArticle);
         return S;
-             
+        
     }
-    
-    
     
 
     
-    // Methode modifier Sortie
+    //Methode modifier sortie
     
-    public void modifierSortie(int qteSortie, Date dateSortie){
+    public void modifierSortie(int qteSortie, Date dateSortie, Article sortieArticle){
         
         this.qteSortie = qteSortie;
         this.dateSortie = dateSortie;
+        this.sortieArticle = sortieArticle;
+         
+    }
+    
+    //Methode supprimer sortie
+    
+    public void supprimerSortie(Sortie s){
         
         
     }
-    
-    
-    
-    
-
-    
-    
-    // Methode supprimer Sortie
-    
-    
-    
-    
-    
-    
     
 }

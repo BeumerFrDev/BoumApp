@@ -114,4 +114,11 @@ public class Reception {
     }
    
     // Methode supprimer Reception
+    
+    
+    public void supprimerReception(Reception R){
+        
+        
+        
+    }
 }

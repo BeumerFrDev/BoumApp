@@ -251,9 +251,7 @@ public class Article {
              qteStock, imageArticle, entreeArticle, sortieArticle);
         
         return A;
-        
-        
-        
+  
          }
     
     
@@ -282,7 +280,7 @@ public class Article {
     
     //Methode supprimer article
     
-    public void supprimerArticle(){
+    public void supprimerArticle(Article A){
         
         
     }
