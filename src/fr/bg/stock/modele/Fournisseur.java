@@ -33,6 +33,19 @@ public class Fournisseur {
 
     public Fournisseur( String nomFournisseur, String adresseFournisseur,
             String codePFournisseur, String villeFournisseur, String payeFournisseur,
+            String telFournisseur, String emailFournisseur) {
+        
+        this.nomFournisseur = nomFournisseur;
+        this.adresseFournisseur = adresseFournisseur;
+        this.codePFournisseur = codePFournisseur;
+        this.villeFournisseur = villeFournisseur;
+        this.payeFournisseur = payeFournisseur;
+        this.telFournisseur = telFournisseur;
+        this.emailFournisseur = emailFournisseur;
+    }
+
+    public Fournisseur( String nomFournisseur, String adresseFournisseur,
+            String codePFournisseur, String villeFournisseur, String payeFournisseur,
             String telFournisseur, String faxeFournisseur, String emailFournisseur) {
         
         this.nomFournisseur = nomFournisseur;
@@ -44,7 +57,21 @@ public class Fournisseur {
         this.faxeFournisseur = faxeFournisseur;
         this.emailFournisseur = emailFournisseur;
     }
-
+    
+    public Fournisseur( String nomFournisseur, String payeFournisseur,
+     String telFournisseur, String faxeFournisseur, String emailFournisseur) {
+        
+        this.nomFournisseur = nomFournisseur;
+        this.adresseFournisseur = adresseFournisseur;
+        this.codePFournisseur = codePFournisseur;
+        this.villeFournisseur = villeFournisseur;
+        this.payeFournisseur = payeFournisseur;
+        this.telFournisseur = telFournisseur;
+        this.faxeFournisseur = faxeFournisseur;
+        this.emailFournisseur = emailFournisseur;
+    }
+    
+    
     public String getIdFournisseur() {
         return idFournisseur;
     }
@@ -224,5 +251,14 @@ public class Fournisseur {
  }   
     
     // Methode supprimer fournisseur
+    
+    
+    
+    
+    public void supprimerFournisseur(){
+        
+        
+        
+    }
  
  }
