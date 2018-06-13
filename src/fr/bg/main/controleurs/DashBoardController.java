@@ -64,7 +64,8 @@ public class DashBoardController implements Initializable {
     @FXML
     private AnchorPane parent;
     private VBox gestionVBox;
-
+ @FXML
+    private AnchorPane p2;
     /**
      * Initializes the controller class.
      */
