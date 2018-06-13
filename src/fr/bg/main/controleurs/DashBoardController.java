@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -17,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
@@ -90,7 +93,37 @@ public class DashBoardController implements Initializable {
         affichePhotoLoggedUser();
         makeStageDrageable();
     }
-
+public Initializable replaceSceneContent(String fxml) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Launch.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Launch.class.getResource(fxml));
+       
+        AnchorPane page;
+       
+        try {
+            page = (AnchorPane) loader.load(in);
+        } finally {
+            System.out.println("hhhhhhhhhhhhhhhhhhhh"+fxml+"**"+Launch.class.getResource(fxml));
+             in.close();
+            
+        } 
+        
+        
+       if(!p2.getChildren().isEmpty()){
+           
+            p2.getChildren().clear();
+        }
+         p2.getChildren().removeAll();
+        p2.getChildren().add(page);
+       
+       
+       
+       
+        
+        application.init();
+        return (Initializable) loader.getController();
+    }
     /*
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -137,7 +170,12 @@ public class DashBoardController implements Initializable {
 
     @FXML
     public void gotoDocuments() {
-        application.gotoDocuments();
+        try {
+            DocumentsController ajoutEtudiant = (DocumentsController) replaceSceneContent("vues/Documents.fxml");
+            ajoutEtudiant.setApp(application);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

@@ -88,7 +88,7 @@ public class Launch extends Application {
             loggedUser = Affectations.of(userId);
             System.out.println(loggedUser.getClass());
             if (loggedUser.getClass().toString().endsWith("Directeur")) {
-                gotoGestionParc();
+                gotoDashbord();
             } else {
                 userLogout();
             }
@@ -116,7 +116,7 @@ public class Launch extends Application {
   public void gotoDashbord() {
         try {
             DashBoardController adminView;
-            adminView = (DashBoardController) replaceSceneContent("vues/dashBoard.fxml", 0);
+            adminView = (DashBoardController) replaceSceneContent("vues/DashBoard.fxml", 0);
 
             adminView.setApp(this);
         } catch (Exception ex) {
