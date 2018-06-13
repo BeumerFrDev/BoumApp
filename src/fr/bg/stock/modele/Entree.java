@@ -25,13 +25,13 @@ class Entree {
         
         
 
-    public Entree(int qteEntree, Double prixEntree) {
+    public Entree(int qteEntree, Double prixEntree){
      
         this.qteEntree = qteEntree;
         this.prixEntree = prixEntree;
     }
 
-    public String getIdEntree() {
+    public String getIdEntree(){
         return idEntree;
     }
 

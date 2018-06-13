@@ -38,28 +38,28 @@ public class Stock {
         return typeArticle;
     }
 
-    public void setTypeArticle(Type typeArticle) {
+    public void setTypeArticle(Type typeArticle){
         this.typeArticle = typeArticle;
     }
 
-    public Collection<Entree> getListeEntree() {
+    public Collection<Entree> getListeEntree(){
         return listeEntree;
     }
 
-    public void setListeEntree(Collection<Entree> listeEntree) {
+    public void setListeEntree(Collection<Entree> listeEntree){
         this.listeEntree = listeEntree;
     }
 
-    public Collection<Sortie> getListeSortie() {
+    public Collection<Sortie> getListeSortie(){
         return listeSortie;
     }
 
-    public void setListeSortie(Collection<Sortie> listeSortie) {
+    public void setListeSortie(Collection<Sortie> listeSortie){
         this.listeSortie = listeSortie;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
         int hash = 7;
         hash = 67 * hash + Objects.hashCode(this.typeArticle);
         hash = 67 * hash + Objects.hashCode(this.listeEntree);
@@ -68,7 +68,7 @@ public class Stock {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj){
         if (this == obj) {
             return true;
         }
