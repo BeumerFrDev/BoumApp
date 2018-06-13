@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.sibvisions.rad.ui.javafx.ext.FXButton?>
 <?import com.sibvisions.rad.ui.javafx.ext.panes.FXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="parent" prefHeight="600" prefWidth="1024.0" styleClass="parent" stylesheets="@../assets/styles/dashbord.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.GestionSearchController">
      <children>
@@ -12,7 +20,35 @@
             <children>
             <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="724.0" style="-fx-background-color: #edeaea;">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1024.0" styleClass="card-03" HBox.hgrow="ALWAYS" />
+                  <Label prefHeight="27.0" prefWidth="262.0" text="Recherche dans le logciel" textFill="#7c8184">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="433.0" styleClass="card-03" HBox.hgrow="ALWAYS" />
+                  <FXButton onAction="#handleMenuFullScreen" onDragDone="#handleMenuFullScreen" styleClass="btns1" text="Full Screen" />
+                  <Label alignment="CENTER" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round-lbl" text="8" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="menuButon" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="58.0" prefWidth="98.0" styleClass="btns1" textAlignment="RIGHT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#processLogout" text="Deconnexion" />
+                        <MenuItem mnemonicParsing="false" text="Voir mon profil" />
+                        <MenuItem mnemonicParsing="false" onAction="#close_app" text="Sortir" />
+                     </items>
+                     <graphic>
+                        <ImageView fx:id="imageView" fitHeight="48.0" fitWidth="62.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../assets/images/admin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </MenuButton>
                </children>
             </HBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="528.0" prefWidth="1024.0">
