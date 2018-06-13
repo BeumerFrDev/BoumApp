@@ -64,7 +64,7 @@ public class GestionParcController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-
+    private VBox gestionVBox ;
     /**
      * Initializes the controller class.
      */
@@ -137,26 +137,53 @@ public class GestionParcController implements Initializable {
 
         animateMessage();
     }
+    @FXML
+    public void gotoDashbord() {
+        application.gotoDashbord();
+    }
+
+    @FXML
+    public void gotoDocuments() {
+        application.gotoDocuments();
+    }
+
+    @FXML
+    public void gotoGestionIntervention() {
+        application.gotoGestionIntervention();
+    }
+
+    @FXML
+    public void gotoGestionParc() {
+        application.gotoGestionParc();
+    }
+
+    @FXML
+    public void gotoGestionPlanning() {
+        application.gotoGestionPlanning();
+    }
+
+    @FXML
+    public void gotoGestionSearch() {
+        application.gotoGestionSearch();
+    }
+
+    @FXML
+    public void gotoGestionStock() {
+        application.gotoGestionStock();
+    }
+
+    @FXML
+    public void gotoGestionUtilisateur() {
+        application.gotoGestionUtilisateur();
+    }
+    
   @FXML
     private void handleMenuFullScreen(ActionEvent  event) {
         Stage stage = application.stage;
         System.out.println("Full Screen");
        stage.setFullScreen(!stage.isFullScreen());
     }
-      @FXML
-    private void open_sidebar(ActionEvent event) throws IOException {
-        BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
-        if (flag == true) {
-            Parent sidebar = FXMLLoader.load(getClass().getResource("Sidebar.fxml"));
-            border_pane.setLeft(sidebar);
-            flag = false;
-        } else {
-            border_pane.setLeft(null);
-            flag = true;
-        }
-        
-    }
-    
+
     private void affichePhotoLoggedUser() throws FileNotFoundException {
         
       

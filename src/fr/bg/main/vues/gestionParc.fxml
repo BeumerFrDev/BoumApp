@@ -50,7 +50,7 @@
                         <Insets top="10.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotoDashbord" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <Label text="Dashboard" textFill="#7c8184">
                             <font>
@@ -277,7 +277,7 @@
             <Insets />
          </opaqueInsets>
         </VBox>
-        <VBox layoutX="300.0" prefHeight="600.0" prefWidth="724.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="gestionVBox" layoutX="300.0" prefHeight="600.0" prefWidth="724.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
             <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="724.0" style="-fx-background-color: #edeaea;">
                <children>
@@ -287,7 +287,7 @@
                             </font>
                         </Label>
                   <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="419.0" styleClass="card-03" HBox.hgrow="ALWAYS" />
-                  <FXButton onAction="#open_sidebar" onDragDone="#handleMenuFullScreen" styleClass="btns1" text="Full Screen" />
+                  <FXButton onAction="#handleMenuFullScreen" onDragDone="#handleMenuFullScreen" styleClass="btns1" text="Full Screen" />
                                            <Label alignment="CENTER" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round-lbl" text="8" textAlignment="RIGHT" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />

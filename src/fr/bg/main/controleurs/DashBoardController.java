@@ -4,6 +4,7 @@ import fr.bg.main.Launch;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -23,6 +26,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -38,10 +42,15 @@ import javafx.util.Duration;
  *
  * @author Ouadie
  */
-public class DashbordController implements Initializable {
+public class DashBoardController implements Initializable {
 
-   private Individus loggedUser;
+    private Individus loggedUser;
+    @FXML
+    private VBox content_area;
+    @FXML
+    private HBox menubar;
 
+    boolean flag = true;
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -54,8 +63,8 @@ public class DashbordController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-    @FXML HBox gestionParcHBox ;
-    @FXML Label gestionParcLabel ;   
+    private VBox gestionVBox;
+
     /**
      * Initializes the controller class.
      */
@@ -64,19 +73,13 @@ public class DashbordController implements Initializable {
         // TODO
         System.out.println("fff");
     }
- @FXML  private void close_app() {
+
+    @FXML
+    private void close_app() {
         exit();
-        
+
     }
- 
-  @FXML public void gotoGestionParc() {
-      application.gotoGestionParc();
-  }
-   @FXML
-    private void handleMenuFullScreen(ActionEvent event) {
-        
-        application.stage.setFullScreen(!application.stage.isFullScreen());
-    }
+
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();
@@ -126,6 +129,46 @@ public class DashbordController implements Initializable {
         application.userLogout();
     }
 
+    @FXML
+    public void gotoDashbord() {
+        application.gotoDashbord();
+    }
+
+    @FXML
+    public void gotoDocuments() {
+        application.gotoDocuments();
+    }
+
+    @FXML
+    public void gotoGestionIntervention() {
+        application.gotoGestionIntervention();
+    }
+
+    @FXML
+    public void gotoGestionParc() {
+        application.gotoGestionParc();
+    }
+
+    @FXML
+    public void gotoGestionPlanning() {
+        application.gotoGestionPlanning();
+    }
+
+    @FXML
+    public void gotoGestionSearch() {
+        application.gotoGestionSearch();
+    }
+
+    @FXML
+    public void gotoGestionStock() {
+        application.gotoGestionStock();
+    }
+
+    @FXML
+    public void gotoGestionUtilisateur() {
+        application.gotoGestionUtilisateur();
+    }
+
     public void saveAdminView(ActionEvent event) {
         if (application == null) {
             // We are running in isolated FXML, possibly in Scene Builder.
@@ -138,16 +181,20 @@ public class DashbordController implements Initializable {
         animateMessage();
     }
 
+    @FXML
+    private void handleMenuFullScreen(ActionEvent event) {
+        Stage stage = application.stage;
+        System.out.println("Full Screen");
+        stage.setFullScreen(!stage.isFullScreen());
+    }
+
     private void affichePhotoLoggedUser() throws FileNotFoundException {
-        
-      
-      //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
-       // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
-          //image = new Image("../assets/images/admin.png".toString(), true);
-        
+
+        //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
+        // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
+        //image = new Image("../assets/images/admin.png".toString(), true);
 //    }
 //imageView= new ImageView(getClass().getResource("url:https://avatars0.githubusercontent.com/u/15785708?s=460&v=4").toExternalForm());
-
         imageView.setFitWidth(45);
         imageView.setFitHeight(45);
         Circle circle = new Circle();
