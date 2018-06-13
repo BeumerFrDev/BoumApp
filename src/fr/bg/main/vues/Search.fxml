@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.sibvisions.rad.ui.javafx.ext.panes.FXScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="parent" prefHeight="600" prefWidth="1024.0" styleClass="parent" stylesheets="@../assets/styles/dashbord.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.bg.main.controleurs.GestionSearchController">
+     <children>
+        <VBox fx:id="gestionVBox" prefHeight="600.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="724.0" style="-fx-background-color: #edeaea;">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1024.0" styleClass="card-03" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="528.0" prefWidth="1024.0">
+               <children>
+                  <FXScrollPane prefHeight="528.0" prefWidth="1024.0">
+                     <content>
+                        <JFXListView prefHeight="545.0" prefWidth="1021.0" />
+                     </content>
+                  </FXScrollPane>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+    
+    </children>
+</AnchorPane>

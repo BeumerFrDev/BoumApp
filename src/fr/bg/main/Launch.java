@@ -19,7 +19,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import fr.bg.main.controleurs.AdminViewController;
-import fr.bg.main.controleurs.DashbordController;
+import fr.bg.main.controleurs.DashBoardController;
+import fr.bg.main.controleurs.GestionInterventionController;
+import fr.bg.main.controleurs.GestionParcController;
+import fr.bg.main.controleurs.GestionPlannigController;
+import fr.bg.main.controleurs.GestionSearchController;
+import fr.bg.main.controleurs.GestionStockController;
+import fr.bg.main.controleurs.GestionUtilisateurController;
 import fr.bg.main.controleurs.LoginController;
 import fr.bg.main.controleurs.SplashScreenController;
 import fr.bg.main.modele.Adresses;
@@ -59,7 +65,7 @@ public class Launch extends Application {
         this.stage = stage;
         stage.show();
 
-        Individus indii = new Directeur("AOUALI", "Salim", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
+        Individus indii = new Directeur("fARID", "eeee", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
         Affectations afff = new Affectations(3, "CDI", "", "", new Date(), new Date(), "Prof", "c://", indii);
 
         //gotoLogin();
@@ -109,10 +115,80 @@ public class Launch extends Application {
     }
   public void gotoDashbord() {
         try {
-            DashbordController adminView;
-            adminView = (DashbordController) replaceSceneContent("vues/dashbord.fxml", 0);
+            DashBoardController adminView;
+            adminView = (DashBoardController) replaceSceneContent("vues/DashBoard.fxml", 0);
 
             adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  public void gotoGestionIntervention() {
+        try {
+            GestionInterventionController adminView;
+            adminView = (GestionInterventionController) replaceSceneContent("vues/GestionIntervention.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void gotoGestionPlanning() {
+        try {
+            GestionPlannigController adminView;
+            adminView = (GestionPlannigController) replaceSceneContent("vues/GestionPlanning.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       public void gotoGestionSearch() {
+        try {
+            GestionSearchController adminView;
+            adminView = (GestionSearchController) replaceSceneContent("vues/GestionPlanning.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+              public void gotoGestionStock() {
+        try {
+            GestionStockController adminView;
+            adminView = (GestionStockController) replaceSceneContent("vues/GestionStock.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       public void gotoGestionUtilisateur() {
+        try {
+            GestionUtilisateurController adminView;
+            adminView = (GestionUtilisateurController) replaceSceneContent("vues/GestionUtilisateur.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        public void gotoDocuments() {
+        try {
+            GestionUtilisateurController adminView;
+            adminView = (GestionUtilisateurController) replaceSceneContent("vues/Documents.fxml", 0);
+
+            adminView.setApp(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void gotoGestionParc() {
+        try {
+            GestionParcController gestionParc;
+            gestionParc = (GestionParcController) replaceSceneContent("vues/gestionParc.fxml", 0);
+
+            gestionParc.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
