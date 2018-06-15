@@ -323,6 +323,177 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="Gestion compte">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <TableView fx:id="studentAllCourseTableView" layoutX="384.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="532.0" prefWidth="715.0">
+                           <columns>
+                              <TableColumn fx:id="studentACourseColumnCode" prefWidth="82.0" text="Login" />
+                              <TableColumn fx:id="studentACourseColumnTitle" prefWidth="168.0" text="Droit" />
+                              <TableColumn fx:id="studentACourseColumnCredit" prefWidth="75.0" text="Debut/Fin" />
+                              <TableColumn fx:id="studentACourseColumnSec" prefWidth="133.0" text="Section" />
+                           </columns>
+                        </TableView>
+                        <TableView fx:id="studentCurrentCourseTableView" layoutX="5.0" layoutY="41.0" prefHeight="312.0" prefWidth="363.0">
+                           <columns>
+                              <TableColumn fx:id="studentCCourseColumnCode" prefWidth="75.0" text="Users ID" />
+                              <TableColumn fx:id="studentCCourseColumnTitle" prefWidth="134.0" text="Users Name" />
+                              <TableColumn fx:id="studentCCourseColumnCredit" prefWidth="79.0" text="Adresses" />
+                              <TableColumn fx:id="studentCCourseColumnSec" prefWidth="75.0" text="Section" />
+                           </columns>
+                        </TableView>
+                        <Text fill="#0091ea" layoutX="391.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des affectations" AnchorPane.rightAnchor="529.849609375">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#0091ea" layoutX="5.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des utilisateurs:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #09B28C;" text="Delete" textFill="WHITE" />
+                        <Button layoutX="126.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #09B28C;" text="Crée une compte" textFill="WHITE" />
+                        <Button layoutX="211.0" layoutY="419.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: #f57c00;" text="Done" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="272.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" />
+                        <TextField fx:id="registrationTFSearch" layoutX="607.0" layoutY="6.0" promptText="utilisateur ID" AnchorPane.rightAnchor="349.0" />
+                        <Button layoutX="770.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Search" AnchorPane.rightAnchor="269.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Gestion Absences">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="1247.0">
+                     <children>
+                        <TableView fx:id="resultHistoryTableView" layoutX="545.0" layoutY="49.0" prefHeight="541.0" prefWidth="635.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="545.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                           <columns>
+                              <TableColumn fx:id="resultHistoryColumnCode" prefWidth="209.0" text="Users ID" />
+                              <TableColumn fx:id="resultHistoryColumnSec" minWidth="0.0" prefWidth="188.0" text="Date" />
+                              <TableColumn fx:id="resultHistoryColumnGPA" prefWidth="151.0" text="Periode" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="42.0" layoutY="73.0" prefHeight="268.0" prefWidth="348.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFFname" disable="true" GridPane.columnIndex="1" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFLname" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFID" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFEmail" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFPhone" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Section" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFGFname" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="7">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFGLname" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFAddress" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFPassword" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Text fill="#673ab7" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Picture" GridPane.rowIndex="9">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="studentTFPicChooser" disable="true" promptText="Click for Choose" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                           </children>
+                        </GridPane>
+                        <Text fill="#0091ea" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur Information: ">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#0091ea" layoutX="16.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absence Course :">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="355.0" layoutY="553.0" mnemonicParsing="false"   style="-fx-background-color: #f57c00;" text="Registration" textFill="WHITE" AnchorPane.bottomAnchor="6.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="74.0" layoutY="2.0" mnemonicParsing="false"  style="-fx-background-color: #00897b;" text="Edit Profile" textFill="WHITE" />
+                        <Button layoutX="186.0" layoutY="3.0" mnemonicParsing="false"   style="-fx-background-color: #00897b;" text="View Profile" textFill="WHITE" />
+                        <Text fill="#0091ea" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absences History :">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="studentSaveClick" disable="true" layoutX="320.0" layoutY="354.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #2196F3;" text="Save" textFill="WHITE" />
+                        <TableView fx:id="studentRunningCourseTableView" layoutX="15.0" layoutY="419.0" prefHeight="126.0" prefWidth="439.0" AnchorPane.bottomAnchor="45.0" AnchorPane.topAnchor="419.0">
+                           <columns>
+                              <TableColumn fx:id="studentRCourseColumnCode" prefWidth="82.0" text="Code" />
+                              <TableColumn fx:id="studentRCourseColumnTitle" prefWidth="249.0" text="Periode" />
+                              <TableColumn fx:id="studentRCourseColumnCredit" prefWidth="53.0" text="Date" />
+                              <TableColumn fx:id="studentRCourseColumnSec" prefWidth="54.0" text="Section" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="studentCancelClick" disable="true" layoutX="235.0" layoutY="354.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #00897b;" text="Cancel" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
          </tabs>
       </TabPane>
     
