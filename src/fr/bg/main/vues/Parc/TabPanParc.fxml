@@ -70,7 +70,7 @@
                         <Image url="@../../assets/images/Beumer_Group_Logo.svg%20(1).png" />
                      </image>
                   </ImageView>
-                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="159.0" text="Gestion Utilisateurs" textFill="#7c8184">
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="159.0" text="Gestion Parc" textFill="#7c8184">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -489,7 +489,7 @@
                               <TableColumn fx:id="studentRCourseColumnSec" prefWidth="54.0" text="Section" />
                            </columns>
                         </TableView>
-                        <Button fx:id="studentCancelClick" disable="true" layoutX="235.0" layoutY="354.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #00897b;" text="Cancel" textFill="WHITE" />
+                        <Button fx:id="studentCancelClick" disable="true" layoutX="235.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #00897b;" text="Cancel" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>

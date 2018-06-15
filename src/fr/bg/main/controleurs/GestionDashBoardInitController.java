@@ -158,8 +158,8 @@ public class GestionDashBoardInitController implements Initializable {
     }
 
     @FXML
-    public void gotoGestionPlanning() {
-        application.gotoGestionPlanning();
+    public void gotoGestionRessources() {
+        application.gotoGestionRessources();
     }
 
     @FXML

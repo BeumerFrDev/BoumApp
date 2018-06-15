@@ -207,9 +207,9 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
     }
 
     @FXML
-    public void gotoGestionPlanning() {
+    public void gotoGestionRessources() {
                  try {
-            GestionPlannigController controleur = (GestionPlannigController) replaceSceneContent("vues/GestionPlanning.fxml");
+            GestionRessourcesController controleur = (GestionRessourcesController) replaceSceneContent("vues/GestionRessources.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);

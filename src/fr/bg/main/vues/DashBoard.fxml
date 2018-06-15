@@ -78,7 +78,7 @@
                     </padding>
                   
                 </HBox>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotoGestionPlanning" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotoGestionRessources" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                <children>
                   <Label text="gestion de ressources" textFill="#7c8184">
                      <font>
