@@ -80,7 +80,7 @@
                 </HBox>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotoGestionPlanning" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                <children>
-                  <Label text="gestion de planning" textFill="#7c8184">
+                  <Label text="gestion de ressources" textFill="#7c8184">
                      <font>
                         <Font name="Calibri Light" size="15.0" />
                      </font>
