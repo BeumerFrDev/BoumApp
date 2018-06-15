@@ -68,6 +68,9 @@ public class Fournisseur {
         this.emailFournisseur = emailFournisseur;
     }
     
+    public Fournisseur(){
+        
+    }
     
     public String getIdFournisseur() {
         return idFournisseur;
@@ -200,7 +203,13 @@ public class Fournisseur {
         return "Fournisseur{" + "idFournisseur=" + idFournisseur + ", nomFournisseur=" + nomFournisseur + ", adresseFournisseur=" + adresseFournisseur + ", codePFournisseur=" + codePFournisseur + ", villeFournisseur=" + villeFournisseur + ", payeFournisseur=" + payeFournisseur + ", telFournisseur=" + telFournisseur + ", faxeFournisseur=" + faxeFournisseur + ", emailFournisseur=" + emailFournisseur + '}';
     }
  
- //Methode ajout fournisseur
+ 
+
+
+
+
+
+//Methode ajout fournisseur
  
  
  public void ajouterFournisseur(String nomFournisseur, String adresseFournisseur,
@@ -212,8 +221,15 @@ public class Fournisseur {
      
      listeFournisseurAAjouter.add(F);
      
+     
+     
  }
  
+
+
+
+
+
  //Methode modifier fournisseur
  
   
@@ -237,8 +253,10 @@ public class Fournisseur {
         
  }   
     
-    // Methode supprimer fournisseur
-    
+ 
+
+
+// Methode supprimer fournisseur
     
     
     
