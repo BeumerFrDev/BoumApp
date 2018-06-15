@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -173,10 +175,7 @@ public class TabPanUtilisateursController implements Initializable {
         application.gotoGestionStock();
     }
 
-    @FXML
-    public void gotoGestionUtilisateur() {
-        application.gotoGestionUtilisateur();
-    }
+
     
   @FXML
     private void handleMenuFullScreen(ActionEvent  event) {
@@ -184,7 +183,8 @@ public class TabPanUtilisateursController implements Initializable {
         System.out.println("Full Screen");
        stage.setFullScreen(!stage.isFullScreen());
     }
-
+    
+ 
     private void affichePhotoLoggedUser() throws FileNotFoundException {
         
       

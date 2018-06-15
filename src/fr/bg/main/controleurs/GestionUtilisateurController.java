@@ -1,6 +1,7 @@
 package fr.bg.main.controleurs;
 
 import fr.bg.main.Launch;
+import fr.bg.main.controleurs.utilisateurs.TabPanUtilisateursController;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
@@ -8,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -17,8 +20,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -34,6 +39,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -150,9 +156,53 @@ public class GestionUtilisateurController implements Initializable {
         application.gotoGestionStock();
     }
 
-    @FXML
+      @FXML
     public void gotoGestionUtilisateur() {
-        application.gotoGestionUtilisateur();
+         try {
+            TabPanUtilisateursController adminView;
+            adminView = (TabPanUtilisateursController) replaceSceneContent("vues/Utilisateurs/TabPanUtilisateurs.fxml", 1);
+
+            adminView.setApp(application);
+        } catch (Exception ex) {
+            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Initializable replaceSceneContent(String fxml, int a) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Launch.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Launch.class.getResource(fxml));
+
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load(in);
+        } finally {
+            System.out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
+            in.close();
+
+        }
+        Stage stage = application.stage;
+        if (a == 1) {
+            Scene scene = new Scene(page, 1300, 700);
+            Stage stage1;
+            stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.initStyle(StageStyle.DECORATED);
+            stage.hide();application.stage = stage1;
+            application.stage.show();
+            
+        } else {
+            Scene scene = new Scene(page, 1024, 768);
+            Stage stage1;
+            stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.initStyle(StageStyle.UNDECORATED);
+           stage.hide();application.stage = stage1;
+            application.stage.show();
+
+        }
+        return (Initializable) loader.getController();
     }
     
     @FXML

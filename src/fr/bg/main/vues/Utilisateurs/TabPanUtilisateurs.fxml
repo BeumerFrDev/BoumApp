@@ -41,18 +41,18 @@
                      <menus>
                         <Menu mnemonicParsing="false" text="File">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="" text="Close" />
+                              <MenuItem mnemonicParsing="false" text="Close" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="" text="Course Panel" />
-                              <MenuItem mnemonicParsing="false" onAction="" text="Teacher Panel" />
+                              <MenuItem mnemonicParsing="false" text="Course Panel" />
+                              <MenuItem mnemonicParsing="false" text="Teacher Panel" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="" text="About" />
+                              <MenuItem mnemonicParsing="false" text="About" />
                            </items>
                         </Menu>
                      </menus>
@@ -65,6 +65,11 @@
             <children>
             <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="75.0" prefWidth="1093.0" style="-fx-background-color: #edeaea;">
                <children>
+                  <ImageView fitHeight="59.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/images/Beumer_Group_Logo.svg%20(1).png" />
+                     </image>
+                  </ImageView>
                         <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="159.0" text="Gestion Utilisateurs" textFill="#7c8184">
                             <font>
                                 <Font size="18.0" />
@@ -116,9 +121,9 @@
                                  <items>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="AddNew" textFill="WHITE" AnchorPane.leftAnchor="14.0" />
-                                          <Button layoutX="134.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Edit" textFill="WHITE" />
-                                          <Button alignment="CENTER" layoutX="254.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF3F3C; -fx-text-fill: white;" text="Delete" />
+                                          <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="AddNew" textFill="WHITE" AnchorPane.leftAnchor="14.0" />
+                                          <Button layoutX="134.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Edit" textFill="WHITE" />
+                                          <Button alignment="CENTER" layoutX="254.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF3F3C; -fx-text-fill: white;" text="Delete" />
                                           <Text fill="#0091ea" layoutX="72.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur Registration Details" AnchorPane.bottomAnchor="517.482421875" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="61.1162109375" AnchorPane.topAnchor="46.517578125">
                                              <font>
                                                 <Font size="18.0" />
@@ -249,16 +254,16 @@
                                              </children>
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" />
-                                          <Button fx:id="adminClearButtonClick" disable="true" layoutX="135.0" layoutY="531.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF5151; -fx-text-fill: white;" text="Clear" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="135.0" />
-                                          <Button fx:id="adminSaveButtonClick" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="21.0" />
+                                          <Button fx:id="adminClearButtonClick" disable="true" layoutX="135.0" layoutY="531.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF5151; -fx-text-fill: white;" text="Clear" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="135.0" />
+                                          <Button fx:id="adminSaveButtonClick" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="21.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="671.0">
                                        <children>
-                                          <TextField fx:id="adminTFSearch" layoutX="548.0" layoutY="14.0" promptText="Student ID" AnchorPane.rightAnchor="127.0" />
-                                          <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
-                                          <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
-                                          <Button layoutX="146.0" layoutY="14.0" mnemonicParsing="false" onAction="" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
+                                          <TextField fx:id="adminTFSearch" layoutX="548.0" layoutY="14.0" promptText="Utilisateur ID" AnchorPane.rightAnchor="127.0" />
+                                          <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
+                                          <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
+                                          <Button layoutX="146.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
                                           <TableView fx:id="adminTableView" layoutX="2.0" layoutY="55.0" prefHeight="533.0" prefWidth="822.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
                                              <columns>
                                                 <TableColumn fx:id="adminTableStudentNo" prefWidth="32.0" text="No." />
@@ -275,6 +280,39 @@
                                              </columns>
                                            
                                           </TableView>
+                                          <Button layoutX="234.0" layoutY="4.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css" />
+                                          <Button layoutX="279.0" layoutY="6.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css">
+                                             <graphic>
+                                                <ImageView fx:id="imageView11" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true">
+                                                   <image>
+                                                      <Image url="@../../assets/images/icons8_Microsoft_Word_48px.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button layoutX="376.0" layoutY="6.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css">
+                                             <graphic>
+                                                <ImageView fx:id="imageView12" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true">
+                                                   <image>
+                                                      <Image url="@../../assets/images/icons8_Save_48px.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button layoutX="330.0" layoutY="6.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="45.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css">
+                                             <graphic>
+                                                <ImageView fx:id="imageView13" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true">
+                                                   <image>
+                                                      <Image url="@../../assets/images/icons8_Print_48px_2.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <ImageView fx:id="imageView1" fitHeight="35.0" fitWidth="41.0" layoutX="238.0" layoutY="10.0" pickOnBounds="true">
+                                             <image>
+                                                <Image url="@../../assets/images/icons8_Microsoft_Excel_48px.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
                                     </AnchorPane>
                                  </items>
