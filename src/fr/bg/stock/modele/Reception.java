@@ -5,40 +5,57 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author lyess
  */
-public class Reception {
-    
-   private int numReception;
-   private Date dateReception;
-   private int qteLivree;
-   
-   
-   public Collection<Reception> listeReception;
-   
-   public Collection<Reception> listeReceptionAAjouter;
-   public Collection<Reception> listeReceptionAModifier;
-   public Collection<Reception> listeReceptionASupprimer;
-    
+@Entity
+public class Reception implements Serializable {
 
-    public Reception( Date dateReception, int qteLivree) {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    //liste des attribus
+    
+    private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateReception;
+    private int qteLivree;
+    
+    // les constructeurs
+    
+    public Reception(){
         
+    }
+
+    public Reception(Long id) {
+        this.id = id;
+    }
+
+    public Reception(Long id, Date dateReception, int qteLivree) {
+        this.id = id;
         this.dateReception = dateReception;
         this.qteLivree = qteLivree;
     }
 
-    public int getNumReception() {
-        return numReception;
+    // getters ans setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setNumReception(int numReception) {
-        this.numReception = numReception;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getDateReception() {
@@ -60,9 +77,9 @@ public class Reception {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.numReception;
-        hash = 53 * hash + Objects.hashCode(this.dateReception);
-        hash = 53 * hash + this.qteLivree;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.dateReception);
+        hash = 41 * hash + this.qteLivree;
         return hash;
     }
 
@@ -78,53 +95,26 @@ public class Reception {
             return false;
         }
         final Reception other = (Reception) obj;
-        if (this.numReception != other.numReception) {
-            return false;
-        }
         if (this.qteLivree != other.qteLivree) {
             return false;
         }
-        return Objects.equals(this.dateReception, other.dateReception);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateReception, other.dateReception)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Reception{" + "numReception=" + numReception + ", dateReception=" + dateReception + ", qteLivree=" + qteLivree + '}';
-    }
-   
-   
-   
-    
-    //Methode ajouter Reception
-    
-    public void ajouterreception(Date dateReception, int qteLivree){
-        
-        Reception R = new Reception( dateReception, qteLivree);
-        
-        listeReceptionAAjouter.add(R);
-        
+        return "Reception{" + "id=" + id + ", dateReception=" + dateReception + ", qteLivree=" + qteLivree + '}';
     }
     
     
-    //Methode modifier Reception
-    
-    public void modifierReception(Date dateReception, int qteLivree){
-        
-        this.dateReception = dateReception;
-        this.qteLivree = qteLivree;
-        
-        listeReceptionAModifier.add(this);
-        
-    }
-   
-    // Methode supprimer Reception
     
     
-    public void supprimerReception(Reception R){
-        
-        listeReceptionASupprimer.add(R);
-        
-        
-        
-    }
+    
+    
 }

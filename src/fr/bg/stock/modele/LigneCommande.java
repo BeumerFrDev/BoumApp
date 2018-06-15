@@ -5,71 +5,100 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Objects;
-import java.lang.String;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author lyess
  */
-public class LigneCommande {
-    
-    private String index;
-    private String qteCommande;
-    private Double prix;
-    private Double montant;
-    private Commande commandeLigneCommande;
-    private Fournisseur fournisseurLigneCommande;
-    
-    
-    public Collection<LigneCommande> listeLigneCommande;
-    
-    public Collection<LigneCommande> listeLigneCommandeAAjouter;
-    public Collection<LigneCommande> listeLigneCommandeAModifier;
-    public Collection<LigneCommande> listeLigneCommandeASupprimer;
-    
-    
+@Entity
+public class LigneCommande implements Serializable {
 
-    public LigneCommande( String qteCommande, Double prix, Double montant, Commande commandeLigneCommande,
-            Fournisseur fournisseurLigneCommande) {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    //liste des attribus
+    
+    
+    private Long id;
+    @OneToOne
+    private Article articleLigneCommande;
+    private int qteCommande;
+    private double prixU;
+    private double montant;
+    @OneToOne
+    private Commande commandeLigneCommande;
+    @OneToOne
+    private Fournisseur fournisseur;
+    
+    
+    //liste des constructeurs
+    
+    public LigneCommande(){
         
+    }
+
+    public LigneCommande(Long id) {
+        this.id = id;
+    }
+
+    public LigneCommande(Long id, Article articleLigneCommande, int qteCommande, double prixU, double montant,
+            Commande commandeLigneCommande, Fournisseur fournisseur) {
+        this.id = id;
+        this.articleLigneCommande = articleLigneCommande;
         this.qteCommande = qteCommande;
-        this.prix = prix;
+        this.prixU = prixU;
         this.montant = montant;
         this.commandeLigneCommande = commandeLigneCommande;
-        this.fournisseurLigneCommande = fournisseurLigneCommande;
+        this.fournisseur = fournisseur;
+    }
+    
+    // getters and setters
+
+    public Long getId() {
+        return id;
     }
 
-    public String getIndex() {
-        return index;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setIndex(String index) {
-        this.index = index;
+    public Article getArticleLigneCommande() {
+        return articleLigneCommande;
     }
 
-    public String getQteCommande() {
+    public void setArticleLigneCommande(Article articleLigneCommande) {
+        this.articleLigneCommande = articleLigneCommande;
+    }
+
+    public int getQteCommande() {
         return qteCommande;
     }
 
-    public void setQteCommande(String qteCommande) {
+    public void setQteCommande(int qteCommande) {
         this.qteCommande = qteCommande;
     }
 
-    public Double getPrix() {
-        return prix;
+    public double getPrixU() {
+        return prixU;
     }
 
-    public void setPrix(Double prix) {
-        this.prix = prix;
+    public void setPrixU(double prixU) {
+        this.prixU = prixU;
     }
 
-    public Double getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(Double montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 
@@ -81,23 +110,24 @@ public class LigneCommande {
         this.commandeLigneCommande = commandeLigneCommande;
     }
 
-    public Fournisseur getFournisseurLigneCommande() {
-        return fournisseurLigneCommande;
+    public Fournisseur getFournisseur() {
+        return fournisseur;
     }
 
-    public void setFournisseurLigneCommande(Fournisseur fournisseurLigneCommande) {
-        this.fournisseurLigneCommande = fournisseurLigneCommande;
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.index);
-        hash = 97 * hash + Objects.hashCode(this.qteCommande);
-        hash = 97 * hash + Objects.hashCode(this.prix);
-        hash = 97 * hash + Objects.hashCode(this.montant);
-        hash = 97 * hash + Objects.hashCode(this.commandeLigneCommande);
-        hash = 97 * hash + Objects.hashCode(this.fournisseurLigneCommande);
+        int hash = 7;
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.articleLigneCommande);
+        hash = 19 * hash + this.qteCommande;
+        hash = 19 * hash + (int) (Double.doubleToLongBits(this.prixU) ^ (Double.doubleToLongBits(this.prixU) >>> 32));
+        hash = 19 * hash + (int) (Double.doubleToLongBits(this.montant) ^ (Double.doubleToLongBits(this.montant) >>> 32));
+        hash = 19 * hash + Objects.hashCode(this.commandeLigneCommande);
+        hash = 19 * hash + Objects.hashCode(this.fournisseur);
         return hash;
     }
 
@@ -113,22 +143,25 @@ public class LigneCommande {
             return false;
         }
         final LigneCommande other = (LigneCommande) obj;
-        if (!Objects.equals(this.index, other.index)) {
+        if (this.qteCommande != other.qteCommande) {
             return false;
         }
-        if (!Objects.equals(this.qteCommande, other.qteCommande)) {
+        if (Double.doubleToLongBits(this.prixU) != Double.doubleToLongBits(other.prixU)) {
             return false;
         }
-        if (!Objects.equals(this.prix, other.prix)) {
+        if (Double.doubleToLongBits(this.montant) != Double.doubleToLongBits(other.montant)) {
             return false;
         }
-        if (!Objects.equals(this.montant, other.montant)) {
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.articleLigneCommande, other.articleLigneCommande)) {
             return false;
         }
         if (!Objects.equals(this.commandeLigneCommande, other.commandeLigneCommande)) {
             return false;
         }
-        if (!Objects.equals(this.fournisseurLigneCommande, other.fournisseurLigneCommande)) {
+        if (!Objects.equals(this.fournisseur, other.fournisseur)) {
             return false;
         }
         return true;
@@ -136,53 +169,13 @@ public class LigneCommande {
 
     @Override
     public String toString() {
-        return "LigneCommande{" + "index=" + index + ", qteCommande=" + qteCommande + ", prix=" + prix + ", montant=" + montant + ", commandeLigneCommande=" + commandeLigneCommande + ", fournisseurLigneCommande=" + fournisseurLigneCommande + '}';
+        return "LigneCommande{" + "id=" + id + ", articleLigneCommande=" + articleLigneCommande + ", qteCommande=" + qteCommande + 
+                ", prixU=" + prixU + ", montant=" + montant + ", commandeLigneCommande=" + commandeLigneCommande + ", fournisseur=" + fournisseur + '}';
     }
     
     
-   
     
-    //Methode ajouter ligne de commande
-    
-    public void ajouterLigneCommande(String qteCommande, Double prix, Double montant, Commande commandeLigneCommande,
-            Fournisseur fournisseurLigneCommande){
-        
-        LigneCommande LC = new LigneCommande(qteCommande, prix, montant, commandeLigneCommande,
-             fournisseurLigneCommande);
-        
-        listeLigneCommandeAAjouter.add(LC);
-        
-       
-        
-        
-    }
-    
-    //Methode modifier ligne de commande
-    
-    public void modifierLigneCommande(String qteCommande, Double prix, Double montant, Commande commandeLigneCommande,
-            Fournisseur fournisseurLigneCommande){
-        
-        this.qteCommande = qteCommande;
-        this.prix = prix;
-        this.montant= montant;
-        this.commandeLigneCommande = commandeLigneCommande;
-        this.fournisseurLigneCommande = fournisseurLigneCommande;
-        
-        
-        listeLigneCommandeAModifier.add(this);
-      
-    }
- 
 
-    //Methode supprimer ligne de commande
-    
-    public void supprimerLigneCommande(LigneCommande LC){
-        
-        listeLigneCommandeASupprimer.add(LC);
-        
-    }
    
-    
-    
     
 }
