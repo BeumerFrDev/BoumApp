@@ -5,41 +5,53 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author lyess
  */
-public class Rayon {
+@Entity
+public class Rayon implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+   
+    //liste des attribus
     
-    private String idRayon;
+    private Long id;
     private String nomRayon;
     
-    public Collection<Rayon> listeRayon;
     
-    public Collection<Rayon> listeRayonAAjouter;
-    public Collection<Rayon> listeRayonAModifier;
-    public Collection<Rayon> listeRayonASupprimer;
-     
+    // liste des constructeur
     
-    
-    
-    
-    
-
-    public Rayon( String nomRayon) {
+    public Rayon(){
         
+    }
+
+    public Rayon(Long id) {
+        this.id = id;
+    }
+
+    public Rayon(Long id, String nomRayon) {
+        this.id = id;
         this.nomRayon = nomRayon;
     }
 
-    public String getIdRayon() {
-        return idRayon;
+   // getters and setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRayon(String idRayon) {
-        this.idRayon = idRayon;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNomRayon() {
@@ -53,7 +65,7 @@ public class Rayon {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.idRayon);
+        hash = 67 * hash + Objects.hashCode(this.id);
         hash = 67 * hash + Objects.hashCode(this.nomRayon);
         return hash;
     }
@@ -70,46 +82,20 @@ public class Rayon {
             return false;
         }
         final Rayon other = (Rayon) obj;
-        if (!Objects.equals(this.idRayon, other.idRayon)) {
+        if (!Objects.equals(this.nomRayon, other.nomRayon)) {
             return false;
         }
-        return Objects.equals(this.nomRayon, other.nomRayon);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Rayon{" + "idRayon=" + idRayon + ", nomRayon=" + nomRayon + '}';
+        return "Rayon{" + "id=" + id + ", nomRayon=" + nomRayon + '}';
     }
     
     
-    //Methode ajouter Rayon
-    
-    public void ajouterRayon( String nomRayon){
-        
-        Rayon R = new Rayon( nomRayon);
-        
-        listeRayonAAjouter.add(R);
-        
-        
-        
-    }
-    
-    //Methode modifier Rayon
-    
-    public void modifierRayon( String nomRayon){
-        
-        this.nomRayon = nomRayon;
-        
-        listeRayonAModifier.add(this);
-        
-    }
-    
-    // Methode supprimer Rayon
-    
-    public void supprimerRayon(Rayon R){
-        
-        listeRayonASupprimer.add(R);
-        
-    }
     
 }

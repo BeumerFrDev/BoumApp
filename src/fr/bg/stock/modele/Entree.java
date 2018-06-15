@@ -5,39 +5,77 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author lyess
  */
-class Entree {
+
+
+@Entity
+public class Entree implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     
-        private String idEntree;
-        private int qteEntree;
-        private Double prixEntree;
-        private Article entreeArticle;
-        
-        
-        public Collection <Entree> listeEntree;
-        public Collection <Entree> listeEntreeAAjouter;
-        public Collection <Entree> listeEntreeAModifier;
-        public Collection <Entree> listeEntreeASupprimer;
-
-    public Entree(int qteEntree, Double prixEntree, Article entreeArticle) {
+    //liste des attribus
+    
+    private Long id;
+    @OneToOne
+    private Article articleEntree;
+    private int qteEntree;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateEntree;
+    private Double prixEntree;
+    
+    
+    
+    // liste des constructeurs
+    
+   public Entree(){
        
+   } 
+
+    public Entree(Long id) {
+        this.id = id;
+    }
+
+    public Entree(Long id, Article articleEntree, int qteEntree, Date dateEntree, Double prixEntree) {
+        this.id = id;
+        this.articleEntree = articleEntree;
         this.qteEntree = qteEntree;
+        this.dateEntree = dateEntree;
         this.prixEntree = prixEntree;
-        this.entreeArticle = entreeArticle;
     }
 
-    public String getIdEntree() {
-        return idEntree;
+   
+    
+    // getters and setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEntree(String idEntree) {
-        this.idEntree = idEntree;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Article getArticleEntree() {
+        return articleEntree;
+    }
+
+    public void setArticleEntree(Article articleEntree) {
+        this.articleEntree = articleEntree;
     }
 
     public int getQteEntree() {
@@ -48,6 +86,14 @@ class Entree {
         this.qteEntree = qteEntree;
     }
 
+    public Date getDateEntree() {
+        return dateEntree;
+    }
+
+    public void setDateEntree(Date dateEntree) {
+        this.dateEntree = dateEntree;
+    }
+
     public Double getPrixEntree() {
         return prixEntree;
     }
@@ -56,21 +102,14 @@ class Entree {
         this.prixEntree = prixEntree;
     }
 
-    public Article getEntreeArticle() {
-        return entreeArticle;
-    }
-
-    public void setEntreeArticle(Article entreeArticle) {
-        this.entreeArticle = entreeArticle;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.idEntree);
-        hash = 97 * hash + this.qteEntree;
-        hash = 97 * hash + Objects.hashCode(this.prixEntree);
-        hash = 97 * hash + Objects.hashCode(this.entreeArticle);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.articleEntree);
+        hash = 71 * hash + this.qteEntree;
+        hash = 71 * hash + Objects.hashCode(this.dateEntree);
+        hash = 71 * hash + Objects.hashCode(this.prixEntree);
         return hash;
     }
 
@@ -89,13 +128,16 @@ class Entree {
         if (this.qteEntree != other.qteEntree) {
             return false;
         }
-        if (!Objects.equals(this.idEntree, other.idEntree)) {
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.articleEntree, other.articleEntree)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateEntree, other.dateEntree)) {
             return false;
         }
         if (!Objects.equals(this.prixEntree, other.prixEntree)) {
-            return false;
-        }
-        if (!Objects.equals(this.entreeArticle, other.entreeArticle)) {
             return false;
         }
         return true;
@@ -103,47 +145,9 @@ class Entree {
 
     @Override
     public String toString() {
-        return "Entree{" + "idEntree=" + idEntree + ", qteEntree=" + qteEntree + ", prixEntree=" + prixEntree + ", entreeArticle=" + entreeArticle + '}';
+        return "Entree{" + "id=" + id + ", articleEntree=" + articleEntree + ", qteEntree=" + qteEntree + ", dateEntree=" + dateEntree + ", prixEntree=" + prixEntree + '}';
     }
-        
-      
     
-
-//Methode ajouter entree
-
-public void ajouterEntree(int qteEntree, Double prixEntree, Article entreeArticle){
-    
-    Entree E = new Entree(qteEntree, prixEntree,entreeArticle);
-    
-    listeEntreeAAjouter.add(E);
-    
-    
-}    
-
-//Methode modifier entree
-
-
-public void modifierEntree(int qteEntree, Double prixEntree, Article entreeArticle){
-    
-    this.qteEntree = qteEntree;
-    this.prixEntree = prixEntree;
-    this.entreeArticle = entreeArticle;
-    
-    listeEntreeAModifier.add(this);
-    
-}
-
-//Methode supprimer entree
-
-public void supprimerEntree(Entree E){
-    
-    listeEntreeASupprimer.add(E);
     
     
 }
-
-}
-        
-        
-
-   

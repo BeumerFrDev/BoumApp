@@ -5,41 +5,69 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author lyess
  */
-public class Sortie {
-    
-    private String idSortie;
-    private int qteSortie;
-    private Date dateSortie;
-    private Article sortieArticle;
-    
-    
-    public Collection<Sortie> listeSortie;
-    
-    public Collection<Sortie> listeSortieAAjouter;
-    public Collection<Sortie> listeSortieAModifier;
-    public Collection<Sortie> listeSortieASupprimer;
 
-    public Sortie( int qteSortie, Date dateSortie, Article sortieArticle) {
+
+@Entity
+public class Sortie implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    //liste des attribus
+    
+    private Long id;
+    @OneToOne
+    private Article articleSortie;
+    private int qteSortie;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateSortie;
+    
+    // liste des constructeurs
+    
+    public Sortie (){
         
+    }
+
+    public Sortie(Long id) {
+        this.id = id;
+    }
+
+    public Sortie(Long id, Article articleSortie, int qteSortie, Date dateSortie) {
+        this.id = id;
+        this.articleSortie = articleSortie;
         this.qteSortie = qteSortie;
         this.dateSortie = dateSortie;
-        this.sortieArticle = sortieArticle;
     }
 
-    public String getIdSortie() {
-        return idSortie;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdSortie(String idSortie) {
-        this.idSortie = idSortie;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Article getArticleSortie() {
+        return articleSortie;
+    }
+
+    public void setArticleSortie(Article articleSortie) {
+        this.articleSortie = articleSortie;
     }
 
     public int getQteSortie() {
@@ -58,21 +86,13 @@ public class Sortie {
         this.dateSortie = dateSortie;
     }
 
-    public Article getSortieArticle() {
-        return sortieArticle;
-    }
-
-    public void setSortieArticle(Article sortieArticle) {
-        this.sortieArticle = sortieArticle;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.idSortie);
-        hash = 53 * hash + this.qteSortie;
-        hash = 53 * hash + Objects.hashCode(this.dateSortie);
-        hash = 53 * hash + Objects.hashCode(this.sortieArticle);
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.articleSortie);
+        hash = 71 * hash + this.qteSortie;
+        hash = 71 * hash + Objects.hashCode(this.dateSortie);
         return hash;
     }
 
@@ -91,13 +111,13 @@ public class Sortie {
         if (this.qteSortie != other.qteSortie) {
             return false;
         }
-        if (!Objects.equals(this.idSortie, other.idSortie)) {
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.articleSortie, other.articleSortie)) {
             return false;
         }
         if (!Objects.equals(this.dateSortie, other.dateSortie)) {
-            return false;
-        }
-        if (!Objects.equals(this.sortieArticle, other.sortieArticle)) {
             return false;
         }
         return true;
@@ -105,41 +125,10 @@ public class Sortie {
 
     @Override
     public String toString() {
-        return "Sortie{" + "idSortie=" + idSortie + ", qteSortie=" + qteSortie + ", dateSortie=" + dateSortie + ", sortieArticle=" + sortieArticle + '}';
+        return "Sortie{" + "id=" + id + ", articleSortie=" + articleSortie + ", qteSortie=" + qteSortie + ", dateSortie=" + dateSortie + '}';
     }
     
     
-    //Methode ajouter sortie
-    
-    public void ajouterSortie(int qteSortie, Date dateSortie, Article sortieArticle){
-        
-        Sortie S = new Sortie( qteSortie, dateSortie, sortieArticle);
-        
-        listeSortieAAjouter.add(S);
-        
-    }
-    
-
-    
-    //Methode modifier sortie
-    
-    public void modifierSortie(int qteSortie, Date dateSortie, Article sortieArticle){
-        
-        this.qteSortie = qteSortie;
-        this.dateSortie = dateSortie;
-        this.sortieArticle = sortieArticle;
-         
-        
-        listeSortieAModifier.add(this);
-    }
-    
-    //Methode supprimer sortie
-    
-    public void supprimerSortie(Sortie s){
-        
-        listeSortieASupprimer.add(s);
-        
-        
-    }
+   
     
 }

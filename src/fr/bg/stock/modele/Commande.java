@@ -5,42 +5,61 @@
  */
 package fr.bg.stock.modele;
 
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author lyess
  */
-public class Commande {
-    
-    private  int numCommande;
-    private  Date dateCommande;
-    private Etat etatCommande;
-    private Reception receptionCommande;
-    
-    public Collection<Commande> listeCommande;
-    
-    public Collection<Commande> listeCommandeAAjouter;
-    public Collection<Commande> listeCommandeAModifier;
-    public Collection<Commande> listeCommandeASupprimer;
+@Entity
+public class Commande implements Serializable {
 
-    public Commande( Date dateCommande, Etat etatCommande, Reception receptionCommande) {
-       
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    //liste des attribus
+    
+    private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateCommande;
+    private String etatCommande;
+    @OneToOne
+    private Reception reception;
+    
+    // liste des constructeurs
+    
+    public Commande(){
+        
+    }
+
+    public Commande(Long id) {
+        this.id = id;
+    }
+
+    public Commande(Long id, Date dateCommande, String etatCommande, Reception reception) {
+        this.id = id;
         this.dateCommande = dateCommande;
         this.etatCommande = etatCommande;
-        this.receptionCommande = receptionCommande;
-        
-       
+        this.reception = reception;
+    }
+    
+    // getters and setters
+
+    public Long getId() {
+        return id;
     }
 
-    public int getNumCommande() {
-        return numCommande;
-    }
-
-    public void setNumCommande(int numCommande) {
-        this.numCommande = numCommande;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getDateCommande() {
@@ -51,29 +70,29 @@ public class Commande {
         this.dateCommande = dateCommande;
     }
 
-    public Etat getEtatCommande() {
+    public String getEtatCommande() {
         return etatCommande;
     }
 
-    public void setEtatCommande(Etat etatCommande) {
+    public void setEtatCommande(String etatCommande) {
         this.etatCommande = etatCommande;
     }
 
-    public Reception getReceptionCommande() {
-        return receptionCommande;
+    public Reception getReception() {
+        return reception;
     }
 
-    public void setReceptionCommande(Reception receptionCommande) {
-        this.receptionCommande = receptionCommande;
+    public void setReception(Reception reception) {
+        this.reception = reception;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + this.numCommande;
+        hash = 67 * hash + Objects.hashCode(this.id);
         hash = 67 * hash + Objects.hashCode(this.dateCommande);
         hash = 67 * hash + Objects.hashCode(this.etatCommande);
-        hash = 67 * hash + Objects.hashCode(this.receptionCommande);
+        hash = 67 * hash + Objects.hashCode(this.reception);
         return hash;
     }
 
@@ -89,16 +108,16 @@ public class Commande {
             return false;
         }
         final Commande other = (Commande) obj;
-        if (this.numCommande != other.numCommande) {
+        if (!Objects.equals(this.etatCommande, other.etatCommande)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.dateCommande, other.dateCommande)) {
             return false;
         }
-        if (!Objects.equals(this.etatCommande, other.etatCommande)) {
-            return false;
-        }
-        if (!Objects.equals(this.receptionCommande, other.receptionCommande)) {
+        if (!Objects.equals(this.reception, other.reception)) {
             return false;
         }
         return true;
@@ -106,43 +125,11 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "numCommande=" + numCommande + ", dateCommande=" + dateCommande + ", etatCommande=" + etatCommande + ", receptionCommande=" + receptionCommande + '}';
+        return "Commande{" + "id=" + id + ", dateCommande=" + dateCommande + ", etatCommande=" + etatCommande + ", reception=" + reception + '}';
     }
     
-   
-    //Methode ajouter une commande
     
     
-    public void ajouterCommande(Date dateCommande, Etat etatCommande, Reception receptionCommande){
-     
-        Commande C = new Commande(dateCommande,etatCommande,receptionCommande);
-        
-        listeCommandeAAjouter.add(C);
-    }
-    
-    //Methode modifier Commande
-    
-    public void modifierCommande(Date dateCommande, Etat etatCommande, Reception receptionCommande){
-        
-        this.dateCommande= dateCommande;
-        this.etatCommande= etatCommande;
-        this.receptionCommande = receptionCommande;
-        
-        listeCommandeAModifier.add(this);
-        
-        
-    }
-    
-    //Methode supprimer commande
-    
-    public void supprimerCommande(Commande c){
-        
-        listeCommandeASupprimer.add(c);
-        
-        
-    }
 
-   
-    }
     
-    
+}

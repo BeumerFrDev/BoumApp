@@ -6,85 +6,97 @@
 package fr.bg.stock.modele;
 
 import fr.bg.main.modele.plandetri.Type;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author lyess
  */
-public class Article {
+@Entity
+public class Article implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     
-    private int idArticle;
+    
+    
+    // liste des attribus
+    
+    
+    private Long id;
     private String nomArticle;
+    @OneToOne
     private Type typeArticle;
-    private String libelleArticle;
-    private String referenceArticle;
-    private Fournisseur fournisseurArticle;
-    private Rayon rayonArticle;
     private int qteStock;
-    private String imageArticle;
+    @OneToOne
+    private Rayon rayonArticle;
+    @OneToOne
     private Entree entreeArticle;
+    @OneToOne
     private Sortie sortieArticle;
+    @OneToOne
+    private Fournisseur fournisseurArticle;
+    private String referenceArticle;
+    private String libelleArticle;
+    private String imageArticle;
     
     
-    public Collection<Article> listeArticle;
+    // liste des constructeur
     
-    public Collection<Article> listeArticleAAjouter;
-    public Collection<Article> listeArticleAModifier;
-    public Collection<Article> listeArticleASupprimer;
-    
+    public Article(){
+        
+    }
 
-    public Article( String nomArticle, Type typeArticle, String libelleArticle,
-            String referenceArticle, Fournisseur fournisseurArticle, Rayon rayonArticle, 
-            int qteStock, String imageArticle, Entree entreeArticle, Sortie sortieArticle) {
-       
+    public Article(Long id) {
+        this.id = id;
+    }
+
+    public Article(String nomArticle, Type typeArticle, Fournisseur fournisseurArticle) {
         this.nomArticle = nomArticle;
         this.typeArticle = typeArticle;
-        this.libelleArticle = libelleArticle;
-        this.referenceArticle = referenceArticle;
         this.fournisseurArticle = fournisseurArticle;
-        this.rayonArticle = rayonArticle;
+    }
+
+    public Article(String nomArticle, Type typeArticle, int qteStock, Rayon rayonArticle, Fournisseur fournisseurArticle, String referenceArticle, String imageArticle) {
+        this.nomArticle = nomArticle;
+        this.typeArticle = typeArticle;
         this.qteStock = qteStock;
+        this.rayonArticle = rayonArticle;
+        this.fournisseurArticle = fournisseurArticle;
+        this.referenceArticle = referenceArticle;
         this.imageArticle = imageArticle;
-        this.entreeArticle = entreeArticle;
-        this.sortieArticle = sortieArticle;
     }
+
     
     
-    public Article(String nomArticle, Type typeArticle, String libelleArticle,
-            String referenceArticle, Fournisseur fournisseurArticle, Rayon rayonArticle, 
-            int qteStock, Entree entreeArticle, Sortie sortieArticle) {
-       
+    public Article(Long id, String nomArticle, Type typeArticle, int qteStock, Rayon rayonArticle, Entree entreeArticle, Sortie sortieArticle, 
+            Fournisseur fournisseurArticle, String referenceArticle, String libelleArticle, String imageArticle) {
+        this.id = id;
         this.nomArticle = nomArticle;
         this.typeArticle = typeArticle;
-        this.libelleArticle = libelleArticle;
-        this.referenceArticle = referenceArticle;
-        this.fournisseurArticle = fournisseurArticle;
+        this.qteStock = qteStock;
         this.rayonArticle = rayonArticle;
-        this.qteStock = qteStock;
-      
         this.entreeArticle = entreeArticle;
         this.sortieArticle = sortieArticle;
-    }
-    
-    
-    
-   public Article(String nomArticle, Type typeArticle,  Fournisseur fournisseurArticle,int qteStock) {
-       
-        this.nomArticle = nomArticle;
-        this.typeArticle = typeArticle;
         this.fournisseurArticle = fournisseurArticle;
-        this.qteStock = qteStock;
-      
-    } 
-
-    public int getIdArticle() {
-        return idArticle;
+        this.referenceArticle = referenceArticle;
+        this.libelleArticle = libelleArticle;
+        this.imageArticle = imageArticle;
     }
 
-    public void setIdArticle(int idArticle) {
-        this.idArticle = idArticle;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNomArticle() {
@@ -103,38 +115,6 @@ public class Article {
         this.typeArticle = typeArticle;
     }
 
-    public String getLibelleArticle() {
-        return libelleArticle;
-    }
-
-    public void setLibelleArticle(String libelleArticle) {
-        this.libelleArticle = libelleArticle;
-    }
-
-    public String getReferenceArticle() {
-        return referenceArticle;
-    }
-
-    public void setReferenceArticle(String referenceArticle) {
-        this.referenceArticle = referenceArticle;
-    }
-
-    public Fournisseur getFournisseurArticle() {
-        return fournisseurArticle;
-    }
-
-    public void setFournisseurArticle(Fournisseur fournisseurArticle) {
-        this.fournisseurArticle = fournisseurArticle;
-    }
-
-    public Rayon getRayonArticle() {
-        return rayonArticle;
-    }
-
-    public void setRayonArticle(Rayon rayonArticle) {
-        this.rayonArticle = rayonArticle;
-    }
-
     public int getQteStock() {
         return qteStock;
     }
@@ -143,12 +123,12 @@ public class Article {
         this.qteStock = qteStock;
     }
 
-    public String getImageArticle() {
-        return imageArticle;
+    public Rayon getRayonArticle() {
+        return rayonArticle;
     }
 
-    public void setImageArticle(String imageArticle) {
-        this.imageArticle = imageArticle;
+    public void setRayonArticle(Rayon rayonArticle) {
+        this.rayonArticle = rayonArticle;
     }
 
     public Entree getEntreeArticle() {
@@ -167,20 +147,52 @@ public class Article {
         this.sortieArticle = sortieArticle;
     }
 
+    public Fournisseur getFournisseurArticle() {
+        return fournisseurArticle;
+    }
+
+    public void setFournisseurArticle(Fournisseur fournisseurArticle) {
+        this.fournisseurArticle = fournisseurArticle;
+    }
+
+    public String getReferenceArticle() {
+        return referenceArticle;
+    }
+
+    public void setReferenceArticle(String referenceArticle) {
+        this.referenceArticle = referenceArticle;
+    }
+
+    public String getLibelleArticle() {
+        return libelleArticle;
+    }
+
+    public void setLibelleArticle(String libelleArticle) {
+        this.libelleArticle = libelleArticle;
+    }
+
+    public String getImageArticle() {
+        return imageArticle;
+    }
+
+    public void setImageArticle(String imageArticle) {
+        this.imageArticle = imageArticle;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + this.idArticle;
-        hash = 97 * hash + Objects.hashCode(this.nomArticle);
-        hash = 97 * hash + Objects.hashCode(this.typeArticle);
-        hash = 97 * hash + Objects.hashCode(this.libelleArticle);
-        hash = 97 * hash + Objects.hashCode(this.referenceArticle);
-        hash = 97 * hash + Objects.hashCode(this.fournisseurArticle);
-        hash = 97 * hash + Objects.hashCode(this.rayonArticle);
-        hash = 97 * hash + this.qteStock;
-        hash = 97 * hash + Objects.hashCode(this.imageArticle);
-        hash = 97 * hash + Objects.hashCode(this.entreeArticle);
-        hash = 97 * hash + Objects.hashCode(this.sortieArticle);
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.nomArticle);
+        hash = 43 * hash + Objects.hashCode(this.typeArticle);
+        hash = 43 * hash + this.qteStock;
+        hash = 43 * hash + Objects.hashCode(this.rayonArticle);
+        hash = 43 * hash + Objects.hashCode(this.entreeArticle);
+        hash = 43 * hash + Objects.hashCode(this.sortieArticle);
+        hash = 43 * hash + Objects.hashCode(this.fournisseurArticle);
+        hash = 43 * hash + Objects.hashCode(this.referenceArticle);
+        hash = 43 * hash + Objects.hashCode(this.libelleArticle);
+        hash = 43 * hash + Objects.hashCode(this.imageArticle);
         return hash;
     }
 
@@ -196,28 +208,25 @@ public class Article {
             return false;
         }
         final Article other = (Article) obj;
-        if (this.idArticle != other.idArticle) {
-            return false;
-        }
         if (this.qteStock != other.qteStock) {
             return false;
         }
         if (!Objects.equals(this.nomArticle, other.nomArticle)) {
             return false;
         }
-        if (!Objects.equals(this.libelleArticle, other.libelleArticle)) {
+        if (!Objects.equals(this.referenceArticle, other.referenceArticle)) {
             return false;
         }
-        if (!Objects.equals(this.referenceArticle, other.referenceArticle)) {
+        if (!Objects.equals(this.libelleArticle, other.libelleArticle)) {
             return false;
         }
         if (!Objects.equals(this.imageArticle, other.imageArticle)) {
             return false;
         }
-        if (!Objects.equals(this.typeArticle, other.typeArticle)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.fournisseurArticle, other.fournisseurArticle)) {
+        if (!Objects.equals(this.typeArticle, other.typeArticle)) {
             return false;
         }
         if (!Objects.equals(this.rayonArticle, other.rayonArticle)) {
@@ -229,75 +238,19 @@ public class Article {
         if (!Objects.equals(this.sortieArticle, other.sortieArticle)) {
             return false;
         }
+        if (!Objects.equals(this.fournisseurArticle, other.fournisseurArticle)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Article{" + "idArticle=" + idArticle + ", nomArticle=" + nomArticle + ", typeArticle=" + typeArticle + ", libelleArticle=" + libelleArticle + ", referenceArticle=" + referenceArticle + ", fournisseurArticle=" + fournisseurArticle + ", rayonArticle=" + rayonArticle + ", qteStock=" + qteStock + ", imageArticle=" + imageArticle + ", entreeArticle=" + entreeArticle + ", sortieArticle=" + sortieArticle + '}';
+        return "Article{" + "id=" + id + ", nomArticle=" + nomArticle + ", typeArticle=" + typeArticle + ", qteStock=" + qteStock + 
+                ", rayonArticle=" + rayonArticle + ", entreeArticle=" + entreeArticle + ", sortieArticle=" + sortieArticle + ", fournisseurArticle="
+                + fournisseurArticle + ", referenceArticle=" + referenceArticle + ", libelleArticle=" + libelleArticle + ", imageArticle=" + imageArticle + '}';
     }
-    
-    
-    
-   // Methode Ajouter Article
-    
-    public void ajouterArticle(String nomArticle, Type typeArticle, String libelleArticle,
-            String referenceArticle, Fournisseur fournisseurArticle, Rayon rayonArticle, 
-            int qteStock, String imageArticle, Entree entreeArticle, Sortie sortieArticle){
-        
-        
-        Article A = new Article(nomArticle,typeArticle, libelleArticle,
-             referenceArticle, fournisseurArticle, rayonArticle, 
-             qteStock, imageArticle, entreeArticle, sortieArticle);
-        
-       
-        listeArticleAAjouter.add(A);
-  
-         }
-    
-    
-    
-    //Methode modifier article
-    
-    
-    public void modifierArticle(String nomArticle, Type typeArticle, String libelleArticle,
-            String referenceArticle, Fournisseur fournisseurArticle, Rayon rayonArticle, 
-            int qteStock, String imageArticle, Entree entreeArticle, Sortie sortieArticle){
-        
-        
-        this.nomArticle = nomArticle;
-        this.typeArticle = typeArticle;
-        this.libelleArticle = libelleArticle;
-        this.referenceArticle = referenceArticle;
-        this.fournisseurArticle = fournisseurArticle;
-        this.rayonArticle = rayonArticle;
-        this.qteStock = qteStock;
-        this.imageArticle = imageArticle;
-        this.entreeArticle = entreeArticle;
-        this.sortieArticle = sortieArticle;
-        
-        
-        listeArticleAModifier.add(this);
-        
-        }
-    
-    
-    //Methode supprimer article
-    
-    public void supprimerArticle(Article A){
-        
-        listeArticleASupprimer.add(A);
-        
-        
-    }
-    
-    
-    
-    
-    
+
+   
     
 }
-
-
-
-    
