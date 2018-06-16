@@ -7,6 +7,8 @@ package fr.bg.stock.modele;
 
 import fr.bg.main.modele.plandetri.Type;
 import java.io.Serializable;
+import java.util.Collection;
+
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,9 +50,21 @@ public class Article implements Serializable {
     private String imageArticle;
     
     
+    
+    public static Collection<Article> listeArticle;
+    
+    public static Collection<Article> articleAAjouter;
+    public static Collection<Article> articleAModifier;
+    public static Collection<Article> articleASupprimer;
+    
+    
+    
+    
     // liste des constructeur
     
     public Article(){
+ 
+         articleAAjouter.add(this);
         
     }
 

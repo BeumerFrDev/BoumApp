@@ -12,6 +12,14 @@
     <class>fr.bg.main.modele.plandetri.modeoperatoire.modeOperatoires</class>
     <class>fr.bg.main.modele.plandetri.modeoperatoire.Outils</class>
     <class>fr.bg.main.modele.plandetri.modeoperatoire.ConsignationSecurites</class>
+    <class>fr.bg.stock.modele.Article</class>
+    <class>fr.bg.stock.modele.Fournisseur</class>
+    <class>fr.bg.stock.modele.LigneCommande</class>
+    <class>fr.bg.stock.modele.Commande</class>
+    <class>fr.bg.stock.modele.Reception</class>
+    <class>fr.bg.stock.modele.Rayon</class>
+    <class>fr.bg.stock.modele.Entree</class>
+    <class>fr.bg.stock.modele.Sortie</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boumap?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

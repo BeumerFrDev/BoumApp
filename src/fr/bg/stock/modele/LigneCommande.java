@@ -6,6 +6,7 @@
 package fr.bg.stock.modele;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,13 @@ public class LigneCommande implements Serializable {
     private Commande commandeLigneCommande;
     @OneToOne
     private Fournisseur fournisseur;
+    
+    
+    public static Collection<LigneCommande> listeLigneCommande;
+    
+    public static Collection<LigneCommande> ligneCommandeAAjouter;
+    public static Collection<LigneCommande> ligneCommandeAModifier;
+    public static Collection<LigneCommande> ligneCommandeASupprimer;
     
     
     //liste des constructeurs
