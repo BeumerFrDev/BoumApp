@@ -3,52 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.stock.modele;
+package fr.bg.main.modele.stock;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author lyess
  */
 @Entity
-public class Reception implements Serializable {
+public class Rayon implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
+   
     //liste des attribus
     
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateReception;
-    private int qteLivree;
+    private String nomRayon;
     
-    // les constructeurs
     
-    public Reception(){
+    // liste des constructeur
+    
+    public Rayon(){
         
     }
 
-    public Reception(Long id) {
+    public Rayon(Long id) {
         this.id = id;
     }
 
-    public Reception(Long id, Date dateReception, int qteLivree) {
+    public Rayon(Long id, String nomRayon) {
         this.id = id;
-        this.dateReception = dateReception;
-        this.qteLivree = qteLivree;
+        this.nomRayon = nomRayon;
     }
 
-    // getters ans setters
+   // getters and setters
 
     public Long getId() {
         return id;
@@ -58,28 +54,19 @@ public class Reception implements Serializable {
         this.id = id;
     }
 
-    public Date getDateReception() {
-        return dateReception;
+    public String getNomRayon() {
+        return nomRayon;
     }
 
-    public void setDateReception(Date dateReception) {
-        this.dateReception = dateReception;
-    }
-
-    public int getQteLivree() {
-        return qteLivree;
-    }
-
-    public void setQteLivree(int qteLivree) {
-        this.qteLivree = qteLivree;
+    public void setNomRayon(String nomRayon) {
+        this.nomRayon = nomRayon;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.dateReception);
-        hash = 41 * hash + this.qteLivree;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.nomRayon);
         return hash;
     }
 
@@ -94,14 +81,11 @@ public class Reception implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Reception other = (Reception) obj;
-        if (this.qteLivree != other.qteLivree) {
+        final Rayon other = (Rayon) obj;
+        if (!Objects.equals(this.nomRayon, other.nomRayon)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateReception, other.dateReception)) {
             return false;
         }
         return true;
@@ -109,11 +93,8 @@ public class Reception implements Serializable {
 
     @Override
     public String toString() {
-        return "Reception{" + "id=" + id + ", dateReception=" + dateReception + ", qteLivree=" + qteLivree + '}';
+        return "Rayon{" + "id=" + id + ", nomRayon=" + nomRayon + '}';
     }
-    
-    
-    
     
     
     

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.stock.modele;
+package fr.bg.main.modele.stock;
 
-import fr.bg.main.modele.plandetri.Type;
+import fr.bg.main.modele.Parc.Type;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;

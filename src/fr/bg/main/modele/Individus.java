@@ -31,6 +31,7 @@ public class Individus<T> {
   //  private ArrayList<Assiduites> ListePresences;
   
     public static final ListPro<Individus> listeIndividusEtablissement= new ListPro<Individus>(); 
+   
     {
         this.listeIndividusEtablissement.add(this);
     }

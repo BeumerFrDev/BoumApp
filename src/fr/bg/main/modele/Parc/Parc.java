@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele.plandetri;
+package fr.bg.main.modele.Parc;
 
 import fr.bg.main.modele.Adresses;
 import fr.bg.main.modele.Individus;

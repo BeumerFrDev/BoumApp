@@ -2,16 +2,16 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="BoumAppPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>fr.bg.main.modele.plandetri.Parc</class>
-    <class>fr.bg.main.modele.plandetri.Blocks</class>
-    <class>fr.bg.main.modele.plandetri.Pieces</class>
-    <class>fr.bg.main.modele.plandetri.Caracteristique</class>
-    <class>fr.bg.main.modele.plandetri.Type</class>
-    <class>fr.bg.main.modele.plandetri.modeoperatoire.Reglages</class>
-    <class>fr.bg.main.modele.plandetri.modeoperatoire.MontageDemontages</class>
-    <class>fr.bg.main.modele.plandetri.modeoperatoire.modeOperatoires</class>
-    <class>fr.bg.main.modele.plandetri.modeoperatoire.Outils</class>
-    <class>fr.bg.main.modele.plandetri.modeoperatoire.ConsignationSecurites</class>
+    <class>fr.bg.main.modele.Parc.Pieces</class>
+    <class>fr.bg.main.modele.Parc.Caracteristique</class>
+    <class>fr.bg.main.modele.Parc.Type</class>
+    <class>fr.bg.main.modele.Parc.Parc</class>
+    <class>fr.bg.main.modele.Parc.Blocks</class>
+    <class>fr.bg.main.modele.Parc.modeoperatoire.MontageDemontages</class>
+    <class>fr.bg.main.modele.Parc.modeoperatoire.Outils</class>
+    <class>fr.bg.main.modele.Parc.modeoperatoire.modeOperatoires</class>
+    <class>fr.bg.main.modele.Parc.modeoperatoire.Reglages</class>
+    <class>fr.bg.main.modele.Parc.modeoperatoire.ConsignationSecurites</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boumap?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
