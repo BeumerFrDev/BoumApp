@@ -5,7 +5,7 @@
  */
 package fr.bg.stock.modele;
 
-import fr.bg.main.modele.plandetri.Type;
+import fr.bg.main.modele.Parc.Type;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;

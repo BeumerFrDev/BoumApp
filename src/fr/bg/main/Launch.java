@@ -33,7 +33,7 @@ import fr.bg.main.modele.Adresses;
 import fr.bg.main.modele.Affectations;
 import fr.bg.main.modele.Directeur;
 import fr.bg.main.modele.Individus;
-import fr.bg.main.modele.plandetri.Parc;
+import fr.bg.main.modele.Parc.Parc;
 
 import org.hibernate.SessionFactory;
 
