@@ -6,6 +6,7 @@
 package fr.bg.main.modele.stock;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -34,6 +35,14 @@ public class Commande implements Serializable {
     private String etatCommande;
     @OneToOne
     private Reception reception;
+    
+    public static Collection<Commande> listeCommande;
+    
+    public static Collection<Commande> commandeAAjouter;
+    public static Collection<Commande> commandeAModifier;
+    public static Collection<Commande> commandeASupprimer;
+    
+    
     
     // liste des constructeurs
     

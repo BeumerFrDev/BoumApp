@@ -6,6 +6,7 @@
 package fr.bg.main.modele.stock;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -36,6 +37,14 @@ public class Sortie implements Serializable {
     private int qteSortie;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateSortie;
+    
+    
+    public static Collection<Sortie> listeSortie;
+    
+    public static Collection<Sortie> sortieAAjouter;
+    public static Collection<Sortie> sortieAModifier;
+    public static Collection<Sortie> sortieASupprimer;
+           
     
     // liste des constructeurs
     

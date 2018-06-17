@@ -2,6 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="BoumAppPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
+<<<<<<< HEAD
     <class>fr.bg.main.modele.Parc.Pieces</class>
     <class>fr.bg.main.modele.Parc.Caracteristique</class>
     <class>fr.bg.main.modele.Parc.Type</class>
@@ -12,6 +13,60 @@
     <class>fr.bg.main.modele.Parc.modeoperatoire.modeOperatoires</class>
     <class>fr.bg.main.modele.Parc.modeoperatoire.Reglages</class>
     <class>fr.bg.main.modele.Parc.modeoperatoire.ConsignationSecurites</class>
+=======
+    <class>fr.bg.main.modele.plandetri.Parc</class>
+    <class>fr.bg.main.modele.plandetri.Blocks</class>
+    <class>fr.bg.main.modele.plandetri.Pieces</class>
+    <class>fr.bg.main.modele.plandetri.Caracteristique</class>
+    <class>fr.bg.main.modele.plandetri.Type</class>
+    <class>fr.bg.main.modele.plandetri.modeoperatoire.Reglages</class>
+    <class>fr.bg.main.modele.plandetri.modeoperatoire.MontageDemontages</class>
+    <class>fr.bg.main.modele.plandetri.modeoperatoire.modeOperatoires</class>
+    <class>fr.bg.main.modele.plandetri.modeoperatoire.Outils</class>
+    <class>fr.bg.main.modele.plandetri.modeoperatoire.ConsignationSecurites</class>
+    <class>fr.bg.stock.modele.Article</class>
+    <class>fr.bg.stock.modele.Fournisseur</class>
+    <class>fr.bg.stock.modele.LigneCommande</class>
+    <class>fr.bg.stock.modele.Commande</class>
+    <class>fr.bg.stock.modele.Reception</class>
+    <class>fr.bg.stock.modele.Rayon</class>
+    <class>fr.bg.stock.modele.Entree</class>
+    <class>fr.bg.stock.modele.Sortie</class>
+    <class>fr.bg.main.personnel.modele.Personne</class>
+    <class>fr.bg.main.personnel.modele.Contrat</class>
+    <class>fr.bg.main.personnel.modele.CDI</class>
+    <class>fr.bg.main.personnel.modele.CDD</class>
+    <class>fr.bg.main.personnel.modele.Stage</class>
+    <class>fr.bg.main.personnel.modele.CTT</class>
+    <class>fr.bg.main.personnel.modele.Aventage</class>
+    <class>fr.bg.main.personnel.modele.Absence</class>
+    <class>fr.bg.main.personnel.modele.AccidentTravail</class>
+    <class>fr.bg.main.personnel.modele.ArretMaladie</class>
+    <class>fr.bg.main.personnel.modele.Conge</class>
+    <class>fr.bg.main.personnel.modele.Retraite</class>
+    <class>fr.bg.main.personnel.modele.Compte</class>
+    <class>fr.bg.main.personnel.modele.Poste</class>
+    <class>fr.bg.main.personnel.modele.Service</class>
+    <class>fr.bg.main.personnel.modele.Planning</class>
+    <class>fr.bg.main.personnel.modele.Tache</class>
+    <class>fr.bg.main.personnel.modele.Disponibilite</class>
+    <class>fr.bg.main.personnel.modele.Acces</class>
+    <class>fr.bg.main.intervention.modele.Intervention</class>
+    <class>fr.bg.main.intervention.modele.Amelioration</class>
+    <class>fr.bg.main.intervention.modele.Securite</class>
+    <class>fr.bg.main.intervention.modele.Renovation</class>
+    <class>fr.bg.main.intervention.modele.Modernisation</class>
+    <class>fr.bg.main.intervention.modele.MaintenaceCorrective</class>
+    <class>fr.bg.main.intervention.modele.MaintenancePreventive</class>
+    <class>fr.bg.main.intervention.modele.Depannage</class>
+    <class>fr.bg.main.intervention.modele.MaintenanceCorrective</class>
+    <class>fr.bg.main.intervention.modele.Reparation</class>
+    <class>fr.bg.main.intervention.modele.Systematique</class>
+    <class>fr.bg.main.intervention.modele.Conditionnelle</class>
+    <class>fr.bg.main.intervention.controleur.InterventionController</class>
+    <class>fr.bg.main.personnel.controlleur.PersonnelController</class>
+    <class>fr.bg.stock.main.Stock</class>
+>>>>>>> d4ca8ef381f7849c1f8b50f4244684d868d6e973
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boumap?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

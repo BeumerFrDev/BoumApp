@@ -6,6 +6,7 @@
 package fr.bg.main.modele.stock;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,13 +40,17 @@ public class Fournisseur implements Serializable {
     private String imageFournisseur;
 
    
+    public static Collection<Fournisseur> listeFournisseur;
     
+    public static Collection<Fournisseur> fournisseurAAjouter;
+    public static Collection<Fournisseur> fournisseurAModifier;
+    public static Collection<Fournisseur> fournisseurASupprimer;
    
 
    
     // liste des constructeurs
     
-    public Fournisseur() {
+    public Fournisseur(){
     }
     
     public Fournisseur(Long id) {

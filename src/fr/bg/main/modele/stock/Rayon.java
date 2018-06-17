@@ -6,6 +6,7 @@
 package fr.bg.main.modele.stock;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,12 @@ public class Rayon implements Serializable {
     
     private Long id;
     private String nomRayon;
+    
+    public static Collection<Rayon> listeRayon;
+    
+    public static Collection<Rayon> rayonAAjouter;
+    public static Collection<Rayon> rayonAModifier;
+    public static Collection<Rayon> rayonASupprimer;
     
     
     // liste des constructeur
