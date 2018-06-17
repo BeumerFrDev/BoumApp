@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author lyess
  */
 @Entity
-public class CTT implements Serializable {
+public class CTT extends Contrat implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

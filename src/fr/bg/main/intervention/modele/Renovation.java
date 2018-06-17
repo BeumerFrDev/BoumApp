@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.personnel.modele;
+package fr.bg.main.intervention.modele;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author lyess
  */
 @Entity
-public class Retraite extends Absence implements Serializable {
+public class Renovation extends Intervention implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,10 +41,10 @@ public class Retraite extends Absence implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Retraite)) {
+        if (!(object instanceof Renovation)) {
             return false;
         }
-        Retraite other = (Retraite) object;
+        Renovation other = (Renovation) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,7 +53,7 @@ public class Retraite extends Absence implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.personnel.modele.Retraite[ id=" + id + " ]";
+        return "fr.bg.main.intervention.modele.Renovation[ id=" + id + " ]";
     }
     
 }
