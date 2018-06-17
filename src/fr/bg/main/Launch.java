@@ -67,11 +67,10 @@ public class Launch extends Application {
         stage.show();
 
         Individus indii = new Directeur("BENAISSA", "Ouadie", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
-<<<<<<< HEAD
+
         Affectations afff = new Affectations(3, "CDI", "lyes", "lyes", new Date(), new Date(), "Prof", "c://", indii);
-=======
-        Affectations afff = new Affectations(3, "CDI", "", "", new Date(), new Date(), "Prof", "c://", indii);
->>>>>>> 8fc4ba4ff8f53a9aca37f7491a38e0f04c9d130c
+
+       
 
         //gotoLogin();
     }

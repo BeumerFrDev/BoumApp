@@ -47,6 +47,13 @@
     <class>fr.bg.main.intervention.modele.MaintenaceCorrective</class>
     <class>fr.bg.main.intervention.modele.MaintenancePreventive</class>
     <class>fr.bg.main.intervention.modele.Depannage</class>
+    <class>fr.bg.main.intervention.modele.MaintenanceCorrective</class>
+    <class>fr.bg.main.intervention.modele.Reparation</class>
+    <class>fr.bg.main.intervention.modele.Systematique</class>
+    <class>fr.bg.main.intervention.modele.Conditionnelle</class>
+    <class>fr.bg.main.intervention.controleur.InterventionController</class>
+    <class>fr.bg.main.personnel.controlleur.PersonnelController</class>
+    <class>fr.bg.stock.main.Stock</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boumap?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
