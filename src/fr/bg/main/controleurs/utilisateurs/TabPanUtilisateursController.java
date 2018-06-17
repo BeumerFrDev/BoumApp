@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package fr.bg.main.controleurs;
+package fr.bg.main.controleurs.utilisateurs;
 
+import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
+import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +20,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -27,6 +29,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -42,10 +45,16 @@ import javafx.util.Duration;
  *
  * @author Ouadie
  */
-public class AdminViewController implements Initializable {
+public class TabPanUtilisateursController implements Initializable {
 
-    private Individus loggedUser;
+   private Individus loggedUser;
+   @FXML
+    private VBox content_area;
+    @FXML
+    private HBox menubar;
 
+    
+    boolean flag = true;
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -58,7 +67,7 @@ public class AdminViewController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-
+    private VBox gestionVBox ;
     /**
      * Initializes the controller class.
      */
@@ -67,7 +76,10 @@ public class AdminViewController implements Initializable {
         // TODO
         System.out.println("fff");
     }
-
+ @FXML  private void close_app() {
+        exit();
+        
+    }
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();
@@ -128,7 +140,51 @@ public class AdminViewController implements Initializable {
 
         animateMessage();
     }
+    @FXML
+    public void gotoDashbord() {
+        application.gotoDashbord();
+    }
 
+    @FXML
+    public void gotoDocuments() {
+        application.gotoDocuments();
+    }
+
+    @FXML
+    public void gotoGestionIntervention() {
+        application.gotoGestionIntervention();
+    }
+
+    @FXML
+    public void gotoGestionParc() {
+        application.gotoGestionParc();
+    }
+
+    @FXML
+    public void gotoGestionRessources() {
+        application.gotoGestionRessources();
+    }
+
+    @FXML
+    public void gotoGestionSearch() {
+        application.gotoGestionSearch();
+    }
+
+    @FXML
+    public void gotoGestionStock() {
+        application.gotoGestionStock();
+    }
+
+
+    
+  @FXML
+    private void handleMenuFullScreen(ActionEvent  event) {
+        Stage stage = application.stage;
+        System.out.println("Full Screen");
+       stage.setFullScreen(!stage.isFullScreen());
+    }
+    
+ 
     private void affichePhotoLoggedUser() throws FileNotFoundException {
         
       

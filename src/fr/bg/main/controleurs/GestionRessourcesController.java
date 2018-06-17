@@ -1,6 +1,11 @@
 package fr.bg.main.controleurs;
 
 import fr.bg.main.Launch;
+import fr.bg.main.controleurs.Interventions.TabPanInterventionsController;
+import fr.bg.main.controleurs.Parc.TabPanParcController;
+import fr.bg.main.controleurs.Ressources.TabPanRessourcesController;
+import fr.bg.main.controleurs.Stocks.TabPanStocksController;
+import fr.bg.main.controleurs.utilisateurs.TabPanUtilisateursController;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
@@ -22,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -37,6 +43,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -45,14 +52,15 @@ import javafx.util.Duration;
  *
  * @author Ouadie
  */
-public class DashBoardController implements Initializable {
+public class GestionRessourcesController implements Initializable {
 
-    private Individus loggedUser;
-    @FXML
+   private Individus loggedUser;
+   @FXML
     private VBox content_area;
     @FXML
     private HBox menubar;
 
+    
     boolean flag = true;
     //Notre variable d'application
     private Launch application;
@@ -66,9 +74,7 @@ public class DashBoardController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-    private VBox gestionVBox;
- @FXML
-    private AnchorPane p2;
+    private VBox gestionVBox ;
     /**
      * Initializes the controller class.
      */
@@ -76,53 +82,21 @@ public class DashBoardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println("fff");
+    }
+ @FXML  private void close_app() {
+        exit();
         
     }
-
-    @FXML
-    private void close_app() {
-        exit();
-
-    }
-
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();
-       gotoDashBoardInit();
-      
+        loggedUser = application.getLoggedUser();
+        System.out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
+        menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
+        affichePhotoLoggedUser();
         makeStageDrageable();
     }
-public Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = Launch.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(Launch.class.getResource(fxml));
-       
-        AnchorPane page;
-       
-        try {
-            page = (AnchorPane) loader.load(in);
-        } finally {
-            System.out.println("hhhhhhhhhhhhhhhhhhhh"+fxml+"**"+Launch.class.getResource(fxml));
-             in.close();
-            
-        } 
-        
-        
-       if(!p2.getChildren().isEmpty()){
-           
-            p2.getChildren().clear();
-        }
-         p2.getChildren().removeAll();
-        p2.getChildren().addAll(page.getChildren());
-       
-       
-       
-       
-        
-      //  application.init();
-        return (Initializable) loader.getController();
-    }
+
     /*
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -152,45 +126,22 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
     }
      */
     @FXML
-    public void processLogout(ActionEvent event) {
-        if (application == null) {
-            // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
-            return;
-        }
-
-        application.userLogout();
-    }
-
-    @FXML
     public void gotoDashbord() {
         application.gotoDashbord();
     }
 
     @FXML
     public void gotoDocuments() {
-        try {
-            DocumentsController documents = (DocumentsController) replaceSceneContent("vues/Documents.fxml");
-            documents.setApp(application);
-        } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-      @FXML
-    public void gotoDashBoardInit() {
-        try {
-            GestionDashBoardInitController dashInit = (GestionDashBoardInitController) replaceSceneContent("vues/DashBoardInit.fxml");
-            dashInit.setApp(application);
-        } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        application.gotoDocuments();
     }
 
     @FXML
     public void gotoGestionIntervention() {
-            try {
-            GestionInterventionController controleur = (GestionInterventionController) replaceSceneContent("vues/GestionIntervention.fxml");
-            controleur.setApp(application);
+                            try {
+            TabPanInterventionsController adminView;
+            adminView = (TabPanInterventionsController) replaceSceneContent("vues/Parc/TabPanInterventions.fxml", 1);
+
+            adminView.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -198,9 +149,11 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
 
     @FXML
     public void gotoGestionParc() {
-             try {
-            GestionParcController controleur = (GestionParcController) replaceSceneContent("vues/gestionParc.fxml");
-            controleur.setApp(application);
+                       try {
+            TabPanParcController adminView;
+            adminView = (TabPanParcController) replaceSceneContent("vues/Parc/TabPanParc.fxml", 1);
+
+            adminView.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -209,8 +162,10 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
     @FXML
     public void gotoGestionRessources() {
                  try {
-            GestionRessourcesController controleur = (GestionRessourcesController) replaceSceneContent("vues/GestionRessources.fxml");
-            controleur.setApp(application);
+            TabPanRessourcesController adminView;
+            adminView = (TabPanRessourcesController) replaceSceneContent("vues/Ressources/TabPanRessources.fxml", 1);
+
+            adminView.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -218,32 +173,78 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
 
     @FXML
     public void gotoGestionSearch() {
-               try {
-            GestionSearchController controleur = (GestionSearchController) replaceSceneContent("vues/Search.fxml");
-            controleur.setApp(application);
-        } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        application.gotoGestionSearch();
     }
 
     @FXML
     public void gotoGestionStock() {
-                 try {
-            GestionStockController controleur = (GestionStockController) replaceSceneContent("vues/GestionStock.fxml");
-            controleur.setApp(application);
+            try {
+            TabPanStocksController adminView;
+            adminView = (TabPanStocksController) replaceSceneContent("vues/Stocks/TabPanStock.fxml", 1);
+
+            adminView.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
+      @FXML
     public void gotoGestionUtilisateur() {
-                try {
-            GestionUtilisateurController controleur = (GestionUtilisateurController) replaceSceneContent("vues/GestionUtilisateur.fxml");
-            controleur.setApp(application);
+         try {
+            TabPanUtilisateursController adminView;
+            adminView = (TabPanUtilisateursController) replaceSceneContent("vues/Utilisateurs/TabPanUtilisateurs.fxml", 1);
+
+            adminView.setApp(application);
         } catch (Exception ex) {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public Initializable replaceSceneContent(String fxml, int a) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Launch.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Launch.class.getResource(fxml));
+
+        AnchorPane page;
+        try {
+            page = (AnchorPane) loader.load(in);
+        } finally {
+            System.out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
+            in.close();
+
+        }
+        Stage stage = application.stage;
+        if (a == 1) {
+            Scene scene = new Scene(page, 1300, 700);
+            Stage stage1;
+            stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.initStyle(StageStyle.DECORATED);
+            stage.hide();application.stage = stage1;
+            application.stage.show();
+            
+        } else {
+            Scene scene = new Scene(page, 1024, 768);
+            Stage stage1;
+            stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.initStyle(StageStyle.UNDECORATED);
+           stage.hide();application.stage = stage1;
+            application.stage.show();
+
+        }
+        return (Initializable) loader.getController();
+    }
+    
+    @FXML
+    public void processLogout(ActionEvent event) {
+        if (application == null) {
+            // We are running in isolated FXML, possibly in Scene Builder.
+            // NO-OP.
+            return;
+        }
+
+        application.userLogout();
     }
 
     public void saveAdminView(ActionEvent event) {
@@ -257,15 +258,37 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
 
         animateMessage();
     }
-
-    @FXML
-    private void handleMenuFullScreen(ActionEvent event) {
+  @FXML
+    private void handleMenuFullScreen(ActionEvent  event) {
         Stage stage = application.stage;
         System.out.println("Full Screen");
-        stage.setFullScreen(!stage.isFullScreen());
+       stage.setFullScreen(!stage.isFullScreen());
     }
 
-  
+    private void affichePhotoLoggedUser() throws FileNotFoundException {
+        
+      
+      //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
+       // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
+          //image = new Image("../assets/images/admin.png".toString(), true);
+        
+//    }
+//imageView= new ImageView(getClass().getResource("url:https://avatars0.githubusercontent.com/u/15785708?s=460&v=4").toExternalForm());
+
+        imageView.setFitWidth(45);
+        imageView.setFitHeight(45);
+        Circle circle = new Circle();
+
+        circle.setRadius(20.0f);
+        circle.setCenterX(40.0f / 2);
+        circle.setCenterY(40.0f / 2);
+        imageView.setClip(circle);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
+    }
+
     private void animateMessage() {
         FadeTransition ft = new FadeTransition(Duration.millis(1000), success);
         ft.setFromValue(0.0);

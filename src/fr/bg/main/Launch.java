@@ -18,11 +18,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import fr.bg.main.controleurs.AdminViewController;
+
 import fr.bg.main.controleurs.DashBoardController;
 import fr.bg.main.controleurs.GestionInterventionController;
 import fr.bg.main.controleurs.GestionParcController;
-import fr.bg.main.controleurs.GestionPlannigController;
+import fr.bg.main.controleurs.GestionRessourcesController;
+
 import fr.bg.main.controleurs.GestionSearchController;
 import fr.bg.main.controleurs.GestionStockController;
 import fr.bg.main.controleurs.GestionUtilisateurController;
@@ -66,7 +67,11 @@ public class Launch extends Application {
         stage.show();
 
         Individus indii = new Directeur("BENAISSA", "Ouadie", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
+<<<<<<< HEAD
         Affectations afff = new Affectations(3, "CDI", "lyes", "lyes", new Date(), new Date(), "Prof", "c://", indii);
+=======
+        Affectations afff = new Affectations(3, "CDI", "", "", new Date(), new Date(), "Prof", "c://", indii);
+>>>>>>> 8fc4ba4ff8f53a9aca37f7491a38e0f04c9d130c
 
         //gotoLogin();
     }
@@ -103,16 +108,7 @@ public class Launch extends Application {
         gotoLogin();
     }
 
-    public void gotoAdminView() {
-        try {
-            AdminViewController adminView;
-            adminView = (AdminViewController) replaceSceneContent("vues/AdminView.fxml", 1);
-
-            adminView.setApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
   public void gotoDashbord() {
         try {
             DashBoardController adminView;
@@ -133,10 +129,10 @@ public class Launch extends Application {
             Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void gotoGestionPlanning() {
+    public void gotoGestionRessources() {
         try {
-            GestionPlannigController adminView;
-            adminView = (GestionPlannigController) replaceSceneContent("vues/GestionPlanning.fxml", 0);
+            GestionRessourcesController adminView;
+            adminView = (GestionRessourcesController) replaceSceneContent("vues/GestionPlanning.fxml", 0);
 
             adminView.setApp(this);
         } catch (Exception ex) {

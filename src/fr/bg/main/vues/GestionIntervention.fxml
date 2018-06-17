@@ -123,7 +123,7 @@
                                                 <Insets left="10.0" />
                                              </padding>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="186.0" styleClass="btns">
+                                          <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotoGestionIntervention" prefHeight="40.0" prefWidth="186.0" styleClass="btns">
                                              <children>
                                                 <Label text="Gestion des interventions" textFill="#7c8184">
                                                    <font>

@@ -1,5 +1,7 @@
-package fr.bg.main.controleurs;
+package fr.bg.main.controleurs.Stocks;
 
+import fr.bg.main.controleurs.utilisateurs.*;
+import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
@@ -8,6 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -42,7 +46,7 @@ import javafx.util.Duration;
  *
  * @author Ouadie
  */
-public class GestionPlannigController implements Initializable {
+public class TabPanStocksController implements Initializable {
 
    private Individus loggedUser;
    @FXML
@@ -126,6 +130,17 @@ public class GestionPlannigController implements Initializable {
         application.userLogout();
     }
 
+    public void saveAdminView(ActionEvent event) {
+        if (application == null) {
+            // We are running in isolated FXML, possibly in Scene Builder.
+            // NO-OP.
+            animateMessage();
+            return;
+        }
+        Individus loggedUser = application.getLoggedUser();
+
+        animateMessage();
+    }
     @FXML
     public void gotoDashbord() {
         application.gotoDashbord();
@@ -147,8 +162,8 @@ public class GestionPlannigController implements Initializable {
     }
 
     @FXML
-    public void gotoGestionPlanning() {
-        application.gotoGestionPlanning();
+    public void gotoGestionRessources() {
+        application.gotoGestionRessources();
     }
 
     @FXML
@@ -161,29 +176,16 @@ public class GestionPlannigController implements Initializable {
         application.gotoGestionStock();
     }
 
-    @FXML
-    public void gotoGestionUtilisateur() {
-        application.gotoGestionUtilisateur();
-    }
-    
-    public void saveAdminView(ActionEvent event) {
-        if (application == null) {
-            // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
-            animateMessage();
-            return;
-        }
-        Individus loggedUser = application.getLoggedUser();
 
-        animateMessage();
-    }
+    
   @FXML
     private void handleMenuFullScreen(ActionEvent  event) {
         Stage stage = application.stage;
         System.out.println("Full Screen");
        stage.setFullScreen(!stage.isFullScreen());
     }
-
+    
+ 
     private void affichePhotoLoggedUser() throws FileNotFoundException {
         
       
