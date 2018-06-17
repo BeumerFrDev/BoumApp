@@ -6,6 +6,7 @@
 package fr.bg.stock.modele;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -31,6 +32,12 @@ public class Reception implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateReception;
     private int qteLivree;
+    
+    public static Collection<Reception> listeReception;
+    
+    public static Collection<Reception> receptionAAjouter;
+    public static Collection<Reception> receptionAModifier;
+    public static Collection<Reception> receptionASupprimer;
     
     // les constructeurs
     

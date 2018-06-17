@@ -6,6 +6,7 @@
 package fr.bg.stock.modele;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -37,6 +38,12 @@ public class Entree implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEntree;
     private Double prixEntree;
+    
+    public static Collection<Entree> listeEntree;
+    
+    public static Collection<Entree> EntreeAAjouter;
+    public static Collection<Entree> EntreeAModifier;
+    public static Collection<Entree> EntreeASupprimer;
     
     
     
