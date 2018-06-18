@@ -55,7 +55,7 @@ public class Affectations {
         this.individus = individus;
         
         //this.listeAffectations=listeAffectations;
-        this.listeAffectations.add(this);    }
+        listeAffectations.add(this);    }
     
     
      public static boolean validate(String user, String password){

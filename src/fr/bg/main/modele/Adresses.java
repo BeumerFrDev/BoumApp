@@ -1,8 +1,11 @@
 
 package fr.bg.main.modele;
 
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Calendar;
+import static java.util.Calendar.YEAR;
+import static java.util.Calendar.getInstance;
 import java.util.Iterator;
 
 
@@ -21,7 +24,7 @@ public class Adresses {
   public static final ListPro<Adresses> listeAdresse = new ListPro<Adresses>();
    
     {
-        this.listeAdresse.add(this);
+        listeAdresse.add(this);
     }
   
         //pour definir a chaque fois les ID
@@ -30,7 +33,7 @@ public class Adresses {
         
         //année actuelle 
        
-        int annee =Calendar.getInstance().get(Calendar.YEAR);
+        int annee =getInstance().get(YEAR);
         
         Adresses adressePlusGrandId=null;
         boolean vide =true;
@@ -41,8 +44,8 @@ public class Adresses {
             if(ads.getIdAdresse()>adressePlusGrandId.getIdAdresse()) adressePlusGrandId =ads;
         }
             
-            if(vide) {System.out.println((annee *10)+1);return ((annee *100000)+1);}
-            else {System.out.println(adressePlusGrandId.getIdAdresse()+1);return adressePlusGrandId.getIdAdresse()+1;}
+            if(vide) {out.println((annee *10)+1);return ((annee *100000)+1);}
+            else {out.println(adressePlusGrandId.getIdAdresse()+1);return adressePlusGrandId.getIdAdresse()+1;}
         
         
     }
@@ -76,7 +79,7 @@ public class Adresses {
     }
       public Adresses(  int batAdresse, int noAdresse, String rueAdresse, int cpAdresse, String villeAdresse, String paysAdresse) {
         this.idAdresse = idAdresse;
-         this.idAdresse = Adresses.definirId();
+         this.idAdresse = definirId();
         this.batAdresse = batAdresse;
         this.noAdresse = noAdresse;
         this.rueAdresse = rueAdresse;

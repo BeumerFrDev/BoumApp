@@ -1,8 +1,11 @@
 
 package fr.bg.main.modele;
 
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Calendar;
+import static java.util.Calendar.YEAR;
+import static java.util.Calendar.getInstance;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -32,7 +35,7 @@ public class Individus<T> {
   
     public static final ListPro<Individus> listeIndividusEtablissement= new ListPro<Individus>(); 
     {
-        this.listeIndividusEtablissement.add(this);
+        listeIndividusEtablissement.add(this);
     }
     
    
@@ -134,7 +137,7 @@ public class Individus<T> {
         
         //année actuelle 
        
-        int annee =Calendar.getInstance().get(Calendar.YEAR);
+        int annee =getInstance().get(YEAR);
         
         Individus indivPlusGrandId=null;
         boolean vide =true;
@@ -145,8 +148,8 @@ public class Individus<T> {
             if(indiv.getIdIndividu()>indivPlusGrandId.getIdIndividu()) indivPlusGrandId =indiv;
         }
             
-            if(vide) {System.out.println((annee *10)+1);return ((annee *100000)+1);}
-            else {System.out.println(indivPlusGrandId.getIdIndividu()+1);return indivPlusGrandId.getIdIndividu()+1;}
+            if(vide) {out.println((annee *10)+1);return ((annee *100000)+1);}
+            else {out.println(indivPlusGrandId.getIdIndividu()+1);return indivPlusGrandId.getIdIndividu()+1;}
         
         
     }

@@ -5,6 +5,7 @@
  */
 package fr.bg.main.modele;
 
+import static java.lang.System.out;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -107,7 +108,7 @@ public ListPro(){
             }
         }catch(Exception exception){
             
-            System.out.println(exception);
+            out.println(exception);
         }
         return false;
     }
@@ -126,7 +127,7 @@ public ListPro(){
             }
         }catch(Exception exception){
             
-            System.out.println(exception);
+            out.println(exception);
         }
         return false;    
     }
@@ -145,7 +146,7 @@ public ListPro(){
                this.add(entite);
            }return true;
          }catch(Exception ex){
-             System.out.println(ex);
+             out.println(ex);
              return false;
          }
            
@@ -160,7 +161,7 @@ public ListPro(){
                this.remove(entite);
            }return true;
          }catch(Exception ex){
-             System.out.println(ex);
+             out.println(ex);
              return false;
          }
     }

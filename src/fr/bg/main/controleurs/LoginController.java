@@ -71,20 +71,14 @@ public class LoginController implements Initializable {
         }
     }
   public void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        parent.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                application.stage.setX(event.getScreenX() - xOffset);
-                application.stage.setY(event.getScreenY() - yOffset);
-                application.stage.setOpacity(0.7f);
-            }
+        parent.setOnMouseDragged((MouseEvent event) -> {
+            application.stage.setX(event.getScreenX() - xOffset);
+            application.stage.setY(event.getScreenY() - yOffset);
+            application.stage.setOpacity(0.7f);
         });
         parent.setOnDragDone((e) -> {
             application.stage.setOpacity(1.0f);

@@ -7,10 +7,13 @@ import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import static java.lang.System.out;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -40,7 +43,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import static javafx.stage.StageStyle.DECORATED;
+import static javafx.stage.StageStyle.UNDECORATED;
 import javafx.util.Duration;
+import static javafx.util.Duration.millis;
 
 /**
  * FXML Controller class
@@ -77,7 +83,7 @@ public class GestionUtilisateurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("fff");
+        out.println("fff");
     }
  @FXML  private void close_app() {
         exit();
@@ -87,7 +93,7 @@ public class GestionUtilisateurController implements Initializable {
         this.application = application;
         makeStageDrageable();
         loggedUser = application.getLoggedUser();
-        System.out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
+        out.println(loggedUser.getNomIndividu() + "test5logguedUserAdminViewsetApp");
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
         makeStageDrageable();
@@ -164,7 +170,7 @@ public class GestionUtilisateurController implements Initializable {
 
             adminView.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
     
@@ -178,7 +184,7 @@ public class GestionUtilisateurController implements Initializable {
         try {
             page = (AnchorPane) loader.load(in);
         } finally {
-            System.out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
+            out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
             in.close();
 
         }
@@ -188,7 +194,7 @@ public class GestionUtilisateurController implements Initializable {
             Stage stage1;
             stage1 = new Stage();
             stage1.setScene(scene);
-            stage1.initStyle(StageStyle.DECORATED);
+            stage1.initStyle(DECORATED);
             stage.hide();application.stage = stage1;
             application.stage.show();
             
@@ -197,7 +203,7 @@ public class GestionUtilisateurController implements Initializable {
             Stage stage1;
             stage1 = new Stage();
             stage1.setScene(scene);
-            stage1.initStyle(StageStyle.UNDECORATED);
+            stage1.initStyle(UNDECORATED);
            stage.hide();application.stage = stage1;
             application.stage.show();
 
@@ -230,7 +236,7 @@ public class GestionUtilisateurController implements Initializable {
   @FXML
     private void handleMenuFullScreen(ActionEvent  event) {
         Stage stage = application.stage;
-        System.out.println("Full Screen");
+        out.println("Full Screen");
        stage.setFullScreen(!stage.isFullScreen());
     }
 
@@ -259,27 +265,21 @@ public class GestionUtilisateurController implements Initializable {
     }
 
     private void animateMessage() {
-        FadeTransition ft = new FadeTransition(Duration.millis(1000), success);
+        FadeTransition ft = new FadeTransition(millis(1000), success);
         ft.setFromValue(0.0);
         ft.setToValue(1);
         ft.play();
     }
 
     public void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        parent.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                application.stage.setX(event.getScreenX() - xOffset);
-                application.stage.setY(event.getScreenY() - yOffset);
-                application.stage.setOpacity(0.7f);
-            }
+        parent.setOnMouseDragged((MouseEvent event) -> {
+            application.stage.setX(event.getScreenX() - xOffset);
+            application.stage.setY(event.getScreenY() - yOffset);
+            application.stage.setOpacity(0.7f);
         });
         parent.setOnDragDone((e) -> {
             application.stage.setOpacity(1.0f);

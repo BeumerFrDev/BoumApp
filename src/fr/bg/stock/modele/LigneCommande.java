@@ -6,11 +6,13 @@
 package fr.bg.stock.modele;
 
 import java.io.Serializable;
+import static java.lang.Double.doubleToLongBits;
 import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -23,7 +25,7 @@ public class LigneCommande implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     
     //liste des attribus
     
@@ -132,8 +134,8 @@ public class LigneCommande implements Serializable {
         hash = 19 * hash + Objects.hashCode(this.id);
         hash = 19 * hash + Objects.hashCode(this.articleLigneCommande);
         hash = 19 * hash + this.qteCommande;
-        hash = 19 * hash + (int) (Double.doubleToLongBits(this.prixU) ^ (Double.doubleToLongBits(this.prixU) >>> 32));
-        hash = 19 * hash + (int) (Double.doubleToLongBits(this.montant) ^ (Double.doubleToLongBits(this.montant) >>> 32));
+        hash = 19 * hash + (int) (doubleToLongBits(this.prixU) ^ (doubleToLongBits(this.prixU) >>> 32));
+        hash = 19 * hash + (int) (doubleToLongBits(this.montant) ^ (doubleToLongBits(this.montant) >>> 32));
         hash = 19 * hash + Objects.hashCode(this.commandeLigneCommande);
         hash = 19 * hash + Objects.hashCode(this.fournisseur);
         return hash;
@@ -154,10 +156,10 @@ public class LigneCommande implements Serializable {
         if (this.qteCommande != other.qteCommande) {
             return false;
         }
-        if (Double.doubleToLongBits(this.prixU) != Double.doubleToLongBits(other.prixU)) {
+        if (doubleToLongBits(this.prixU) != doubleToLongBits(other.prixU)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.montant) != Double.doubleToLongBits(other.montant)) {
+        if (doubleToLongBits(this.montant) != doubleToLongBits(other.montant)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
