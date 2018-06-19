@@ -1,10 +1,10 @@
 package fr.bg.main.controleurs;
 
 import fr.bg.main.Launch;
-import fr.bg.main.controleurs.Interventions.TabPanInterventionsController;
+import fr.bg.main.controleurs.Intervention.TabPanInterventionsController;
 import fr.bg.main.controleurs.Parc.TabPanParcController;
 import fr.bg.main.controleurs.Ressources.TabPanRessourcesController;
-import fr.bg.main.controleurs.Stocks.TabPanStocksController;
+import fr.bg.main.controleurs.Stock.TabPanStocksController;
 import fr.bg.main.controleurs.utilisateurs.TabPanUtilisateursController;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;

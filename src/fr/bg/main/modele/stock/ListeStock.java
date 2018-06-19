@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele;
+package fr.bg.main.modele.stock;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -15,94 +15,100 @@ import java.util.stream.Stream;
 
 /**
  *
- * @author Ouadie
- * @param <T>
+ * @author lyess
+ * @param <S>
  */
-public class ListPro<T> implements Collection {
 
-    /**
-     * les differentes liste qu'on va travailler dessus pour 
-     * extraire tout nos donners si on veut et pour tracker
-     * les differents actions afin de les enregistrer dans notre base 
-     */
 
+public class ListeStock<S> implements Collection{
     
-private HashSet<T> metier ;
-private HashSet<T> asupprimer ;
-private HashSet<T> amodifier ;
-private HashSet<T> ainserer  ;
+    
+    //Les liste important
+    
+     private HashSet<S> metier ;
+     private HashSet<S> asupprimer ;
+     private HashSet<S> amodifier ;
+     private HashSet<S> ainserer  ;
 
-
-//le constructeur par defaut de la liste
-
-public ListPro(){
+ 
+     
+     // Le constructeur par default
+public ListeStock(){
         metier = new HashSet<>();
 	asupprimer = new HashSet<>();
 	amodifier = new HashSet<>();
 	ainserer  = new HashSet<>();
 }
+    
 
 
+    // getters and setters
 
-    public HashSet<T> getMetier() {
+    public HashSet<S> getMetier() {
         return metier;
     }
 
-    public void setMetier(HashSet<T> metier) {
+    public void setMetier(HashSet<S> metier) {
         this.metier = metier;
     }
 
-    public HashSet<T> getAsupprimer() {
+    public HashSet<S> getAsupprimer() {
         return asupprimer;
     }
 
-    public void setAsupprimer(HashSet<T> asupprimer) {
+    public void setAsupprimer(HashSet<S> asupprimer) {
         this.asupprimer = asupprimer;
     }
 
-    public HashSet<T> getAmodifier() {
+    public HashSet<S> getAmodifier() {
         return amodifier;
     }
 
-    public void setAmodifier(HashSet<T> amodifier) {
+    public void setAmodifier(HashSet<S> amodifier) {
         this.amodifier = amodifier;
     }
 
-    public HashSet<T> getAinserer() {
+    public HashSet<S> getAinserer() {
         return ainserer;
     }
 
-    public void setAinserer(HashSet<T> ainserer) {
+    
+    public void setAinserer(HashSet<S> ainserer) {
         this.ainserer = ainserer;
     }
-
-
-
+    
+    
     @Override
     public int size() {
         return this.metier.size();
     }
+    
 
     @Override
     public boolean isEmpty() {
         return this.metier.isEmpty();
     }
 
+  
     @Override
     public boolean contains(Object o) {
        return this.metier.contains(o);
     }
     
-    @Override
-    public boolean add(Object e) {
-      /*
+    
+    
+     /*
        * Ajout l'objet dans notre liste métier pour qu'il apparait dans notre interface
        * et dans la liste a inserer pour la parcourir au moment de l'enregistrement du travail 
        */
+    
+     @Override
+    public boolean add(Object e) {
+      
         try{
-            if(!this.getMetier().contains((T)e)){
-                    this.getMetier().add((T)e);
-                   this.getAinserer().add((T)e);
+            if(!this.getMetier().contains((S)e)){
+                    this.getMetier().add((S)e);
+                   this.getAinserer().add((S)e);
                    return true;   
             }
         }catch(Exception exception){
@@ -112,16 +118,20 @@ public ListPro(){
         return false;
     }
     
-    @Override
-    public boolean remove(Object o) {
-        /*
+    
+    
+    /*
        * Supression de l'objet de notre liste métier pour qu'il n'apparait plus dans notre interface
        * et l'ajouter a la  la liste a supprimer pour la parcourir au moment de l'enregistrement du travail 
        */
+    
+     @Override
+    public boolean remove(Object o) {
+        
         try{
-            if(this.getMetier().contains((T)o)){
-                    this.asupprimer.add((T)o);
-                    this.metier.remove((T)o);
+            if(this.getMetier().contains((S)o)){
+                    this.asupprimer.add((S)o);
+                    this.metier.remove((S)o);
                    return true;   
             }
         }catch(Exception exception){
@@ -130,7 +140,9 @@ public ListPro(){
         }
         return false;    
     }
-
+    
+    
+    
     @Override
     public boolean containsAll(Collection clctn) {
        return this.metier.containsAll(clctn);
@@ -138,10 +150,10 @@ public ListPro(){
 
     @Override
     public boolean addAll(Collection clctn) {
-           Iterator<T> it = clctn.iterator();
+           Iterator<S> it = clctn.iterator();
          try{
              while(it.hasNext()){
-               T entite = it.next();
+               S entite = it.next();
                this.add(entite);
            }return true;
          }catch(Exception ex){
@@ -153,10 +165,10 @@ public ListPro(){
 
     @Override
     public boolean removeAll(Collection clctn) {
-                 Iterator<T> it = clctn.iterator();
+                 Iterator<S> it = clctn.iterator();
          try{
              while(it.hasNext()){
-               T entite = it.next();
+               S entite = it.next();
                this.remove(entite);
            }return true;
          }catch(Exception ex){
@@ -194,7 +206,7 @@ public ListPro(){
 
     }
 
-    @Override
+     @Override
     public boolean removeIf(Predicate prdct) {
         return Collection.super.removeIf(prdct); //To change body of generated methods, choose Tools | Templates.
     }
@@ -218,6 +230,7 @@ public ListPro(){
     public void forEach(Consumer cnsmr) {
         Collection.super.forEach(cnsmr); //To change body of generated methods, choose Tools | Templates.
     }
-
-
+    
+    
+    
 }

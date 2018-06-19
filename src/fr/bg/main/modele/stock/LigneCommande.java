@@ -40,11 +40,11 @@ public class LigneCommande implements Serializable {
     private Fournisseur fournisseur;
     
     
-    public static Collection<LigneCommande> listeLigneCommande;
-    
-    public static Collection<LigneCommande> ligneCommandeAAjouter;
-    public static Collection<LigneCommande> ligneCommandeAModifier;
-    public static Collection<LigneCommande> ligneCommandeASupprimer;
+    public static final ListeStock<LigneCommande> listeLigneCommande = new ListeStock<LigneCommande>(); 
+   
+    {
+         this.listeLigneCommande.add(this);
+    }
     
     
     //liste des constructeurs

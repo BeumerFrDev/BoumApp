@@ -5,6 +5,7 @@
  */
 package fr.bg.main.modele.stock;
 
+import fr.bg.main.modele.ListPro;
 import fr.bg.main.modele.Parc.Type;
 import java.io.Serializable;
 import java.util.Collection;
@@ -49,13 +50,13 @@ public class Article implements Serializable {
     private String libelleArticle;
     private String imageArticle;
     
+   
+    public static final ListeStock<Article> listeArticleStock= new ListeStock<Article>(); 
+   
+    {
+        this.listeArticleStock.add(this);
+    }
     
-    
-    public static Collection<Article> listeArticle;
-    
-    public static Collection<Article> articleAAjouter;
-    public static Collection<Article> articleAModifier;
-    public static Collection<Article> articleASupprimer;
     
     
     
@@ -64,7 +65,7 @@ public class Article implements Serializable {
     
     public Article(){
  
-         articleAAjouter.add(this);
+         
         
     }
 
@@ -196,17 +197,17 @@ public class Article implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.nomArticle);
-        hash = 43 * hash + Objects.hashCode(this.typeArticle);
-        hash = 43 * hash + this.qteStock;
-        hash = 43 * hash + Objects.hashCode(this.rayonArticle);
-        hash = 43 * hash + Objects.hashCode(this.entreeArticle);
-        hash = 43 * hash + Objects.hashCode(this.sortieArticle);
-        hash = 43 * hash + Objects.hashCode(this.fournisseurArticle);
-        hash = 43 * hash + Objects.hashCode(this.referenceArticle);
-        hash = 43 * hash + Objects.hashCode(this.libelleArticle);
-        hash = 43 * hash + Objects.hashCode(this.imageArticle);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.nomArticle);
+        hash = 37 * hash + Objects.hashCode(this.typeArticle);
+        hash = 37 * hash + this.qteStock;
+        hash = 37 * hash + Objects.hashCode(this.rayonArticle);
+        hash = 37 * hash + Objects.hashCode(this.entreeArticle);
+        hash = 37 * hash + Objects.hashCode(this.sortieArticle);
+        hash = 37 * hash + Objects.hashCode(this.fournisseurArticle);
+        hash = 37 * hash + Objects.hashCode(this.referenceArticle);
+        hash = 37 * hash + Objects.hashCode(this.libelleArticle);
+        hash = 37 * hash + Objects.hashCode(this.imageArticle);
         return hash;
     }
 
@@ -260,11 +261,8 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", nomArticle=" + nomArticle + ", typeArticle=" + typeArticle + ", qteStock=" + qteStock + 
-                ", rayonArticle=" + rayonArticle + ", entreeArticle=" + entreeArticle + ", sortieArticle=" + sortieArticle + ", fournisseurArticle="
-                + fournisseurArticle + ", referenceArticle=" + referenceArticle + ", libelleArticle=" + libelleArticle + ", imageArticle=" + imageArticle + '}';
+        return "Article{" + "id=" + id + ", nomArticle=" + nomArticle + ", typeArticle=" + typeArticle + ", qteStock=" + qteStock + ", rayonArticle=" + rayonArticle + ", entreeArticle=" + entreeArticle + ", sortieArticle=" + sortieArticle + ", fournisseurArticle=" + fournisseurArticle + ", referenceArticle=" + referenceArticle + ", libelleArticle=" + libelleArticle + ", imageArticle=" + imageArticle + '}';
     }
 
    
-    
 }

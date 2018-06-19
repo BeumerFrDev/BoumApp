@@ -39,11 +39,11 @@ public class Entree implements Serializable {
     private Date dateEntree;
     private Double prixEntree;
     
-    public static Collection<Entree> listeEntree;
-    
-    public static Collection<Entree> EntreeAAjouter;
-    public static Collection<Entree> EntreeAModifier;
-    public static Collection<Entree> EntreeASupprimer;
+    public static final ListeStock<Entree> listeEntree = new ListeStock<Entree>(); 
+   
+    {
+         this.listeEntree.add(this);
+    }
     
     
     

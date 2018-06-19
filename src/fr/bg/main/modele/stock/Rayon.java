@@ -29,11 +29,11 @@ public class Rayon implements Serializable {
     private Long id;
     private String nomRayon;
     
-    public static Collection<Rayon> listeRayon;
-    
-    public static Collection<Rayon> rayonAAjouter;
-    public static Collection<Rayon> rayonAModifier;
-    public static Collection<Rayon> rayonASupprimer;
+    public static final ListeStock<Rayon> listeRayon = new ListeStock<Rayon>(); 
+   
+    {
+         this.listeRayon.add(this);
+    }
     
     
     // liste des constructeur

@@ -39,11 +39,11 @@ public class Sortie implements Serializable {
     private Date dateSortie;
     
     
-    public static Collection<Sortie> listeSortie;
-    
-    public static Collection<Sortie> sortieAAjouter;
-    public static Collection<Sortie> sortieAModifier;
-    public static Collection<Sortie> sortieASupprimer;
+    public static final ListeStock<Sortie> listeSortie = new ListeStock<Sortie>(); 
+   
+    {
+         this.listeSortie.add(this);
+    }
            
     
     // liste des constructeurs

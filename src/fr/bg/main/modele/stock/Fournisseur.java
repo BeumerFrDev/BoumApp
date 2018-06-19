@@ -40,11 +40,11 @@ public class Fournisseur implements Serializable {
     private String imageFournisseur;
 
    
-    public static Collection<Fournisseur> listeFournisseur;
-    
-    public static Collection<Fournisseur> fournisseurAAjouter;
-    public static Collection<Fournisseur> fournisseurAModifier;
-    public static Collection<Fournisseur> fournisseurASupprimer;
+    public static final ListeStock<Fournisseur> listeFournisseur = new ListeStock<Fournisseur>(); 
+   
+    {
+         this.listeFournisseur.add(this);
+    }
    
 
    

@@ -36,11 +36,11 @@ public class Commande implements Serializable {
     @OneToOne
     private Reception reception;
     
-    public static Collection<Commande> listeCommande;
-    
-    public static Collection<Commande> commandeAAjouter;
-    public static Collection<Commande> commandeAModifier;
-    public static Collection<Commande> commandeASupprimer;
+    public static final ListeStock<Commande> listeCommande = new ListeStock<Commande>(); 
+   
+    {
+         this.listeCommande.add(this);
+    }
     
     
     

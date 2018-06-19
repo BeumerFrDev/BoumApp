@@ -33,11 +33,11 @@ public class Reception implements Serializable {
     private Date dateReception;
     private int qteLivree;
     
-    public static Collection<Reception> listeReception;
-    
-    public static Collection<Reception> receptionAAjouter;
-    public static Collection<Reception> receptionAModifier;
-    public static Collection<Reception> receptionASupprimer;
+    public static final ListeStock<Reception> listeReception = new ListeStock<Reception>(); 
+   
+    {
+         this.listeReception.add(this);
+    }
     
     // les constructeurs
     
