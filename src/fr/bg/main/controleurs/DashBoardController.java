@@ -6,10 +6,13 @@ import fr.bg.main.modele.Individus;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import static java.lang.System.out;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
@@ -38,6 +41,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import static javafx.util.Duration.millis;
 
 /**
  * FXML Controller class
@@ -75,7 +79,7 @@ public class DashBoardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("fff");
+        out.println("fff");
         
     }
 
@@ -103,7 +107,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
         try {
             page = (AnchorPane) loader.load(in);
         } finally {
-            System.out.println("hhhhhhhhhhhhhhhhhhhh"+fxml+"**"+Launch.class.getResource(fxml));
+            out.println("hhhhhhhhhhhhhhhhhhhh"+fxml+"**"+Launch.class.getResource(fxml));
              in.close();
             
         } 
@@ -173,7 +177,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             DocumentsController documents = (DocumentsController) replaceSceneContent("vues/Documents.fxml");
             documents.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
       @FXML
@@ -182,7 +186,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionDashBoardInitController dashInit = (GestionDashBoardInitController) replaceSceneContent("vues/DashBoardInit.fxml");
             dashInit.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -192,7 +196,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionInterventionController controleur = (GestionInterventionController) replaceSceneContent("vues/GestionIntervention.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -202,7 +206,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionParcController controleur = (GestionParcController) replaceSceneContent("vues/gestionParc.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -212,7 +216,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionRessourcesController controleur = (GestionRessourcesController) replaceSceneContent("vues/GestionRessources.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -222,7 +226,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionSearchController controleur = (GestionSearchController) replaceSceneContent("vues/Search.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -232,7 +236,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionStockController controleur = (GestionStockController) replaceSceneContent("vues/GestionStock.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -242,7 +246,7 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
             GestionUtilisateurController controleur = (GestionUtilisateurController) replaceSceneContent("vues/GestionUtilisateur.fxml");
             controleur.setApp(application);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -261,33 +265,27 @@ public Initializable replaceSceneContent(String fxml) throws Exception {
     @FXML
     private void handleMenuFullScreen(ActionEvent event) {
         Stage stage = application.stage;
-        System.out.println("Full Screen");
+        out.println("Full Screen");
         stage.setFullScreen(!stage.isFullScreen());
     }
 
   
     private void animateMessage() {
-        FadeTransition ft = new FadeTransition(Duration.millis(1000), success);
+        FadeTransition ft = new FadeTransition(millis(1000), success);
         ft.setFromValue(0.0);
         ft.setToValue(1);
         ft.play();
     }
 
     public void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        parent.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                application.stage.setX(event.getScreenX() - xOffset);
-                application.stage.setY(event.getScreenY() - yOffset);
-                application.stage.setOpacity(0.7f);
-            }
+        parent.setOnMouseDragged((MouseEvent event) -> {
+            application.stage.setX(event.getScreenX() - xOffset);
+            application.stage.setY(event.getScreenY() - yOffset);
+            application.stage.setOpacity(0.7f);
         });
         parent.setOnDragDone((e) -> {
             application.stage.setOpacity(1.0f);

@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.Launch;
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
 
 /**
  * FXML Controller class
@@ -54,7 +56,7 @@ public class SplashScreenController extends AnchorPane implements Initializable 
             });
            
         } catch (IOException ex) {
-            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(SplashScreenController.class.getName()).log(SEVERE, null, ex);
         }
        
     }
@@ -65,20 +67,14 @@ public class SplashScreenController extends AnchorPane implements Initializable 
     }
 
     public void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        parent.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                application.stage.setX(event.getScreenX() - xOffset);
-                application.stage.setY(event.getScreenY() - yOffset);
-                application.stage.setOpacity(0.7f);
-            }
+        parent.setOnMouseDragged((MouseEvent event) -> {
+            application.stage.setX(event.getScreenX() - xOffset);
+            application.stage.setY(event.getScreenY() - yOffset);
+            application.stage.setOpacity(0.7f);
         });
         parent.setOnDragDone((e) -> {
             application.stage.setOpacity(1.0f);

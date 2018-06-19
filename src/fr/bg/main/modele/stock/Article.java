@@ -5,7 +5,9 @@
  */
 package fr.bg.main.modele.stock;
 
+
 import fr.bg.main.modele.ListPro;
+
 import fr.bg.main.modele.Parc.Type;
 import java.io.Serializable;
 import java.util.Collection;
@@ -14,6 +16,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -26,7 +29,7 @@ public class Article implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     
     
     

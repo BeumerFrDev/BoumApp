@@ -31,9 +31,19 @@ import fr.bg.main.controleurs.LoginController;
 import fr.bg.main.controleurs.SplashScreenController;
 import fr.bg.main.modele.Adresses;
 import fr.bg.main.modele.Affectations;
+import static fr.bg.main.modele.Affectations.of;
+import static fr.bg.main.modele.Affectations.validate;
 import fr.bg.main.modele.Directeur;
 import fr.bg.main.modele.Individus;
 import fr.bg.main.modele.Parc.Parc;
+
+
+import static java.lang.System.out;
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
+import static javafx.stage.StageStyle.DECORATED;
+import static javafx.stage.StageStyle.UNDECORATED;
+
 
 import org.hibernate.SessionFactory;
 
@@ -62,7 +72,7 @@ public class Launch extends Application {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(UNDECORATED);
         this.stage = stage;
         stage.show();
 
@@ -88,9 +98,9 @@ public class Launch extends Application {
 
 
     public boolean userLogging(String userId, String password) {
-        if (Affectations.validate(userId, password)) {
-            loggedUser = Affectations.of(userId);
-            System.out.println(loggedUser.getClass());
+        if (validate(userId, password)) {
+            loggedUser = of(userId);
+            out.println(loggedUser.getClass());
             if (loggedUser.getClass().toString().endsWith("Directeur")) {
                 gotoDashbord();
             } else {
@@ -115,7 +125,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
   public void gotoGestionIntervention() {
@@ -125,7 +135,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
     public void gotoGestionRessources() {
@@ -135,7 +145,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
        public void gotoGestionSearch() {
@@ -145,7 +155,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
               public void gotoGestionStock() {
@@ -155,7 +165,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
        public void gotoGestionUtilisateur() {
@@ -165,7 +175,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
         public void gotoDocuments() {
@@ -175,7 +185,7 @@ public class Launch extends Application {
 
             adminView.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
     public void gotoGestionParc() {
@@ -185,7 +195,7 @@ public class Launch extends Application {
 
             gestionParc.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
     public void gotoLogin() {
@@ -193,7 +203,7 @@ public class Launch extends Application {
             LoginController login = (LoginController) replaceSceneContent("vues/Login.fxml", 0);
             login.setApp(this);
         } catch (Exception ex) {
-            Logger.getLogger(Launch.class.getName()).log(Level.SEVERE, null, ex);
+            getLogger(Launch.class.getName()).log(SEVERE, null, ex);
         }
     }
 
@@ -209,7 +219,7 @@ public class Launch extends Application {
         try {
             page = (AnchorPane) loader.load(in);
         } finally {
-            System.out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
+            out.println("test2" + fxml + "**" + Launch.class.getResource(fxml));
             in.close();
 
         }
@@ -219,7 +229,7 @@ public class Launch extends Application {
             Stage stage1;
             stage1 = new Stage();
             stage1.setScene(scene);
-            stage1.initStyle(StageStyle.DECORATED);
+            stage1.initStyle(DECORATED);
             stage.hide();
             stage1.show();
             stage = stage1;
@@ -228,7 +238,7 @@ public class Launch extends Application {
             Stage stage1;
             stage1 = new Stage();
             stage1.setScene(scene);
-            stage1.initStyle(StageStyle.UNDECORATED);
+            stage1.initStyle(UNDECORATED);
             stage.hide();
             stage1.show();
             stage = stage1;

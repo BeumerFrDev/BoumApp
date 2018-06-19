@@ -24,4 +24,8 @@ hs_err_pid*
 /BoumApp/nbproject/private/
 /build/
 /dist/
+<<<<<<< HEAD
 /nbproject/private/
+=======
+/mavenproject1/target/
+>>>>>>> 762a1063a955a914b367dbfe6065829993eeae1a

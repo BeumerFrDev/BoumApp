@@ -12,9 +12,11 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -27,7 +29,7 @@ public class Sortie implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     
     //liste des attribus
     
@@ -35,7 +37,7 @@ public class Sortie implements Serializable {
     @OneToOne
     private Article articleSortie;
     private int qteSortie;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(DATE)
     private Date dateSortie;
     
     

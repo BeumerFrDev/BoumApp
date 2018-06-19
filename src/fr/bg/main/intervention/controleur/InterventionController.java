@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele.plandetri.modeoperatoire;
+package fr.bg.main.intervention.controleur;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 
 /**
  *
- * @author Ouadie
+ * @author lyess
  */
 @Entity
-public class Outils implements Serializable {
+public class InterventionController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     private Long id;
 
     public Long getId() {
@@ -41,10 +42,10 @@ public class Outils implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Outils)) {
+        if (!(object instanceof InterventionController)) {
             return false;
         }
-        Outils other = (Outils) object;
+        InterventionController other = (InterventionController) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,7 +54,7 @@ public class Outils implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.modele.plandetri.modeoperatoire.Outils[ id=" + id + " ]";
+        return "fr.bg.main.intervention.controleur.InterventionController[ id=" + id + " ]";
     }
     
 }

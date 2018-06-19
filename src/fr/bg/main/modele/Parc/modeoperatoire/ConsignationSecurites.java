@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele.plandetri.modeoperatoire;
+package fr.bg.main.modele.Parc.modeoperatoire;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 
 /**
@@ -20,7 +21,7 @@ public class ConsignationSecurites implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     private Long id;
 
     public Long getId() {
