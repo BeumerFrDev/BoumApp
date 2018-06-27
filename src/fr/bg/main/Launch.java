@@ -78,7 +78,7 @@ public class Launch extends Application {
 
         Individus indii = new Directeur("BENAISSA", "Ouadie", "H", new Date(), "Bizerte", "L3MIAGE", "Informatique", "Etudiant", new Adresses(), "Arabe", "FR", "..\\assets\\image\\salim.jpg", "", "", "0638441611", "ben.aissa.ouadie@gmail.com");
 
-        Affectations afff = new Affectations(3, "CDI", "lyes", "lyes", new Date(), new Date(), "Prof", "c://", indii);
+        Affectations afff = new Affectations(3, "CDI", "amazigh", "lyes", new Date(), new Date(), "Prof", "c://", indii);
 
        
 
