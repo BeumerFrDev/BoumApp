@@ -229,7 +229,7 @@
                                     </AnchorPane>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="671.0">
                                        <children>
-                                          <TextField fx:id="adminTFSearch" layoutX="548.0" layoutY="14.0" promptText="Utilisateur ID" AnchorPane.rightAnchor="127.0" />
+                                          <TextField fx:id="adminTFSearch" layoutX="548.0" layoutY="14.0" promptText="Article ID" AnchorPane.rightAnchor="127.0" />
                                           <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
                                           <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
                                           <Button layoutX="146.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
@@ -296,10 +296,13 @@
                      <children>
                         <TableView fx:id="studentAllCourseTableView" layoutX="384.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="532.0" prefWidth="715.0">
                            <columns>
-                              <TableColumn fx:id="studentACourseColumnCode" prefWidth="82.0" text="Login" />
-                              <TableColumn fx:id="studentACourseColumnTitle" prefWidth="168.0" text="Droit" />
-                              <TableColumn fx:id="studentACourseColumnCredit" prefWidth="75.0" text="Debut/Fin" />
-                              <TableColumn fx:id="studentACourseColumnSec" prefWidth="133.0" text="Section" />
+                              <TableColumn fx:id="studentACourseColumnCode" prefWidth="42.0" text="Id article" />
+                              <TableColumn fx:id="studentACourseColumnTitle" prefWidth="141.0" text="Nom" />
+                              <TableColumn fx:id="studentACourseColumnCredit" prefWidth="108.0" text="Libelle" />
+                              <TableColumn fx:id="studentACourseColumnSec" prefWidth="114.0" text="Référence" />
+                              <TableColumn fx:id="studentACourseColumnSec1" minWidth="0.0" prefWidth="68.0" text="Rayon" />
+                              <TableColumn fx:id="studentACourseColumnSec2" minWidth="0.0" prefWidth="137.0" text="Fournisseur" />
+                              <TableColumn fx:id="studentACourseColumnSec22" prefWidth="104.0" text="Qte dans le stock" />
                            </columns>
                         </TableView>
                         <TableView fx:id="studentCurrentCourseTableView" layoutX="5.0" layoutY="41.0" prefHeight="312.0" prefWidth="363.0">
@@ -310,7 +313,7 @@
                               <TableColumn fx:id="studentCCourseColumnSec" prefWidth="75.0" text="Section" />
                            </columns>
                         </TableView>
-                        <Text fill="#0091ea" layoutX="391.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des affectations" AnchorPane.rightAnchor="529.849609375">
+                        <Text fill="#0091ea" layoutX="391.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des produits" AnchorPane.rightAnchor="529.849609375">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -328,7 +331,7 @@
                            </font>
                         </Button>
                         <Button layoutX="272.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" />
-                        <TextField fx:id="registrationTFSearch" layoutX="607.0" layoutY="6.0" promptText="utilisateur ID" AnchorPane.rightAnchor="349.0" />
+                        <TextField fx:id="registrationTFSearch" layoutX="607.0" layoutY="6.0" promptText="Article ID" AnchorPane.rightAnchor="349.0" />
                         <Button layoutX="770.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Search" AnchorPane.rightAnchor="269.0" />
                      </children>
                   </AnchorPane>
@@ -340,7 +343,7 @@
                      <children>
                         <TableView fx:id="resultHistoryTableView" layoutX="545.0" layoutY="49.0" prefHeight="541.0" prefWidth="635.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="545.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
                            <columns>
-                              <TableColumn fx:id="resultHistoryColumnCode" prefWidth="209.0" text="Users ID" />
+                              <TableColumn fx:id="resultHistoryColumnCode" prefWidth="209.0" />
                               <TableColumn fx:id="resultHistoryColumnSec" minWidth="0.0" prefWidth="188.0" text="Date" />
                               <TableColumn fx:id="resultHistoryColumnGPA" prefWidth="151.0" text="Periode" />
                            </columns>
@@ -442,7 +445,7 @@
                         </Button>
                         <Button layoutX="74.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #00897b;" text="Edit Profile" textFill="WHITE" />
                         <Button layoutX="186.0" layoutY="3.0" mnemonicParsing="false" style="-fx-background-color: #00897b;" text="View Profile" textFill="WHITE" />
-                        <Text fill="#0091ea" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Absences History :">
+                        <Text fill="#0091ea" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des fournisseur:">
                            <font>
                               <Font size="20.0" />
                            </font>
