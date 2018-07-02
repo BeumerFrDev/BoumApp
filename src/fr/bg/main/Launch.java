@@ -85,10 +85,10 @@ public class Launch extends Application {
 
        TestDAO testDao = new TestDAO();
         System.out.println("Add new test");
-      // Test test = new Test();
-      // test.setNom("Sam");
-      // System.out.println(testDao.create(test));
-       System.out.println(testDao.findAll());
+       Test test = new Test();
+      test.setNom("Sam");
+      System.out.println(testDao.create(test));
+       
 
         //gotoLogin();
         

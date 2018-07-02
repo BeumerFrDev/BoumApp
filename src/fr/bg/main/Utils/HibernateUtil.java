@@ -1,37 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.bg.main.Utils;
 
-import org.hibernate.*;
+import java.util.Properties;
 
-import org.hibernate.boot.registry.*;
-import org.hibernate.metamodel.Metadata;
-import org.hibernate.metamodel.MetadataSources;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
+
 
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+	//XML based configuration
+	private static SessionFactory sessionFactory;
+	
+	//Annotation based configuration
+	private static SessionFactory sessionAnnotationFactory;
+	
+	//Property based configuration
+	private static SessionFactory sessionJavaConfigFactory;
 
-    static {
+    private static SessionFactory buildSessionFactory() {
         try {
-            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
-                    .configure("fr/bg/main/Utils/hibernate.cfg.xml")
-                    .build();
-            Metadata metaData = new MetadataSources(
-                    standardRegistry)
-                    .getMetadataBuilder()
-                    .build();
-            sessionFactory = metaData.getSessionFactoryBuilder().build();
-        } catch (Throwable th) {
-            throw new ExceptionInInitializerError(th);
+            // Create the SessionFactory from hibernate.cfg.xml
+        	Configuration configuration = new Configuration();
+        	configuration.configure("fr/bg/main/Utils/hibernate.cfg.xml");
+        	System.out.println("Hibernate Configuration loaded");
+        	
+        	ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        	System.out.println("Hibernate serviceRegistry created");
+        	
+        	SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        	
+            return sessionFactory;
+        }
+        catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
         }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+ 
 
+    
+	public static SessionFactory getSessionFactory() {
+		if(sessionFactory == null) sessionFactory = buildSessionFactory();
+        return sessionFactory;
     }
+	
+
 }
