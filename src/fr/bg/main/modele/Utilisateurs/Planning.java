@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele.Personnel;
+package fr.bg.main.modele.Utilisateurs;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author lyess
  */
 @Entity
-public class Service implements Serializable {
+public class Planning implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,18 +34,18 @@ public class Service implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
+        int hash =0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Service)) {
+        
+        if (!(object instanceof Planning)) {
             return false;
         }
-        Service other = (Service) object;
+        Planning other = (Planning) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -54,7 +54,7 @@ public class Service implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.personnel.modele.Service[ id=" + id + " ]";
+        return "fr.bg.main.personnel.modele.Planning[ id=" + id + " ]";
     }
     
 }

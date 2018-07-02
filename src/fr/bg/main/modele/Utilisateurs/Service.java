@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.modele.Personnel;
+package fr.bg.main.modele.Utilisateurs;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author lyess
  */
 @Entity
-public class CDI extends Contrat implements Serializable {
+public class Service implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,10 +42,10 @@ public class CDI extends Contrat implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CDI)) {
+        if (!(object instanceof Service)) {
             return false;
         }
-        CDI other = (CDI) object;
+        Service other = (Service) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -54,7 +54,7 @@ public class CDI extends Contrat implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.personnel.modele.CDI[ id=" + id + " ]";
+        return "fr.bg.main.personnel.modele.Service[ id=" + id + " ]";
     }
     
 }
