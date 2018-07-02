@@ -5,6 +5,9 @@
  */
 package fr.bg.main;
 
+import fr.bg.main.Utils.HibernateUtil;
+import fr.bg.main.Utils.TestDAO;
+import fr.bg.main.Utils.Test;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.logging.Level;
@@ -37,12 +40,15 @@ import fr.bg.main.modele.Directeur;
 import fr.bg.main.modele.Individus;
 import fr.bg.main.modele.Parc.Parc;
 import static java.lang.System.out;
+import java.util.List;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
 import static javafx.stage.StageStyle.DECORATED;
 import static javafx.stage.StageStyle.UNDECORATED;
+import org.hibernate.Session;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -77,9 +83,17 @@ public class Launch extends Application {
 
         Affectations afff = new Affectations(3, "CDI", "lyes", "lyes", new Date(), new Date(), "Prof", "c://", indii);
 
-       
+       TestDAO testDao = new TestDAO();
+        System.out.println("Add new test");
+      // Test test = new Test();
+      // test.setNom("Sam");
+      // System.out.println(testDao.create(test));
+       System.out.println(testDao.findAll());
 
         //gotoLogin();
+        
+        
+      
     }
 
     /**
