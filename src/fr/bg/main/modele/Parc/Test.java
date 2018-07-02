@@ -3,33 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.bg.main.intervention.controleur;
+package fr.bg.main.modele.Parc;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import static javax.persistence.GenerationType.AUTO;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author lyess
+ * @author Ouadie
  */
-@Entity
-public class InterventionController implements Serializable {
+@MappedSuperclass
+@Table(catalog = "", schema = "DEV")
+@XmlRootElement
+public class Test implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private Long id;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer id;
+    @Column(length = 20)
+    private String nom;
 
-    public Long getId() {
+    public Test() {
+    }
+
+    public Test(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     @Override
@@ -42,10 +63,10 @@ public class InterventionController implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof InterventionController)) {
+        if (!(object instanceof Test)) {
             return false;
         }
-        InterventionController other = (InterventionController) object;
+        Test other = (Test) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -54,7 +75,7 @@ public class InterventionController implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.intervention.controleur.InterventionController[ id=" + id + " ]";
+        return "fr.bg.main.modele.Parc.Test[ id=" + id + " ]";
     }
     
 }
