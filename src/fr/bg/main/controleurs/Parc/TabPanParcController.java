@@ -3,8 +3,10 @@ package fr.bg.main.controleurs.Parc;
 import fr.bg.main.controleurs.utilisateurs.*;
 import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
+import fr.bg.main.Utils.DAO.Parc.BlocksDAO;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
+import fr.bg.main.modele.Parc.Blocks;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -368,72 +370,30 @@ public class TabPanParcController implements Initializable {
     private void setAdminSaveButtonClick(Event event){
         
         
-        TestDAO testDao = new TestDAO();
-        System.out.println("Add new test");
-       Test test = new Test();
-      test.setNom("HHHHHH");
-      System.out.println(testDao.create(test));
       
-      
-        try{
-            connection = database.getConnection();
-            statement = connection.createStatement();
-
-            if(isSetAdminAddNewButtonClick){
-                int rowsAffected = statement.executeUpdate("insert into`student` "+
-                        "(`dbStudentFname`,`dbStudentLname`,`dbStudentID`,`dbStudentDOB`,"+
-                        "`dbStudentDepartment`,`dbStudentEmail`,`dbStudentPhone`,`dbStudentAddress`,`dbGuardianFname`,`dbGuardianLname`,"+
-                        "`dbGuardianEmail`,`dbGuardianPhone`"+") "+
-                        "values ('"+adminTFStudentFname.getText()+"','"+adminTFStudentLname.getText()+"','"+adminTFStudentID.getText()
-                        +"','"+adminDPStudentDOB.getValue()
-                        +"','"+adminCBStudentDepartment.getValue().toString().trim()
-                        +"','"+adminTFGuardianEmail.getText()
-                        +"','"+adminTFStudentPhone.getText()
-                        +"','"+adminTFStudentAddress.getText()
-                        +"','"+adminTFGuardianFname.getText()
-                        +"','"+adminTFGuardianLname.getText()
-                        +"','"+adminTFGuardianEmail.getText()
-                        +"','"+adminTFGuardianPhone.getText()
-
-                        +"'); ");
-                statement.executeUpdate("insert into `studentgpa` (`dbstudentgpaID`) VALUES ('"+adminTFStudentID.getText()+"')");
+          
+            if(isSetEquipementAddNewButtonClick){
+               
+            BlocksDAO blocksDao = new BlocksDAO();
+            System.out.println("Add new Block");
+            Blocks block = new Blocks();
+            block.setIdBlock(equipementTFID.getText());
+            block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
+            block.setReferenceType(equipementCBType.getValue().toString());
+            
             }
-            else if (isSetAdminEditButtonClick){
+            else if (isSetEquipementEditButtonClick){
 
-                int rowsAffected = statement.executeUpdate("update student set "+
-                        "dbStudentFname = '"+adminTFStudentFname.getText()+"',"+
-                        "dbStudentLname = '"+adminTFStudentLname.getText()+"',"+
-                        "dbStudentID = '"+adminTFStudentID.getText()+"',"+
-                        "dbStudentDOB = '"+adminDPStudentDOB.getValue()+"',"+
-                        "dbStudentDepartment = '"+adminCBStudentDepartment.getValue().toString().trim()+"',"+
-                        "dbStudentEmail = '"+adminTFStudentEmail.getText()+"',"+
-                        "dbStudentPhone = '"+adminTFStudentPhone.getText()+"',"+
-                        "dbStudentAddress = '"+adminTFStudentAddress.getText()+"',"+
-                        "dbGuardianFname = '"+adminTFGuardianFname.getText()+"',"+
-                        "dbGuardianLname = '"+adminTFGuardianLname.getText()+"',"+
-                        "dbGuardianEmail = '"+adminTFGuardianEmail.getText()+"',"+
-                        "dbGuardianPhone = '"+adminTFGuardianPhone.getText()+
-
-                        "' where dbStudentID = '"+
-                        temp+"';");
-                if (temp.equals(adminTFStudentID.getText())){
-                    statement.executeUpdate("update studentgpa set dbstudentgpaID ='"+adminTFStudentID.getText()+"' where dbStudentID = '"+ temp+"';");
-                }
             }
 
 
-            connection.close();
-            statement.close();
-            resultSet.close();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        adminSetAllClear();
-        adminSetAllDisable();
-        adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
-        isSetAdminEditButtonClick=false;
-        isSetAdminAddNewButtonClick = false;
+           
+        
+        equipementSetAllClear();
+        equipementSetAllDisable();
+       //adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
+        isSetEquipementEditButtonClick=false;
+        isSetEquipementAddNewButtonClick = false;
     }
 
 

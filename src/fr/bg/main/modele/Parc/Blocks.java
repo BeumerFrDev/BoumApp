@@ -6,6 +6,7 @@
 package fr.bg.main.modele.Parc;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ouadie
  */
 @Entity
-@Table(catalog = "boumap", schema = "", uniqueConstraints = {
+@Table(catalog = "boumap", name = "blocks", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"idBlock"})})
 @XmlRootElement
 @NamedQueries({
@@ -36,7 +39,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Blocks.findByBlockPere", query = "SELECT b FROM Blocks b WHERE b.blockPere = :blockPere")})
 public class Blocks implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -53,6 +55,11 @@ public class Blocks implements Serializable {
     private String referenceType;
     @Column(length = 20)
     private String blockPere;
+    @Temporal(TemporalType.DATE)
+    private Date dateDeMiseEnPlace;
+
+    private static final long serialVersionUID = 1L;
+   
 
     public Blocks() {
     }
@@ -139,5 +146,7 @@ public class Blocks implements Serializable {
     public String toString() {
         return "javaapplication10.Blocks[ idBD=" + idBD + " ]";
     }
+
+    
     
 }

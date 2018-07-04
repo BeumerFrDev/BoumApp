@@ -241,14 +241,15 @@
                                           <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
                                           <Button fx:id="equipementViewButtonClick" layoutX="46.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
                                           <Button fx:id="equipementRefreshButtonClick" layoutX="146.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
-                                          <TableView fx:id="equipementTableView" layoutX="2.0" layoutY="55.0" prefHeight="533.0" prefWidth="822.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+                                          <TableView fx:id="equipementTableView" layoutX="2.0" layoutY="55.0" prefHeight="523.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
                                              <columns>
                                                 <TableColumn fx:id="equipementTCID" prefWidth="101.0" text="ID Equipement" />
                                                 <TableColumn fx:id="equipementTCNumero" minWidth="2.0" prefWidth="64.0" text="Numero" />
                                                 <TableColumn fx:id="equipementTCLibelle" prefWidth="68.0" text="Libellé" />
                                                 <TableColumn fx:id="equipementTCReference" prefWidth="64.0" text="Reference" />
-                                                <TableColumn fx:id="equipementTCDDV" minWidth="6.0" prefWidth="87.0" text="Durée de vie" />
-                                                <TableColumn fx:id="equipementTCImage" prefWidth="330.0" text="Image " />
+                                                <TableColumn fx:id="equipementTCDDV" minWidth="6.0" prefWidth="87.0" text="DDV" />
+                                                <TableColumn fx:id="equipementTCDateDeMiseEnPlace" minWidth="0.0" prefWidth="101.0" text="DDMEP" />
+                                                <TableColumn fx:id="equipementTCImage" minWidth="0.0" prefWidth="228.0" text="Image" />
                                              </columns>
                                            
                                           </TableView>

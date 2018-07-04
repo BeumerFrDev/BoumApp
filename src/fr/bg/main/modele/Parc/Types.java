@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ouadie
  */
 @Entity
-@Table(catalog = "boumap", schema = "", uniqueConstraints = {
+@Table(catalog = "boumap",name = "types", schema = "", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"referenceType"})})
 @XmlRootElement
 @NamedQueries({
@@ -36,33 +36,40 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Types.findByImageType", query = "SELECT t FROM Types t WHERE t.imageType = :imageType")})
 public class Types implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "idType")
     private Integer idType;
     @Basic(optional = false)
-    @Column(nullable = false, length = 20)
+    @Column(name = "referenceType")
     private String referenceType;
     @Basic(optional = false)
-    @Column(nullable = false, length = 50)
+    @Column(name = "libelleType")
     private String libelleType;
+    @Column(name = "dureDeVieType")
     private Integer dureDeVieType;
-    @Column(length = 200)
+    @Column(name = "imageType")
     private String imageType;
+    @Basic(optional = false)
+    @Column(name = "classe")
+    private String classe;
+
+    private static final long serialVersionUID = 1L;
 
     public Types() {
     }
 
+ 
     public Types(Integer idType) {
         this.idType = idType;
     }
 
-    public Types(Integer idType, String referenceType, String libelleType) {
+    public Types(Integer idType, String referenceType, String libelleType, String classe) {
         this.idType = idType;
         this.referenceType = referenceType;
         this.libelleType = libelleType;
+        this.classe = classe;
     }
 
     public Integer getIdType() {
@@ -105,6 +112,14 @@ public class Types implements Serializable {
         this.imageType = imageType;
     }
 
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -127,7 +142,7 @@ public class Types implements Serializable {
 
     @Override
     public String toString() {
-        return "javaapplication10.Types[ idType=" + idType + " ]";
+        return "fr.bg.main.modele.Parc.Types[ idType=" + idType + " ]";
     }
     
 }
