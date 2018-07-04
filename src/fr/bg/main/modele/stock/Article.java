@@ -8,7 +8,7 @@ package fr.bg.main.modele.stock;
 
 import fr.bg.main.modele.ListPro;
 
-import fr.bg.main.modele.Parc.Type;
+import fr.bg.main.modele.Parc.Types;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -39,7 +39,7 @@ public class Article implements Serializable {
     private Long id;
     private String nomArticle;
     @OneToOne
-    private Type typeArticle;
+    private Types typeArticle;
     private int qteStock;
     @OneToOne
     private Rayon rayonArticle;
@@ -76,13 +76,13 @@ public class Article implements Serializable {
         this.id = id;
     }
 
-    public Article(String nomArticle, Type typeArticle, Fournisseur fournisseurArticle) {
+    public Article(String nomArticle, Types typeArticle, Fournisseur fournisseurArticle) {
         this.nomArticle = nomArticle;
         this.typeArticle = typeArticle;
         this.fournisseurArticle = fournisseurArticle;
     }
 
-    public Article(String nomArticle, Type typeArticle, int qteStock, Rayon rayonArticle, Fournisseur fournisseurArticle, String referenceArticle, String imageArticle) {
+    public Article(String nomArticle, Types typeArticle, int qteStock, Rayon rayonArticle, Fournisseur fournisseurArticle, String referenceArticle, String imageArticle) {
         this.nomArticle = nomArticle;
         this.typeArticle = typeArticle;
         this.qteStock = qteStock;
@@ -94,7 +94,7 @@ public class Article implements Serializable {
 
     
     
-    public Article(Long id, String nomArticle, Type typeArticle, int qteStock, Rayon rayonArticle, Entree entreeArticle, Sortie sortieArticle, 
+    public Article(Long id, String nomArticle, Types typeArticle, int qteStock, Rayon rayonArticle, Entree entreeArticle, Sortie sortieArticle, 
             Fournisseur fournisseurArticle, String referenceArticle, String libelleArticle, String imageArticle) {
         this.id = id;
         this.nomArticle = nomArticle;
@@ -125,11 +125,11 @@ public class Article implements Serializable {
         this.nomArticle = nomArticle;
     }
 
-    public Type getTypeArticle() {
+    public Types getTypeArticle() {
         return typeArticle;
     }
 
-    public void setTypeArticle(Type typeArticle) {
+    public void setTypeArticle(Types typeArticle) {
         this.typeArticle = typeArticle;
     }
 

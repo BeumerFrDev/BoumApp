@@ -42,4 +42,7 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="boumap"/>
   <table-filter match-name="test"/>
+  <table-filter match-name="pieces"/>
+  <table-filter match-name="types"/>
+  <table-filter match-name="blocks"/>
 </hibernate-reverse-engineering>

@@ -18,17 +18,23 @@ import static javafx.application.Platform.exit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -50,14 +56,16 @@ import static javafx.util.Duration.millis;
  */
 public class TabPanParcController implements Initializable {
 
-   private Individus loggedUser;
-   @FXML
+    private Individus loggedUser;
+    @FXML
     private VBox content_area;
     @FXML
     private HBox menubar;
 
-    
-    boolean flag = true;
+    private boolean flag = true;
+    private boolean isSetEquipementAddNewButtonClick;
+    private boolean isSetEquipementEditButtonClick;
+ 
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -70,7 +78,73 @@ public class TabPanParcController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
-    private VBox gestionVBox ;
+    private VBox gestionVBox;
+
+    @FXML
+    private Button equipementAddNewButtonClick;
+
+    @FXML
+    private Button equipementEditButtonClick;
+
+    @FXML
+    private Button equipementDeleteButtonClick;
+
+    @FXML
+    private TextField equipementTFID;
+    @FXML
+    private TextField equipementTFNumero;
+
+    @FXML
+    private ChoiceBox<?> equipementCBType;
+
+    @FXML
+    private TextField equipementTFTypeReference;
+
+    @FXML
+    private TextField equipementTFTypeLibelle;
+
+    @FXML
+    private TextField EquipementTFTypeDDV;
+
+    @FXML
+    private ImageView EquipementImageViewImage;
+
+    @FXML
+    private Button equipementClearButtonClick;
+
+    @FXML
+    private Button equipementSaveButtonClick;
+
+    @FXML
+    private TextField adminTFSearch;
+
+    @FXML
+    private Button equipementViewButtonClick;
+
+    @FXML
+    private Button equipementRefreshButtonClick;
+
+    @FXML
+    private TableView<?> equipementTableView;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCID;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCNumero;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCLibelle;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCReference;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCDDV;
+
+    @FXML
+    private TableColumn<?, ?> equipementTCImage;
+
     /**
      * Initializes the controller class.
      */
@@ -79,10 +153,13 @@ public class TabPanParcController implements Initializable {
         // TODO
         out.println("fff");
     }
- @FXML  private void close_app() {
+
+    @FXML
+    private void close_app() {
         exit();
-        
+
     }
+
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();
@@ -124,8 +201,7 @@ public class TabPanParcController implements Initializable {
     @FXML
     public void processLogout(ActionEvent event) {
         if (application == null) {
-            // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
+
             return;
         }
 
@@ -134,8 +210,7 @@ public class TabPanParcController implements Initializable {
 
     public void saveAdminView(ActionEvent event) {
         if (application == null) {
-            // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
+
             animateMessage();
             return;
         }
@@ -143,6 +218,7 @@ public class TabPanParcController implements Initializable {
 
         animateMessage();
     }
+
     @FXML
     public void gotoDashbord() {
         application.gotoDashbord();
@@ -178,26 +254,20 @@ public class TabPanParcController implements Initializable {
         application.gotoGestionStock();
     }
 
-
-    
-  @FXML
-    private void handleMenuFullScreen(ActionEvent  event) {
+    @FXML
+    private void handleMenuFullScreen(ActionEvent event) {
         Stage stage = application.stage;
         out.println("Full Screen");
-       stage.setFullScreen(!stage.isFullScreen());
+        stage.setFullScreen(!stage.isFullScreen());
     }
-    
- 
+
     private void affichePhotoLoggedUser() throws FileNotFoundException {
-        
-      
-      //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
-       // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
-          //image = new Image("../assets/images/admin.png".toString(), true);
-        
+
+        //  if (loggedUser.getPhotoIndividu() == null || loggedUser.getPhotoIndividu() == "") {
+        // image = new Image(getClass().getResource("/main/assets/images/admin.png").toString());
+        //image = new Image("../assets/images/admin.png".toString(), true);
 //    }
 //imageView= new ImageView(getClass().getResource("url:https://avatars0.githubusercontent.com/u/15785708?s=460&v=4").toExternalForm());
-
         imageView.setFitWidth(45);
         imageView.setFitHeight(45);
         Circle circle = new Circle();
@@ -236,5 +306,135 @@ public class TabPanParcController implements Initializable {
             application.stage.setOpacity(1.0f);
         });
     }
+
+    /*
+        Une fonction pour Ajouter un nouveau equipement
+     */
+    @FXML
+    private void setEquipementAddNewButtonClick(Event event) {
+        equipementSetAllEnable();
+        isSetEquipementAddNewButtonClick = true;
+    }
+
+    /*
+       Pour desactiver tout les champs de saisie
+     */
+    private void equipementSetAllEnable() {
+        equipementTFID.setDisable(false);
+        equipementTFNumero.setDisable(false);
+        equipementTFTypeReference.setDisable(false);
+        equipementTFTypeLibelle.setDisable(false);
+        EquipementTFTypeDDV.setDisable(false);
+        equipementCBType.setDisable(false);
+        equipementSaveButtonClick.setDisable(false);
+        equipementClearButtonClick.setDisable(false);
+
+    }
+
+    /*
+       Pour activer tout les champs de saisie
+     */
+    private void equipementSetAllDisable() {
+        equipementTFID.setDisable(true);
+        equipementTFNumero.setDisable(true);
+        equipementTFTypeReference.setDisable(true);
+        equipementTFTypeLibelle.setDisable(true);
+        EquipementTFTypeDDV.setDisable(true);
+                equipementCBType.setDisable(true);
+
+        equipementSaveButtonClick.setDisable(true);
+        equipementClearButtonClick.setDisable(true);
+
+    }
+    
+      private void equipementSetAllClear(){
+        equipementTFID.clear();
+        equipementTFNumero.clear();
+        equipementTFTypeReference.clear();
+        EquipementTFTypeDDV.clear();
+        equipementTFTypeLibelle.clear();
+   
+    }
+
+    @FXML
+    private void setEquipementClearButtonClick(Event event){
+        equipementSetAllClear();
+        equipementSetAllDisable();
+        isSetEquipementAddNewButtonClick=false;
+        isSetEquipementEditButtonClick = false;
+    }
+    
+      @FXML
+    private void setAdminSaveButtonClick(Event event){
+        
+        
+        TestDAO testDao = new TestDAO();
+        System.out.println("Add new test");
+       Test test = new Test();
+      test.setNom("HHHHHH");
+      System.out.println(testDao.create(test));
+      
+      
+        try{
+            connection = database.getConnection();
+            statement = connection.createStatement();
+
+            if(isSetAdminAddNewButtonClick){
+                int rowsAffected = statement.executeUpdate("insert into`student` "+
+                        "(`dbStudentFname`,`dbStudentLname`,`dbStudentID`,`dbStudentDOB`,"+
+                        "`dbStudentDepartment`,`dbStudentEmail`,`dbStudentPhone`,`dbStudentAddress`,`dbGuardianFname`,`dbGuardianLname`,"+
+                        "`dbGuardianEmail`,`dbGuardianPhone`"+") "+
+                        "values ('"+adminTFStudentFname.getText()+"','"+adminTFStudentLname.getText()+"','"+adminTFStudentID.getText()
+                        +"','"+adminDPStudentDOB.getValue()
+                        +"','"+adminCBStudentDepartment.getValue().toString().trim()
+                        +"','"+adminTFGuardianEmail.getText()
+                        +"','"+adminTFStudentPhone.getText()
+                        +"','"+adminTFStudentAddress.getText()
+                        +"','"+adminTFGuardianFname.getText()
+                        +"','"+adminTFGuardianLname.getText()
+                        +"','"+adminTFGuardianEmail.getText()
+                        +"','"+adminTFGuardianPhone.getText()
+
+                        +"'); ");
+                statement.executeUpdate("insert into `studentgpa` (`dbstudentgpaID`) VALUES ('"+adminTFStudentID.getText()+"')");
+            }
+            else if (isSetAdminEditButtonClick){
+
+                int rowsAffected = statement.executeUpdate("update student set "+
+                        "dbStudentFname = '"+adminTFStudentFname.getText()+"',"+
+                        "dbStudentLname = '"+adminTFStudentLname.getText()+"',"+
+                        "dbStudentID = '"+adminTFStudentID.getText()+"',"+
+                        "dbStudentDOB = '"+adminDPStudentDOB.getValue()+"',"+
+                        "dbStudentDepartment = '"+adminCBStudentDepartment.getValue().toString().trim()+"',"+
+                        "dbStudentEmail = '"+adminTFStudentEmail.getText()+"',"+
+                        "dbStudentPhone = '"+adminTFStudentPhone.getText()+"',"+
+                        "dbStudentAddress = '"+adminTFStudentAddress.getText()+"',"+
+                        "dbGuardianFname = '"+adminTFGuardianFname.getText()+"',"+
+                        "dbGuardianLname = '"+adminTFGuardianLname.getText()+"',"+
+                        "dbGuardianEmail = '"+adminTFGuardianEmail.getText()+"',"+
+                        "dbGuardianPhone = '"+adminTFGuardianPhone.getText()+
+
+                        "' where dbStudentID = '"+
+                        temp+"';");
+                if (temp.equals(adminTFStudentID.getText())){
+                    statement.executeUpdate("update studentgpa set dbstudentgpaID ='"+adminTFStudentID.getText()+"' where dbStudentID = '"+ temp+"';");
+                }
+            }
+
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        adminSetAllClear();
+        adminSetAllDisable();
+        adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
+        isSetAdminEditButtonClick=false;
+        isSetAdminAddNewButtonClick = false;
+    }
+
 
 }

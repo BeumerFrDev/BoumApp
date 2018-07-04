@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Test.findByNom", query = "SELECT t FROM Test t WHERE t.nom = :nom")})
 public class Test implements Serializable {
 
+    @Column(name = "prenom")
+    private String prenom;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,6 +94,14 @@ public class Test implements Serializable {
     @Override
     public String toString() {
         return "fr.bg.main.Utils.Test[ id=" + id + " ]";
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
     
 }

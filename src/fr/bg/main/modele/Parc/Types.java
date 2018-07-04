@@ -9,6 +9,6 @@ package fr.bg.main.modele.Parc;
  *
  * @author Ouadie
  */
-public class Blocks {
+public class Types {
     
 }
