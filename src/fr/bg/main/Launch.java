@@ -38,7 +38,7 @@ import static fr.bg.main.modele.Affectations.of;
 import static fr.bg.main.modele.Affectations.validate;
 import fr.bg.main.modele.Directeur;
 import fr.bg.main.modele.Individus;
-import fr.bg.main.modele.Parc.Parc;
+
 
 
 import static java.lang.System.out;
