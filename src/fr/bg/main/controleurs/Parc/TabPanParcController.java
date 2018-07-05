@@ -188,12 +188,15 @@ public class TabPanParcController implements Initializable {
        
                for(Blocks block : blocks){
            Types type = typesDao.findByReference(block.getReferenceType());
-           
-           tableData.add(new EquipementTable(block.getIdBlock(),
-                   block.getNumeroBlock(),type.getLibelleType(),
-                  type.getReferenceType(),type.getDureDeVieType(),
-                  block.getDateDeMiseEnPlace().toInstant().toString(),
-                  type.getImageType()));
+           System.out.println(block.getDateDeMiseEnPlace());
+           tableData.add(new EquipementTable(
+                   block.getIdBlock()==null ? "" : block.getIdBlock(),
+                   block.getNumeroBlock()==null ? 0 : block.getNumeroBlock(),
+                   type.getLibelleType()==null ? "Sans Libelle" : type.getLibelleType(),
+                   type.getReferenceType()==null ? "Sans reference" : type.getReferenceType(),
+                   type.getDureDeVieType()==null ? 0 : type.getDureDeVieType(),
+                   block.getDateDeMiseEnPlace()==null ? "" : block.getDateDeMiseEnPlace().toString(),
+                   type.getImageType()));
            
            
            
