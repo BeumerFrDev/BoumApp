@@ -298,7 +298,7 @@
                <content>
                   <AnchorPane>
                      <children>
-                        <TableView fx:id="studentAllCourseTableView" layoutX="8.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="291.0" prefWidth="1079.0" AnchorPane.bottomAnchor="256.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="35.0">
+                        <TableView fx:id="studentAllCourseTableView" layoutX="8.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="277.0" prefWidth="1079.0" AnchorPane.bottomAnchor="270.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="35.0">
                            <columns>
                               <TableColumn fx:id="studentACourseColumnCode" prefWidth="128.0" text="ID article" />
                               <TableColumn fx:id="studentACourseColumnTitle" prefWidth="102.0" text="Nom" />
@@ -341,14 +341,14 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="1247.0">
                      <children>
-                        <TableView fx:id="resultHistoryTableView" layoutX="545.0" layoutY="49.0" prefHeight="541.0" prefWidth="635.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="545.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                        <TableView fx:id="resultHistoryTableView" layoutX="405.0" layoutY="49.0" prefHeight="533.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
                            <columns>
                               <TableColumn fx:id="resultHistoryColumnCode" prefWidth="96.0" text="ID fournisseur" />
-                              <TableColumn fx:id="resultHistoryColumnSec" minWidth="0.0" prefWidth="110.0" text="Nom" />
-                              <TableColumn fx:id="resultHistoryColumnGPA" prefWidth="180.0" text="Adresse" />
-                              <TableColumn fx:id="resultHistoryColumnGPA1" prefWidth="180.0" text="Telephone" />
-                              <TableColumn fx:id="resultHistoryColumnGPA2" prefWidth="180.0" text="Mail" />
-                              <TableColumn fx:id="resultHistoryColumnGPA3" prefWidth="180.0" text="Fax" />
+                              <TableColumn fx:id="resultHistoryColumnSec" minWidth="0.0" prefWidth="68.0" text="Nom" />
+                              <TableColumn fx:id="resultHistoryColumnGPA" prefWidth="117.0" text="Adresse" />
+                              <TableColumn fx:id="resultHistoryColumnGPA1" prefWidth="117.0" text="Telephone" />
+                              <TableColumn fx:id="resultHistoryColumnGPA2" prefWidth="194.0" text="Mail" />
+                              <TableColumn fx:id="resultHistoryColumnGPA3" prefWidth="334.0" text="Fax" />
                            </columns>
                         </TableView>
                         <GridPane layoutX="42.0" layoutY="73.0" prefHeight="268.0" prefWidth="348.0">
