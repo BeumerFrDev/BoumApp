@@ -50,6 +50,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -141,34 +142,37 @@ public class TabPanParcController implements Initializable {
     private Button equipementRefreshButtonClick;
 
     @FXML
-    private TableView<?> equipementTableView;
+    private TableView<EquipementTable> equipementTableView;
 
     @FXML
-    private TableColumn<?, ?> equipementTCID;
+    private TableColumn<EquipementTable, String> equipementTCID;
 
     @FXML
-    private TableColumn<?, ?> equipementTCNumero;
+    private TableColumn<EquipementTable, Integer> equipementTCNumero;
 
     @FXML
-    private TableColumn<?, ?> equipementTCLibelle;
+    private TableColumn<EquipementTable, String> equipementTCLibelle;
+    
+    @FXML
+    private TableColumn<EquipementTable, String> equipementTCDateDeMiseEnPlace;
+    
+    @FXML
+    private TableColumn<EquipementTable, String> equipementTCReference;
 
     @FXML
-    private TableColumn<?, ?> equipementTCReference;
+    private TableColumn<EquipementTable, Integer> equipementTCDDV;
 
     @FXML
-    private TableColumn<?, ?> equipementTCDDV;
-
-    @FXML
-    private TableColumn<?, ?> equipementTCImage;
+    private TableColumn<EquipementTable, String> equipementTCImage;
     private TypesDAO typesDao = new TypesDAO();
+    private BlocksDAO blocksDao = new BlocksDAO();
+    private  List<Blocks> blocks ;
     private  List<Types> typesL ;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      equipementDPDateMiseEnPlace.setValue(LocalDate.now());
-          
    
     }
 
@@ -176,6 +180,29 @@ public class TabPanParcController implements Initializable {
     private void close_app() {
         exit();
 
+    }
+     private ObservableList getDataAndAddToEquipementTable(){
+        ObservableList<EquipementTable> tableData = FXCollections.observableArrayList();
+         blocks = blocksDao.findAll();
+          blocks = blocksDao.findAll();
+       
+               for(Blocks block : blocks){
+           Types type = typesDao.findByReference(block.getReferenceType());
+           
+           tableData.add(new EquipementTable(block.getIdBlock(),
+                   block.getNumeroBlock(),type.getLibelleType(),
+                  type.getReferenceType(),type.getDureDeVieType(),
+                  block.getDateDeMiseEnPlace().toInstant().toString(),
+                  type.getImageType()));
+           
+           
+           
+        }
+             
+
+           
+       
+             return tableData;
     }
 
     public void setApp(Launch application) throws FileNotFoundException {
@@ -186,6 +213,18 @@ public class TabPanParcController implements Initializable {
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
         makeStageDrageable();
+        
+           equipementDPDateMiseEnPlace.setValue(LocalDate.now());
+      
+        equipementTCImage.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDImage"));
+      equipementTCDDV.setCellValueFactory(new PropertyValueFactory <EquipementTable,Integer>("equipementTDDDV"));
+      equipementTCReference.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDReference"));
+      equipementTCLibelle.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDLibelle"));
+      equipementTCID.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDID"));
+     equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
+      equipementTCNumero.setCellValueFactory(new PropertyValueFactory <EquipementTable, Integer>("equipementTDNumero"));
+        equipementTableView.setItems(getDataAndAddToEquipementTable());
+   
     }
 
     /*
