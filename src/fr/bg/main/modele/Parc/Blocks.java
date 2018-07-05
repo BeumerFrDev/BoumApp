@@ -6,121 +6,126 @@
 package fr.bg.main.modele.Parc;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Ouadie
  */
 @Entity
+@Table(catalog = "boumap", name = "blocks", schema = "", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"idBlock"})})
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Blocks.findAll", query = "SELECT b FROM Blocks b")
+    , @NamedQuery(name = "Blocks.findByIdBD", query = "SELECT b FROM Blocks b WHERE b.idBD = :idBD")
+    , @NamedQuery(name = "Blocks.findByIdBlock", query = "SELECT b FROM Blocks b WHERE b.idBlock = :idBlock")
+    , @NamedQuery(name = "Blocks.findByNumeroBlock", query = "SELECT b FROM Blocks b WHERE b.numeroBlock = :numeroBlock")
+    , @NamedQuery(name = "Blocks.findByReferenceType", query = "SELECT b FROM Blocks b WHERE b.referenceType = :referenceType")
+    , @NamedQuery(name = "Blocks.findByBlockPere", query = "SELECT b FROM Blocks b WHERE b.blockPere = :blockPere")})
 public class Blocks implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private Long id;
-    private String libelleBlock;
-    private String reference ;
-    private String image;
-    private Type typeBlock;
-    private Collection<Pieces> listePieces ;
-    private Collection<Blocks> listeSousBlocks;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer idBD;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
+    private String idBlock;
+    private Integer numeroBlock;
+    @Lob
+    private Object positionInterface;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
+    private String referenceType;
+    @Column(length = 20)
+    private String blockPere;
+    @Temporal(TemporalType.DATE)
+    private Date dateDeMiseEnPlace;
+
+    private static final long serialVersionUID = 1L;
+   
 
     public Blocks() {
     }
 
-    public Blocks(Long id) {
-        this.id = id;
+    public Blocks(Integer idBD) {
+        this.idBD = idBD;
     }
 
-    public Blocks(Long id, String libelleBlock, String reference, String image, Type typeBlock, Collection<Pieces> listePieces, Collection<Blocks> listeSousBlocks) {
-        this.id = id;
-        this.libelleBlock = libelleBlock;
-        this.reference = reference;
-        this.image = image;
-        this.typeBlock = typeBlock;
-        this.listePieces = listePieces;
-        this.listeSousBlocks = listeSousBlocks;
+    public Blocks(Integer idBD, String idBlock, String referenceType) {
+        this.idBD = idBD;
+        this.idBlock = idBlock;
+        this.referenceType = referenceType;
     }
 
-    public Blocks(Long id, String libelleBlock, String reference, String image, Type typeBlock, Collection<Pieces> listePieces) {
-        this.id = id;
-        this.libelleBlock = libelleBlock;
-        this.reference = reference;
-        this.image = image;
-        this.typeBlock = typeBlock;
-        this.listePieces = listePieces;
+    public Integer getIdBD() {
+        return idBD;
     }
 
-    public String getLibelleBlock() {
-        return libelleBlock;
+    public void setIdBD(Integer idBD) {
+        this.idBD = idBD;
     }
 
-    public void setLibelleBlock(String libelleBlock) {
-        this.libelleBlock = libelleBlock;
+    public String getIdBlock() {
+        return idBlock;
     }
 
-    public String getReference() {
-        return reference;
+    public void setIdBlock(String idBlock) {
+        this.idBlock = idBlock;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public Integer getNumeroBlock() {
+        return numeroBlock;
     }
 
-    public String getImage() {
-        return image;
+    public void setNumeroBlock(Integer numeroBlock) {
+        this.numeroBlock = numeroBlock;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public Object getPositionInterface() {
+        return positionInterface;
     }
 
-    public Type getTypeBlock() {
-        return typeBlock;
+    public void setPositionInterface(Object positionInterface) {
+        this.positionInterface = positionInterface;
     }
 
-    public void setTypeBlock(Type typeBlock) {
-        this.typeBlock = typeBlock;
+    public String getReferenceType() {
+        return referenceType;
     }
 
-    public Collection<Pieces> getListePieces() {
-        return listePieces;
+    public void setReferenceType(String referenceType) {
+        this.referenceType = referenceType;
     }
 
-    public void setListePieces(Collection<Pieces> listePieces) {
-        this.listePieces = listePieces;
+    public String getBlockPere() {
+        return blockPere;
     }
 
-    public Collection<Blocks> getListeSousBlocks() {
-        return listeSousBlocks;
-    }
-
-    public void setListeSousBlocks(Collection<Blocks> listeSousBlocks) {
-        this.listeSousBlocks = listeSousBlocks;
-    }
-
-
-
-    
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setBlockPere(String blockPere) {
+        this.blockPere = blockPere;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idBD != null ? idBD.hashCode() : 0);
         return hash;
     }
 
@@ -131,7 +136,7 @@ public class Blocks implements Serializable {
             return false;
         }
         Blocks other = (Blocks) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idBD == null && other.idBD != null) || (this.idBD != null && !this.idBD.equals(other.idBD))) {
             return false;
         }
         return true;
@@ -139,7 +144,9 @@ public class Blocks implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.modele.plandetri.Blocks[ id=" + id + " ]";
+        return "javaapplication10.Blocks[ idBD=" + idBD + " ]";
     }
+
+    
     
 }

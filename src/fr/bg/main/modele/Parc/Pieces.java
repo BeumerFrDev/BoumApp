@@ -6,106 +6,100 @@
 package fr.bg.main.modele.Parc;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Ouadie
  */
 @Entity
+@Table(catalog = "boumap",name = "pieces", schema = "", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"idPiece"})})
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Pieces.findAll", query = "SELECT p FROM Pieces p")
+    , @NamedQuery(name = "Pieces.findByIdDB", query = "SELECT p FROM Pieces p WHERE p.idDB = :idDB")
+    , @NamedQuery(name = "Pieces.findByIdPiece", query = "SELECT p FROM Pieces p WHERE p.idPiece = :idPiece")
+    , @NamedQuery(name = "Pieces.findByReferenceType", query = "SELECT p FROM Pieces p WHERE p.referenceType = :referenceType")
+    , @NamedQuery(name = "Pieces.findByBlockPere", query = "SELECT p FROM Pieces p WHERE p.blockPere = :blockPere")})
 public class Pieces implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private Long id;
-    private String libellePiece;
-    private String referencePiece;
-    private String image;
-    private Type type;
-    private int dureDeVie;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer idDB;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
+    private String idPiece;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
+    private String referenceType;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
+    private String blockPere;
 
     public Pieces() {
     }
 
-    public Pieces(Long id) {
-        this.id = id;
+    public Pieces(Integer idDB) {
+        this.idDB = idDB;
     }
 
-    public Pieces(Long id, String libellePiece, String referencePiece, Type type, int dureDeVie) {
-        this.id = id;
-        this.libellePiece = libellePiece;
-        this.referencePiece = referencePiece;
-        this.type = type;
-        this.dureDeVie = dureDeVie;
+    public Pieces(Integer idDB, String idPiece, String referenceType, String blockPere) {
+        this.idDB = idDB;
+        this.idPiece = idPiece;
+        this.referenceType = referenceType;
+        this.blockPere = blockPere;
     }
 
-    public Pieces(Long id, String libellePiece, String referencePiece, String image, Type type, int dureDeVie) {
-        this.id = id;
-        this.libellePiece = libellePiece;
-        this.referencePiece = referencePiece;
-        this.image = image;
-        this.type = type;
-        this.dureDeVie = dureDeVie;
+    public Integer getIdDB() {
+        return idDB;
     }
 
-    public String getLibellePiece() {
-        return libellePiece;
+    public void setIdDB(Integer idDB) {
+        this.idDB = idDB;
     }
 
-    public void setLibellePiece(String libellePiece) {
-        this.libellePiece = libellePiece;
+    public String getIdPiece() {
+        return idPiece;
     }
 
-    public String getReferencePiece() {
-        return referencePiece;
+    public void setIdPiece(String idPiece) {
+        this.idPiece = idPiece;
     }
 
-    public void setReferencePiece(String referencePiece) {
-        this.referencePiece = referencePiece;
+    public String getReferenceType() {
+        return referenceType;
     }
 
-    public String getImage() {
-        return image;
+    public void setReferenceType(String referenceType) {
+        this.referenceType = referenceType;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public String getBlockPere() {
+        return blockPere;
     }
 
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public int getDureDeVie() {
-        return dureDeVie;
-    }
-
-    public void setDureDeVie(int dureDeVie) {
-        this.dureDeVie = dureDeVie;
-    }
-    
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setBlockPere(String blockPere) {
+        this.blockPere = blockPere;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idDB != null ? idDB.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +110,7 @@ public class Pieces implements Serializable {
             return false;
         }
         Pieces other = (Pieces) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idDB == null && other.idDB != null) || (this.idDB != null && !this.idDB.equals(other.idDB))) {
             return false;
         }
         return true;
@@ -124,7 +118,7 @@ public class Pieces implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.bg.main.modele.plandetri.Pieces[ id=" + id + " ]";
+        return "javaapplication10.Pieces[ idDB=" + idDB + " ]";
     }
     
 }
