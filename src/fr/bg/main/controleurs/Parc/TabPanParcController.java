@@ -152,10 +152,10 @@ public class TabPanParcController implements Initializable {
 
     @FXML
     private TableColumn<EquipementTable, String> equipementTCLibelle;
-    
+
     @FXML
     private TableColumn<EquipementTable, String> equipementTCDateDeMiseEnPlace;
-    
+
     @FXML
     private TableColumn<EquipementTable, String> equipementTCReference;
 
@@ -166,14 +166,23 @@ public class TabPanParcController implements Initializable {
     private TableColumn<EquipementTable, String> equipementTCImage;
     private TypesDAO typesDao = new TypesDAO();
     private BlocksDAO blocksDao = new BlocksDAO();
-    private  List<Blocks> blocks ;
-    private  List<Types> typesL ;
+    private List<Blocks> blocks;
+    private List<Types> typesL;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
+
+        equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDImage"));
+        equipementTCDDV.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDDDV"));
+        equipementTCReference.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDReference"));
+        equipementTCLibelle.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDLibelle"));
+        equipementTCID.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDID"));
+        equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
+        equipementTCNumero.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDNumero"));
+       
     }
 
     @FXML
@@ -181,31 +190,27 @@ public class TabPanParcController implements Initializable {
         exit();
 
     }
-     private ObservableList getDataAndAddToEquipementTable(){
-        ObservableList<EquipementTable> tableData = FXCollections.observableArrayList();
-         blocks = blocksDao.findAll();
-          blocks = blocksDao.findAll();
-       
-               for(Blocks block : blocks){
-           Types type = typesDao.findByReference(block.getReferenceType());
-           System.out.println(block.getDateDeMiseEnPlace());
-           tableData.add(new EquipementTable(
-                   block.getIdBlock()==null ? "" : block.getIdBlock(),
-                   block.getNumeroBlock()==null ? 0 : block.getNumeroBlock(),
-                   type.getLibelleType()==null ? "Sans Libelle" : type.getLibelleType(),
-                   type.getReferenceType()==null ? "Sans reference" : type.getReferenceType(),
-                   type.getDureDeVieType()==null ? 0 : type.getDureDeVieType(),
-                   block.getDateDeMiseEnPlace()==null ? "" : block.getDateDeMiseEnPlace().toString(),
-                   type.getImageType()));
-           
-           
-           
-        }
-             
 
-           
-       
-             return tableData;
+    private ObservableList getDataAndAddToEquipementTable() {
+        ObservableList<EquipementTable> tableData = FXCollections.observableArrayList();
+        blocks = blocksDao.findAll();
+        blocks = blocksDao.findAll();
+
+        for (Blocks block : blocks) {
+            Types type = typesDao.findByReference(block.getReferenceType());
+            System.out.println();
+            tableData.add(new EquipementTable(
+                    block.getIdBlock() == null ? "" : block.getIdBlock(),
+                    block.getNumeroBlock() == null ? 0 : block.getNumeroBlock(),
+                    type.getLibelleType() == null ? "Sans Libelle" : type.getLibelleType(),
+                    type.getReferenceType() == null ? "Sans reference" : type.getReferenceType(),
+                    type.getDureDeVieType() == null ? 0 : type.getDureDeVieType(),
+                    block.getDateDeMiseEnPlace() == null ? "" : block.getDateDeMiseEnPlace().toString(),
+                    type.getImageType()));
+
+        }
+
+        return tableData;
     }
 
     public void setApp(Launch application) throws FileNotFoundException {
@@ -216,18 +221,10 @@ public class TabPanParcController implements Initializable {
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
         makeStageDrageable();
-        
-           equipementDPDateMiseEnPlace.setValue(LocalDate.now());
-      
-        equipementTCImage.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDImage"));
-      equipementTCDDV.setCellValueFactory(new PropertyValueFactory <EquipementTable,Integer>("equipementTDDDV"));
-      equipementTCReference.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDReference"));
-      equipementTCLibelle.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDLibelle"));
-      equipementTCID.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDID"));
-     equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory <EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
-      equipementTCNumero.setCellValueFactory(new PropertyValueFactory <EquipementTable, Integer>("equipementTDNumero"));
-        equipementTableView.setItems(getDataAndAddToEquipementTable());
-   
+
+        equipementDPDateMiseEnPlace.setValue(LocalDate.now());
+ equipementTableView.setItems(getDataAndAddToEquipementTable());
+
     }
 
     /*
@@ -365,7 +362,7 @@ public class TabPanParcController implements Initializable {
         parent.setOnMouseReleased((e) -> {
             application.stage.setOpacity(1.0f);
         });
-        
+
     }
 
     /*
@@ -376,39 +373,35 @@ public class TabPanParcController implements Initializable {
         equipementSetAllEnable();
         isSetEquipementAddNewButtonClick = true;
         typesL = typesDao.findAll();
-        ArrayList libelTypeList = new ArrayList() ; 
-        for(Types type : typesL){
-           
-           libelTypeList.add(type.getLibelleType());
+        ArrayList libelTypeList = new ArrayList();
+        for (Types type : typesL) {
+
+            libelTypeList.add(type.getLibelleType());
         }
-        equipementCBType.setItems( FXCollections.observableArrayList(libelTypeList));
-        
-        
- 
+        equipementCBType.setItems(FXCollections.observableArrayList(libelTypeList));
+
         ChangeListener<String> changeListener = new ChangeListener<String>() {
- 
+
             @Override
             public void changed(ObservableValue<? extends String> observable, //
                     String oldValue, String newValue) {
                 if (newValue != null) {
-                    for(Types type : typesL){
-           if(type.getLibelleType()==newValue){
-           equipementTFTypeReference.setText(type.getReferenceType());
-           equipementTFTypeLibelle.setText(type.getLibelleType());
-           EquipementTFTypeDDV.setText(type.getDureDeVieType()+"");
-           }
-        }
-                    
+                    for (Types type : typesL) {
+                        if (type.getLibelleType() == newValue) {
+                            equipementTFTypeReference.setText(type.getReferenceType());
+                            equipementTFTypeLibelle.setText(type.getLibelleType());
+                            EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
+                        }
+                    }
+
                 }
             }
         };
         // Selected Item Changed.
         equipementCBType.getSelectionModel().selectedItemProperty().addListener(changeListener);
-          
+
     }
 
-    
-   
     /*
        Pour desactiver tout les champs de saisie
      */
@@ -473,7 +466,6 @@ public class TabPanParcController implements Initializable {
             block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
             block.setReferenceType("LF");
 
-            
             System.out.println(equipementDPDateMiseEnPlace.getValue());
             Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             block.setDateDeMiseEnPlace(date1);
@@ -485,9 +477,9 @@ public class TabPanParcController implements Initializable {
 
         equipementSetAllClear();
         equipementSetAllDisable();
-        //adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
-        isSetEquipementEditButtonClick = false;
+         isSetEquipementEditButtonClick = false;
         isSetEquipementAddNewButtonClick = false;
+        equipementTableView.setItems(getDataAndAddToEquipementTable());
     }
 
 }
