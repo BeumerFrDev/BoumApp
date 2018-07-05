@@ -4,19 +4,31 @@ import fr.bg.main.controleurs.utilisateurs.*;
 import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
 import fr.bg.main.Utils.DAO.Parc.BlocksDAO;
+import fr.bg.main.Utils.DAO.Parc.TypesDAO;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import fr.bg.main.modele.Parc.Blocks;
+import fr.bg.main.modele.Parc.Types;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import static java.lang.System.out;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
+import javafx.beans.value.ChangeListener;
+
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +41,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -67,7 +80,7 @@ public class TabPanParcController implements Initializable {
     private boolean flag = true;
     private boolean isSetEquipementAddNewButtonClick;
     private boolean isSetEquipementEditButtonClick;
- 
+
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -81,7 +94,8 @@ public class TabPanParcController implements Initializable {
     @FXML
     private AnchorPane parent;
     private VBox gestionVBox;
-
+    @FXML
+    private DatePicker equipementDPDateMiseEnPlace;
     @FXML
     private Button equipementAddNewButtonClick;
 
@@ -97,7 +111,7 @@ public class TabPanParcController implements Initializable {
     private TextField equipementTFNumero;
 
     @FXML
-    private ChoiceBox<?> equipementCBType;
+    private ChoiceBox<String> equipementCBType;
 
     @FXML
     private TextField equipementTFTypeReference;
@@ -146,14 +160,16 @@ public class TabPanParcController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> equipementTCImage;
-
+    private TypesDAO typesDao = new TypesDAO();
+    private  List<Types> typesL ;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        out.println("fff");
+      equipementDPDateMiseEnPlace.setValue(LocalDate.now());
+          
+   
     }
 
     @FXML
@@ -307,6 +323,7 @@ public class TabPanParcController implements Initializable {
         parent.setOnMouseReleased((e) -> {
             application.stage.setOpacity(1.0f);
         });
+        
     }
 
     /*
@@ -316,18 +333,51 @@ public class TabPanParcController implements Initializable {
     private void setEquipementAddNewButtonClick(Event event) {
         equipementSetAllEnable();
         isSetEquipementAddNewButtonClick = true;
+        typesL = typesDao.findAll();
+        ArrayList libelTypeList = new ArrayList() ; 
+        for(Types type : typesL){
+           
+           libelTypeList.add(type.getLibelleType());
+        }
+        equipementCBType.setItems( FXCollections.observableArrayList(libelTypeList));
+        
+        
+ 
+        ChangeListener<String> changeListener = new ChangeListener<String>() {
+ 
+            @Override
+            public void changed(ObservableValue<? extends String> observable, //
+                    String oldValue, String newValue) {
+                if (newValue != null) {
+                    for(Types type : typesL){
+           if(type.getLibelleType()==newValue){
+           equipementTFTypeReference.setText(type.getReferenceType());
+           equipementTFTypeLibelle.setText(type.getLibelleType());
+           EquipementTFTypeDDV.setText(type.getDureDeVieType()+"");
+           }
+        }
+                    
+                }
+            }
+        };
+        // Selected Item Changed.
+        equipementCBType.getSelectionModel().selectedItemProperty().addListener(changeListener);
+          
     }
 
+    
+   
     /*
        Pour desactiver tout les champs de saisie
      */
     private void equipementSetAllEnable() {
         equipementTFID.setDisable(false);
         equipementTFNumero.setDisable(false);
-        equipementTFTypeReference.setDisable(false);
-        equipementTFTypeLibelle.setDisable(false);
-        EquipementTFTypeDDV.setDisable(false);
+        //equipementTFTypeReference.setDisable(false);
+        //equipementTFTypeLibelle.setDisable(false);
+        //EquipementTFTypeDDV.setDisable(false);
         equipementCBType.setDisable(false);
+        equipementDPDateMiseEnPlace.setDisable(false);
         equipementSaveButtonClick.setDisable(false);
         equipementClearButtonClick.setDisable(false);
 
@@ -342,59 +392,60 @@ public class TabPanParcController implements Initializable {
         equipementTFTypeReference.setDisable(true);
         equipementTFTypeLibelle.setDisable(true);
         EquipementTFTypeDDV.setDisable(true);
-                equipementCBType.setDisable(true);
-
+        equipementCBType.setDisable(true);
+        equipementDPDateMiseEnPlace.setDisable(true);
         equipementSaveButtonClick.setDisable(true);
         equipementClearButtonClick.setDisable(true);
 
     }
-    
-      private void equipementSetAllClear(){
+
+    private void equipementSetAllClear() {
         equipementTFID.clear();
         equipementTFNumero.clear();
         equipementTFTypeReference.clear();
         EquipementTFTypeDDV.clear();
         equipementTFTypeLibelle.clear();
-   
+        equipementDPDateMiseEnPlace.setValue(LocalDate.now());
     }
 
     @FXML
-    private void setEquipementClearButtonClick(Event event){
+    private void setEquipementClearButtonClick(Event event) {
         equipementSetAllClear();
         equipementSetAllDisable();
-        isSetEquipementAddNewButtonClick=false;
+        isSetEquipementAddNewButtonClick = false;
         isSetEquipementEditButtonClick = false;
+
     }
-    
-      @FXML
-    private void setAdminSaveButtonClick(Event event){
-        
-        
-      
-          
-            if(isSetEquipementAddNewButtonClick){
-               
+
+    @FXML
+    private void setEquipementSaveButtonClick(Event event) {
+
+        System.out.println("test block creation");
+
+        if (isSetEquipementAddNewButtonClick) {
+
             BlocksDAO blocksDao = new BlocksDAO();
             System.out.println("Add new Block");
             Blocks block = new Blocks();
             block.setIdBlock(equipementTFID.getText());
             block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
-            block.setReferenceType(equipementCBType.getValue().toString());
+            block.setReferenceType("LF");
+
             
-            }
-            else if (isSetEquipementEditButtonClick){
+            System.out.println(equipementDPDateMiseEnPlace.getValue());
+            Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            block.setDateDeMiseEnPlace(date1);
+            System.out.println(blocksDao.create(block));
 
-            }
+        } else if (isSetEquipementEditButtonClick) {
 
+        }
 
-           
-        
         equipementSetAllClear();
         equipementSetAllDisable();
-       //adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
-        isSetEquipementEditButtonClick=false;
+        //adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
+        isSetEquipementEditButtonClick = false;
         isSetEquipementAddNewButtonClick = false;
     }
-
 
 }
