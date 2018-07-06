@@ -63,6 +63,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import static javafx.util.Duration.millis;
+import fr.bg.main.Utils.AlertMaker;
 
 /**
  * FXML Controller class
@@ -470,6 +471,7 @@ public class TabPanParcController implements Initializable {
             Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             block.setDateDeMiseEnPlace(date1);
             System.out.println(blocksDao.create(block));
+            AlertMaker.showSimpleAlert("Ajout", "L'equipement ajouté avec sucées ");
 
         } else if (isSetEquipementEditButtonClick) {
 
