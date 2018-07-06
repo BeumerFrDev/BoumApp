@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Individus.java</file>
             <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Launch.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Utils/HibernateUtil.java</file>
             <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/modele/Affectations.java</file>
+            <file>file:/C:/Users/lyess/Documents/NetBeansProjects/BoumApp/src/fr/bg/main/Utils/AbstractDAO.java</file>
         </group>
     </open-files>
 </project-private>
