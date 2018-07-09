@@ -58,6 +58,8 @@ public class Blocks implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateDeMiseEnPlace;
 
+
+
     private static final long serialVersionUID = 1L;
    
 
@@ -76,6 +78,14 @@ public class Blocks implements Serializable {
 
     public Integer getIdBD() {
         return idBD;
+    }
+
+    public Date getDateDeMiseEnPlace() {
+        return dateDeMiseEnPlace;
+    }
+
+    public void setDateDeMiseEnPlace(Date dateDeMiseEnPlace) {
+        this.dateDeMiseEnPlace = dateDeMiseEnPlace;
     }
 
     public void setIdBD(Integer idBD) {
@@ -147,6 +157,7 @@ public class Blocks implements Serializable {
         return "javaapplication10.Blocks[ idBD=" + idBD + " ]";
     }
 
+    
     
     
 }

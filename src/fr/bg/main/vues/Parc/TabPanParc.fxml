@@ -160,12 +160,10 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <ChoiceBox fx:id="equipementCBType" disable="true" prefHeight="25.0" prefWidth="163.0" value="Convoyeur auto" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <ChoiceBox fx:id="equipementCBType" disable="true" prefHeight="25.0" prefWidth="163.0"  GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <items>
                                                       <FXCollections fx:factory="observableArrayList">
-                                                         <String fx:value="Convoyeur auto" />
-                                                         <String fx:value="Chute interne" />
-                                                         <String fx:value="Convoyeur double" />
+                                                         
                                                       </FXCollections>
                                                    </items>
                                                 </ChoiceBox>
@@ -174,7 +172,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <DatePicker fx:id="equipementDPDateMiseEnPlace" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <DatePicker fx:id="equipementDPDateMiseEnPlace" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                              </children>
                                           </GridPane>
                                           <Text fill="#673ab7" layoutX="13.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information de l'équipement" AnchorPane.bottomAnchor="476.7333984375" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="188.33349609375" AnchorPane.topAnchor="88.2666015625">
@@ -232,7 +230,7 @@
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="510.0" />
                                           <Button fx:id="equipementClearButtonClick" disable="true" layoutX="135.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementClearButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF5151; -fx-text-fill: white;" text="Clear" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="521.0" />
-                                          <Button fx:id="equipementSaveButtonClick" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="521.0" />
+                                          <Button fx:id="equipementSaveButtonClick" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementSaveButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="521.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="671.0">

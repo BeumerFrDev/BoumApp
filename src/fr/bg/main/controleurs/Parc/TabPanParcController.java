@@ -4,19 +4,31 @@ import fr.bg.main.controleurs.utilisateurs.*;
 import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
 import fr.bg.main.Utils.DAO.Parc.BlocksDAO;
+import fr.bg.main.Utils.DAO.Parc.TypesDAO;
 import fr.bg.main.modele.AnimationGenerator;
 import fr.bg.main.modele.Individus;
 import fr.bg.main.modele.Parc.Blocks;
+import fr.bg.main.modele.Parc.Types;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import static java.lang.System.out;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import static javafx.application.Platform.exit;
+import javafx.beans.value.ChangeListener;
+
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +41,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -37,6 +50,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -49,6 +63,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import static javafx.util.Duration.millis;
+import fr.bg.main.Utils.AlertMaker;
 
 /**
  * FXML Controller class
@@ -67,7 +82,7 @@ public class TabPanParcController implements Initializable {
     private boolean flag = true;
     private boolean isSetEquipementAddNewButtonClick;
     private boolean isSetEquipementEditButtonClick;
- 
+
     //Notre variable d'application
     private Launch application;
     private Label success;
@@ -81,7 +96,8 @@ public class TabPanParcController implements Initializable {
     @FXML
     private AnchorPane parent;
     private VBox gestionVBox;
-
+    @FXML
+    private DatePicker equipementDPDateMiseEnPlace;
     @FXML
     private Button equipementAddNewButtonClick;
 
@@ -97,7 +113,7 @@ public class TabPanParcController implements Initializable {
     private TextField equipementTFNumero;
 
     @FXML
-    private ChoiceBox<?> equipementCBType;
+    private ChoiceBox<String> equipementCBType;
 
     @FXML
     private TextField equipementTFTypeReference;
@@ -127,39 +143,75 @@ public class TabPanParcController implements Initializable {
     private Button equipementRefreshButtonClick;
 
     @FXML
-    private TableView<?> equipementTableView;
+    private TableView<EquipementTable> equipementTableView;
 
     @FXML
-    private TableColumn<?, ?> equipementTCID;
+    private TableColumn<EquipementTable, String> equipementTCID;
 
     @FXML
-    private TableColumn<?, ?> equipementTCNumero;
+    private TableColumn<EquipementTable, Integer> equipementTCNumero;
 
     @FXML
-    private TableColumn<?, ?> equipementTCLibelle;
+    private TableColumn<EquipementTable, String> equipementTCLibelle;
 
     @FXML
-    private TableColumn<?, ?> equipementTCReference;
+    private TableColumn<EquipementTable, String> equipementTCDateDeMiseEnPlace;
 
     @FXML
-    private TableColumn<?, ?> equipementTCDDV;
+    private TableColumn<EquipementTable, String> equipementTCReference;
 
     @FXML
-    private TableColumn<?, ?> equipementTCImage;
+    private TableColumn<EquipementTable, Integer> equipementTCDDV;
+
+    @FXML
+    private TableColumn<EquipementTable, String> equipementTCImage;
+    private TypesDAO typesDao = new TypesDAO();
+    private BlocksDAO blocksDao = new BlocksDAO();
+    private List<Blocks> blocks;
+    private List<Types> typesL;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        out.println("fff");
+
+        equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDImage"));
+        equipementTCDDV.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDDDV"));
+        equipementTCReference.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDReference"));
+        equipementTCLibelle.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDLibelle"));
+        equipementTCID.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDID"));
+        equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
+        equipementTCNumero.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDNumero"));
+       
     }
 
     @FXML
     private void close_app() {
         exit();
 
+    }
+
+    private ObservableList getDataAndAddToEquipementTable() {
+        ObservableList<EquipementTable> tableData = FXCollections.observableArrayList();
+        blocks = blocksDao.findAll();
+        blocks = blocksDao.findAll();
+
+        for (Blocks block : blocks) {
+            Types type = typesDao.findByReference(block.getReferenceType());
+            System.out.println();
+            tableData.add(new EquipementTable(
+                    block.getIdBlock() == null ? "" : block.getIdBlock(),
+                    block.getNumeroBlock() == null ? 0 : block.getNumeroBlock(),
+                    type.getLibelleType() == null ? "Sans Libelle" : type.getLibelleType(),
+                    type.getReferenceType() == null ? "Sans reference" : type.getReferenceType(),
+                    type.getDureDeVieType() == null ? 0 : type.getDureDeVieType(),
+                    block.getDateDeMiseEnPlace() == null ? "" : block.getDateDeMiseEnPlace().toString(),
+                    type.getImageType()));
+
+        }
+
+        return tableData;
     }
 
     public void setApp(Launch application) throws FileNotFoundException {
@@ -170,6 +222,10 @@ public class TabPanParcController implements Initializable {
         menuButon.getItems().add(0, new MenuItem(loggedUser.getNomIndividu() + " " + loggedUser.getPrenomIndividu()));
         affichePhotoLoggedUser();
         makeStageDrageable();
+
+        equipementDPDateMiseEnPlace.setValue(LocalDate.now());
+ equipementTableView.setItems(getDataAndAddToEquipementTable());
+
     }
 
     /*
@@ -307,6 +363,7 @@ public class TabPanParcController implements Initializable {
         parent.setOnMouseReleased((e) -> {
             application.stage.setOpacity(1.0f);
         });
+
     }
 
     /*
@@ -316,6 +373,34 @@ public class TabPanParcController implements Initializable {
     private void setEquipementAddNewButtonClick(Event event) {
         equipementSetAllEnable();
         isSetEquipementAddNewButtonClick = true;
+        typesL = typesDao.findAll();
+        ArrayList libelTypeList = new ArrayList();
+        for (Types type : typesL) {
+
+            libelTypeList.add(type.getLibelleType());
+        }
+        equipementCBType.setItems(FXCollections.observableArrayList(libelTypeList));
+
+        ChangeListener<String> changeListener = new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, //
+                    String oldValue, String newValue) {
+                if (newValue != null) {
+                    for (Types type : typesL) {
+                        if (type.getLibelleType() == newValue) {
+                            equipementTFTypeReference.setText(type.getReferenceType());
+                            equipementTFTypeLibelle.setText(type.getLibelleType());
+                            EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
+                        }
+                    }
+
+                }
+            }
+        };
+        // Selected Item Changed.
+        equipementCBType.getSelectionModel().selectedItemProperty().addListener(changeListener);
+
     }
 
     /*
@@ -324,10 +409,11 @@ public class TabPanParcController implements Initializable {
     private void equipementSetAllEnable() {
         equipementTFID.setDisable(false);
         equipementTFNumero.setDisable(false);
-        equipementTFTypeReference.setDisable(false);
-        equipementTFTypeLibelle.setDisable(false);
-        EquipementTFTypeDDV.setDisable(false);
+        //equipementTFTypeReference.setDisable(false);
+        //equipementTFTypeLibelle.setDisable(false);
+        //EquipementTFTypeDDV.setDisable(false);
         equipementCBType.setDisable(false);
+        equipementDPDateMiseEnPlace.setDisable(false);
         equipementSaveButtonClick.setDisable(false);
         equipementClearButtonClick.setDisable(false);
 
@@ -342,59 +428,60 @@ public class TabPanParcController implements Initializable {
         equipementTFTypeReference.setDisable(true);
         equipementTFTypeLibelle.setDisable(true);
         EquipementTFTypeDDV.setDisable(true);
-                equipementCBType.setDisable(true);
-
+        equipementCBType.setDisable(true);
+        equipementDPDateMiseEnPlace.setDisable(true);
         equipementSaveButtonClick.setDisable(true);
         equipementClearButtonClick.setDisable(true);
 
     }
-    
-      private void equipementSetAllClear(){
+
+    private void equipementSetAllClear() {
         equipementTFID.clear();
         equipementTFNumero.clear();
         equipementTFTypeReference.clear();
         EquipementTFTypeDDV.clear();
         equipementTFTypeLibelle.clear();
-   
+        equipementDPDateMiseEnPlace.setValue(LocalDate.now());
     }
 
     @FXML
-    private void setEquipementClearButtonClick(Event event){
+    private void setEquipementClearButtonClick(Event event) {
         equipementSetAllClear();
         equipementSetAllDisable();
-        isSetEquipementAddNewButtonClick=false;
+        isSetEquipementAddNewButtonClick = false;
         isSetEquipementEditButtonClick = false;
+
     }
-    
-      @FXML
-    private void setAdminSaveButtonClick(Event event){
-        
-        
-      
-          
-            if(isSetEquipementAddNewButtonClick){
-               
+
+    @FXML
+    private void setEquipementSaveButtonClick(Event event) {
+
+        System.out.println("test block creation");
+
+        if (isSetEquipementAddNewButtonClick) {
+
             BlocksDAO blocksDao = new BlocksDAO();
             System.out.println("Add new Block");
             Blocks block = new Blocks();
             block.setIdBlock(equipementTFID.getText());
             block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
-            block.setReferenceType(equipementCBType.getValue().toString());
-            
-            }
-            else if (isSetEquipementEditButtonClick){
+            block.setReferenceType("LF");
 
-            }
+            System.out.println(equipementDPDateMiseEnPlace.getValue());
+            Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            block.setDateDeMiseEnPlace(date1);
+            System.out.println(blocksDao.create(block));
+            AlertMaker.showSimpleAlert("Ajout", "L'equipement ajouté avec sucées ");
 
+        } else if (isSetEquipementEditButtonClick) {
 
-           
-        
+        }
+
         equipementSetAllClear();
         equipementSetAllDisable();
-       //adminTableView.setItems(getDataFromSqlAndAddToObservableList("SELECT * FROM student;"));
-        isSetEquipementEditButtonClick=false;
+         isSetEquipementEditButtonClick = false;
         isSetEquipementAddNewButtonClick = false;
+        equipementTableView.setItems(getDataAndAddToEquipementTable());
     }
-
 
 }

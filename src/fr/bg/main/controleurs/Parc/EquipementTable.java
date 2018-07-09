@@ -32,56 +32,56 @@ public class EquipementTable {
         this.equipementTDImage = new SimpleStringProperty(equipementTDImage);
     }
 
-    public SimpleStringProperty getEquipementTDID() {
-        return equipementTDID;
+    public String getEquipementTDID() {
+        return equipementTDID.get();
     }
 
     public void setEquipementTDID(String equipementTDID) {
         this.equipementTDID.set(equipementTDID);
     }
 
-    public SimpleIntegerProperty getEquipementTDNumero() {
-        return equipementTDNumero;
+    public Integer getEquipementTDNumero() {
+        return equipementTDNumero.get();
     }
 
     public void setEquipementTDNumero(int num) {
         equipementTDNumero.set(num);
     }
 
-    public SimpleStringProperty getEquipementTDLibelle() {
-        return equipementTDLibelle;
+    public String getEquipementTDLibelle() {
+        return equipementTDLibelle.get();
     }
     
     public void setEquipementTDLibelle(String libel) {
         equipementTDLibelle.set(libel);
     }
 
-    public SimpleStringProperty getEquipementTDReference() {
-        return equipementTDReference;
+    public String getEquipementTDReference() {
+        return equipementTDReference.get();
     }
     
     public void setEquipementTDReference(String ref) {
          equipementTDReference.set(ref);
     }
 
-    public SimpleIntegerProperty getEquipementTDDDV() {
-        return equipementTDDDV;
+    public Integer getEquipementTDDDV() {
+        return equipementTDDDV.get();
     }
     
     public void setEquipementTDDDV(int ddv) {
          equipementTDDDV.set(ddv);
     }
 
-    public SimpleStringProperty getEquipementTDDateDeMiseEnPlace() {
-        return equipementTDDateDeMiseEnPlace;
+    public String getEquipementTDDateDeMiseEnPlace() {
+        return equipementTDDateDeMiseEnPlace.get();
     }
     
      public void setEquipementTDDateDeMiseEnPlace(String date) {
          equipementTDDateDeMiseEnPlace.set(date);
     }
 
-    public SimpleStringProperty getEquipementTDImage() {
-        return equipementTDImage;
+    public String getEquipementTDImage() {
+        return equipementTDImage.get();
     }
     
      public void setEquipementTDImage(String image) {
