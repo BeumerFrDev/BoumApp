@@ -414,6 +414,17 @@ public class TabPanParcController implements Initializable {
                             equipementTFTypeReference.setText(type.getReferenceType());
                             equipementTFTypeLibelle.setText(type.getLibelleType());
                             EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
+
+                            Image image = null;
+                            File file = new File (type.getImageType());
+                            try {
+                                imgType = ImageIO.read(file);
+
+                                image = SwingFXUtils.toFXImage(imgType, null);
+                            } catch (IOException e) {
+                            }
+                            System.out.println(file);
+                            EquipementImageViewImage.setImage(image);
                         }
                     }
 
@@ -488,14 +499,13 @@ public class TabPanParcController implements Initializable {
             block.setIdBlock(equipementTFID.getText());
             block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
             block.setReferenceType("LF");
+            
 
             System.out.println(equipementDPDateMiseEnPlace.getValue());
             Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
             block.setDateDeMiseEnPlace(date1);
             System.out.println(blocksDao.create(block));
             AlertMaker.showSimpleAlert("Ajout", "L'equipement ajouté avec sucées ");
-
-       
 
         } else if (isSetEquipementEditButtonClick) {
 
@@ -522,14 +532,14 @@ public class TabPanParcController implements Initializable {
         }
         System.out.println(file);
         EquipementImageViewImage.setImage(image);
-        
-             File outputFile = new File("C:/JavaFX/"+ "f");
-            BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
-            try {
-                ImageIO.write(bImage, "png", outputFile);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+        File outputFile = new File("src/fr/bg/main/assets/images/" + "f.png");
+        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+        try {
+            ImageIO.write(bImage, "png", outputFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
