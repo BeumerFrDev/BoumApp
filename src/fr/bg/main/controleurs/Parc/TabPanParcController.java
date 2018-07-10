@@ -1,5 +1,6 @@
 package fr.bg.main.controleurs.Parc;
 
+import com.jfoenix.controls.JFXButton;
 import fr.bg.main.controleurs.utilisateurs.*;
 import fr.bg.main.controleurs.*;
 import fr.bg.main.Launch;
@@ -67,6 +68,7 @@ import fr.bg.main.Utils.AlertMaker;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.input.DragEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -82,10 +84,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TabPanParcController implements Initializable {
 
     private Individus loggedUser;
-    @FXML
-    private VBox content_area;
-    @FXML
-    private HBox menubar;
 
     private boolean flag = true;
     private boolean isSetEquipementAddNewButtonClick;
@@ -103,6 +101,7 @@ public class TabPanParcController implements Initializable {
     AnimationGenerator animationGenerator = null;
     @FXML
     private AnchorPane parent;
+    @FXML
     private VBox gestionVBox;
     @FXML
     private DatePicker equipementDPDateMiseEnPlace;
@@ -176,10 +175,96 @@ public class TabPanParcController implements Initializable {
     private TableColumn<EquipementTable, String> equipementTCImage;
 
     BufferedImage imgType = null;
+    
     private TypesDAO typesDao = new TypesDAO();
+    
     private BlocksDAO blocksDao = new BlocksDAO();
     private List<Blocks> blocks;
     private List<Types> typesL;
+    @FXML
+    private VBox gestionVBox1;
+    @FXML
+    private ImageView imageView11;
+    @FXML
+    private ImageView imageView12;
+    @FXML
+    private ImageView imageView13;
+    @FXML
+    private ImageView imageView1;
+    @FXML
+    private TableView<?> studentAllCourseTableView;
+    @FXML
+    private TableColumn<?, ?> studentACourseColumnCode;
+    @FXML
+    private TableColumn<?, ?> studentACourseColumnTitle;
+    @FXML
+    private TableColumn<?, ?> studentACourseColumnCredit;
+    @FXML
+    private TableColumn<?, ?> studentACourseColumnSec;
+    @FXML
+    private TableView<?> studentCurrentCourseTableView;
+    @FXML
+    private TableColumn<?, ?> studentCCourseColumnCode;
+    @FXML
+    private TableColumn<?, ?> studentCCourseColumnTitle;
+    @FXML
+    private TableColumn<?, ?> studentCCourseColumnCredit;
+    @FXML
+    private TableColumn<?, ?> studentCCourseColumnSec;
+    @FXML
+    private TextField registrationTFSearch;
+    @FXML
+    private Button TypesAddNewButtonClick1;
+    @FXML
+    private Button equipementEditButtonClick1;
+    @FXML
+    private Button equipementDeleteButtonClick1;
+    @FXML
+    private TextField equipementTFTypeReference1;
+    @FXML
+    private TextField equipementTFTypeLibelle1;
+    @FXML
+    private TextField EquipementTFTypeDDV1;
+    @FXML
+    private JFXButton EquipementBtnTypeImage1;
+    @FXML
+    private ImageView EquipementImageViewImage1;
+    @FXML
+    private ChoiceBox<?> equipementCBType1;
+    @FXML
+    private Button equipementClearButtonClick1;
+    @FXML
+    private Button equipementSaveButtonClick1;
+    @FXML
+    private TextField adminTFSearch1;
+    @FXML
+    private Button equipementViewButtonClick1;
+    @FXML
+    private Button equipementRefreshButtonClick1;
+    @FXML
+    private TableView<?> equipementTableView1;
+    @FXML
+    private TableColumn<?, ?> equipementTCID1;
+    @FXML
+    private TableColumn<?, ?> equipementTCNumero1;
+    @FXML
+    private TableColumn<?, ?> equipementTCLibelle1;
+    @FXML
+    private TableColumn<?, ?> equipementTCReference1;
+    @FXML
+    private TableColumn<?, ?> equipementTCDDV1;
+    @FXML
+    private TableColumn<?, ?> equipementTCDateDeMiseEnPlace1;
+    @FXML
+    private TableColumn<?, ?> equipementTCImage1;
+    @FXML
+    private ImageView imageView111;
+    @FXML
+    private ImageView imageView121;
+    @FXML
+    private ImageView imageView131;
+    @FXML
+    private ImageView imageView133;
 
     /**
      * Initializes the controller class.
@@ -299,37 +384,30 @@ public class TabPanParcController implements Initializable {
         animateMessage();
     }
 
-    @FXML
     public void gotoDashbord() {
         application.gotoDashbord();
     }
 
-    @FXML
     public void gotoDocuments() {
         application.gotoDocuments();
     }
 
-    @FXML
     public void gotoGestionIntervention() {
         application.gotoGestionIntervention();
     }
 
-    @FXML
     public void gotoGestionParc() {
         application.gotoGestionParc();
     }
 
-    @FXML
     public void gotoGestionRessources() {
         application.gotoGestionRessources();
     }
 
-    @FXML
     public void gotoGestionSearch() {
         application.gotoGestionSearch();
     }
 
-    @FXML
     public void gotoGestionStock() {
         application.gotoGestionStock();
     }
@@ -540,6 +618,10 @@ public class TabPanParcController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    private void handleMenuFullScreen(DragEvent event) {
     }
 
 }
