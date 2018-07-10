@@ -121,19 +121,24 @@ public class TabPanParcController implements Initializable {
 
     @FXML
     private ChoiceBox<String> equipementCBType;
-
+    @FXML
+    private ChoiceBox<String> equipementTFTypeClasse;
     @FXML
     private TextField equipementTFTypeReference;
-
+    @FXML
+    private TextField equipementTFTypeReference1;
     @FXML
     private TextField equipementTFTypeLibelle;
-
+    @FXML
+    private TextField equipementTFTypeLibelle1;
     @FXML
     private TextField EquipementTFTypeDDV;
-
+    @FXML
+    private TextField EquipementTFTypeDDV1;
     @FXML
     private ImageView EquipementImageViewImage;
-
+@FXML
+    private ImageView EquipementImageViewImage1;
     @FXML
     private Button equipementClearButtonClick;
 
@@ -150,6 +155,8 @@ public class TabPanParcController implements Initializable {
     private Button equipementRefreshButtonClick;
     @FXML
     private Button EquipementBtnTypeImage;
+    @FXML
+    private Button EquipementBtnTypeImage1;
     @FXML
     private TableView<EquipementTable> equipementTableView;
 
@@ -175,96 +182,12 @@ public class TabPanParcController implements Initializable {
     private TableColumn<EquipementTable, String> equipementTCImage;
 
     BufferedImage imgType = null;
-    
+
     private TypesDAO typesDao = new TypesDAO();
-    
+
     private BlocksDAO blocksDao = new BlocksDAO();
     private List<Blocks> blocks;
     private List<Types> typesL;
-    @FXML
-    private VBox gestionVBox1;
-    @FXML
-    private ImageView imageView11;
-    @FXML
-    private ImageView imageView12;
-    @FXML
-    private ImageView imageView13;
-    @FXML
-    private ImageView imageView1;
-    @FXML
-    private TableView<?> studentAllCourseTableView;
-    @FXML
-    private TableColumn<?, ?> studentACourseColumnCode;
-    @FXML
-    private TableColumn<?, ?> studentACourseColumnTitle;
-    @FXML
-    private TableColumn<?, ?> studentACourseColumnCredit;
-    @FXML
-    private TableColumn<?, ?> studentACourseColumnSec;
-    @FXML
-    private TableView<?> studentCurrentCourseTableView;
-    @FXML
-    private TableColumn<?, ?> studentCCourseColumnCode;
-    @FXML
-    private TableColumn<?, ?> studentCCourseColumnTitle;
-    @FXML
-    private TableColumn<?, ?> studentCCourseColumnCredit;
-    @FXML
-    private TableColumn<?, ?> studentCCourseColumnSec;
-    @FXML
-    private TextField registrationTFSearch;
-    @FXML
-    private Button TypesAddNewButtonClick1;
-    @FXML
-    private Button equipementEditButtonClick1;
-    @FXML
-    private Button equipementDeleteButtonClick1;
-    @FXML
-    private TextField equipementTFTypeReference1;
-    @FXML
-    private TextField equipementTFTypeLibelle1;
-    @FXML
-    private TextField EquipementTFTypeDDV1;
-    @FXML
-    private JFXButton EquipementBtnTypeImage1;
-    @FXML
-    private ImageView EquipementImageViewImage1;
-    @FXML
-    private ChoiceBox<?> equipementCBType1;
-    @FXML
-    private Button equipementClearButtonClick1;
-    @FXML
-    private Button equipementSaveButtonClick1;
-    @FXML
-    private TextField adminTFSearch1;
-    @FXML
-    private Button equipementViewButtonClick1;
-    @FXML
-    private Button equipementRefreshButtonClick1;
-    @FXML
-    private TableView<?> equipementTableView1;
-    @FXML
-    private TableColumn<?, ?> equipementTCID1;
-    @FXML
-    private TableColumn<?, ?> equipementTCNumero1;
-    @FXML
-    private TableColumn<?, ?> equipementTCLibelle1;
-    @FXML
-    private TableColumn<?, ?> equipementTCReference1;
-    @FXML
-    private TableColumn<?, ?> equipementTCDDV1;
-    @FXML
-    private TableColumn<?, ?> equipementTCDateDeMiseEnPlace1;
-    @FXML
-    private TableColumn<?, ?> equipementTCImage1;
-    @FXML
-    private ImageView imageView111;
-    @FXML
-    private ImageView imageView121;
-    @FXML
-    private ImageView imageView131;
-    @FXML
-    private ImageView imageView133;
 
     /**
      * Initializes the controller class.
@@ -494,7 +417,55 @@ public class TabPanParcController implements Initializable {
                             EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
 
                             Image image = null;
-                            File file = new File (type.getImageType());
+                            File file = new File(type.getImageType());
+                            try {
+                                imgType = ImageIO.read(file);
+
+                                image = SwingFXUtils.toFXImage(imgType, null);
+                            } catch (IOException e) {
+                            }
+                            System.out.println(file);
+                            EquipementImageViewImage.setImage(image);
+                        }
+                    }
+
+                }
+            }
+        };
+        // Selected Item Changed.
+        equipementCBType.getSelectionModel().selectedItemProperty().addListener(changeListener);
+
+    }
+
+    /*
+    Pour le Type
+     */
+    @FXML
+    private void setEquipementAddNewButtonClick1(Event event) {
+        equipementSetAllEnable();
+        isSetEquipementAddNewButtonClick = true;
+        typesL = typesDao.findAll();
+        ArrayList libelTypeList = new ArrayList();
+        for (Types type : typesL) {
+
+            libelTypeList.add(type.getLibelleType());
+        }
+        equipementCBType.setItems(FXCollections.observableArrayList(libelTypeList));
+
+        ChangeListener<String> changeListener = new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, //
+                    String oldValue, String newValue) {
+                if (newValue != null) {
+                    for (Types type : typesL) {
+                        if (type.getLibelleType() == newValue) {
+                            equipementTFTypeReference.setText(type.getReferenceType());
+                            equipementTFTypeLibelle.setText(type.getLibelleType());
+                            EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
+
+                            Image image = null;
+                            File file = new File(type.getImageType());
                             try {
                                 imgType = ImageIO.read(file);
 
@@ -520,14 +491,28 @@ public class TabPanParcController implements Initializable {
     private void equipementSetAllEnable() {
         equipementTFID.setDisable(false);
         equipementTFNumero.setDisable(false);
-        //equipementTFTypeReference.setDisable(false);
-        //equipementTFTypeLibelle.setDisable(false);
-        //EquipementTFTypeDDV.setDisable(false);
+       
+        EquipementBtnTypeImage.setDisable(false);
         equipementCBType.setDisable(false);
         equipementDPDateMiseEnPlace.setDisable(false);
         equipementSaveButtonClick.setDisable(false);
         equipementClearButtonClick.setDisable(false);
 
+        EquipementImageViewImage.setDisable(true);
+    }
+
+    /*
+       Pour desactiver tout les champs de saisie (Type)
+     */
+    private void equipementSetAllEnable1() {
+
+        equipementTFTypeReference1.setDisable(false);
+        equipementTFTypeLibelle1.setDisable(false);
+        EquipementTFTypeDDV1.setDisable(false);
+        equipementTFTypeClasse.setDisable(false);
+        EquipementBtnTypeImage1.setDisable(false);
+
+        EquipementImageViewImage1.setDisable(false);
     }
 
     /*
@@ -543,9 +528,22 @@ public class TabPanParcController implements Initializable {
         equipementDPDateMiseEnPlace.setDisable(true);
         equipementSaveButtonClick.setDisable(true);
         equipementClearButtonClick.setDisable(true);
+        EquipementBtnTypeImage.setDisable(true);
+        EquipementImageViewImage.setDisable(true);
 
     }
+     /*
+       Pour activer tout les champs de saisie
+     */
+    private void equipementSetAllDisable1() {
+        equipementTFTypeReference1.setDisable(true);
+        equipementTFTypeLibelle1.setDisable(true);
+        EquipementTFTypeDDV1.setDisable(true);
+        equipementTFTypeClasse.setDisable(true);
+        EquipementBtnTypeImage1.setDisable(true);
+        EquipementImageViewImage1.setDisable(true);
 
+    }
     private void equipementSetAllClear() {
         equipementTFID.clear();
         equipementTFNumero.clear();
@@ -577,7 +575,6 @@ public class TabPanParcController implements Initializable {
             block.setIdBlock(equipementTFID.getText());
             block.setNumeroBlock(Integer.parseInt(equipementTFNumero.getText()));
             block.setReferenceType("LF");
-            
 
             System.out.println(equipementDPDateMiseEnPlace.getValue());
             Date date1 = Date.from(equipementDPDateMiseEnPlace.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
