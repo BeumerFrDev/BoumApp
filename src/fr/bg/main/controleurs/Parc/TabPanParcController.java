@@ -64,6 +64,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import static javafx.util.Duration.millis;
 import fr.bg.main.Utils.AlertMaker;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * FXML Controller class
@@ -141,7 +149,8 @@ public class TabPanParcController implements Initializable {
 
     @FXML
     private Button equipementRefreshButtonClick;
-
+    @FXML
+    private Button EquipementBtnTypeImage;
     @FXML
     private TableView<EquipementTable> equipementTableView;
 
@@ -165,6 +174,8 @@ public class TabPanParcController implements Initializable {
 
     @FXML
     private TableColumn<EquipementTable, String> equipementTCImage;
+
+    BufferedImage imgType = null;
     private TypesDAO typesDao = new TypesDAO();
     private BlocksDAO blocksDao = new BlocksDAO();
     private List<Blocks> blocks;
@@ -183,7 +194,7 @@ public class TabPanParcController implements Initializable {
         equipementTCID.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDID"));
         equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
         equipementTCNumero.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDNumero"));
-       
+
     }
 
     @FXML
@@ -224,7 +235,18 @@ public class TabPanParcController implements Initializable {
         makeStageDrageable();
 
         equipementDPDateMiseEnPlace.setValue(LocalDate.now());
- equipementTableView.setItems(getDataAndAddToEquipementTable());
+        equipementTableView.setItems(getDataAndAddToEquipementTable());
+
+        Rectangle r = new Rectangle();
+
+        r.setWidth(150);
+        r.setHeight(140);
+        r.setArcWidth(20);
+        r.setArcHeight(20);
+        EquipementImageViewImage.setClip(r);
+        EquipementImageViewImage.setPreserveRatio(true);
+        EquipementImageViewImage.setSmooth(true);
+        EquipementImageViewImage.setCache(true);
 
     }
 
@@ -473,15 +495,41 @@ public class TabPanParcController implements Initializable {
             System.out.println(blocksDao.create(block));
             AlertMaker.showSimpleAlert("Ajout", "L'equipement ajouté avec sucées ");
 
+       
+
         } else if (isSetEquipementEditButtonClick) {
 
         }
 
         equipementSetAllClear();
         equipementSetAllDisable();
-         isSetEquipementEditButtonClick = false;
+        isSetEquipementEditButtonClick = false;
         isSetEquipementAddNewButtonClick = false;
         equipementTableView.setItems(getDataAndAddToEquipementTable());
+    }
+
+    @FXML
+    public void imageChooser() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
+        File file = fileChooser.showOpenDialog(this.application.stage);
+        Image image = null;
+        try {
+            imgType = ImageIO.read(file);
+
+            image = SwingFXUtils.toFXImage(imgType, null);
+        } catch (IOException e) {
+        }
+        System.out.println(file);
+        EquipementImageViewImage.setImage(image);
+        
+             File outputFile = new File("C:/JavaFX/"+ "f");
+            BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+            try {
+                ImageIO.write(bImage, "png", outputFile);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
     }
 
 }

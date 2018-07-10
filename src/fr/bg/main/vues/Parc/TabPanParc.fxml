@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.sibvisions.rad.ui.javafx.ext.FXButton?>
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -160,7 +160,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <ChoiceBox fx:id="equipementCBType" disable="true" prefHeight="25.0" prefWidth="163.0"  GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <ChoiceBox fx:id="equipementCBType" disable="true" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <items>
                                                       <FXCollections fx:factory="observableArrayList">
                                                          
@@ -221,11 +221,15 @@
                                                 <TextField fx:id="equipementTFTypeReference" disable="true" GridPane.columnIndex="1" />
                                                 <TextField fx:id="equipementTFTypeLibelle" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <TextField fx:id="EquipementTFTypeDDV" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="156.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                   <image>
-                                                      <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
-                                                   </image>
-                                                </ImageView>
+                                                <JFXButton fx:id="EquipementBtnTypeImage" onAction="#imageChooser" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <graphic>
+                                                      <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
                                              </children>
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="510.0" />
