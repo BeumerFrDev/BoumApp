@@ -65,8 +65,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import static javafx.util.Duration.millis;
 import fr.bg.main.Utils.AlertMaker;
+import fr.bg.main.Utils.Images;
+import fr.bg.main.Utils.ImagesDAO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.SQLException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.input.DragEvent;
 import javafx.scene.shape.Rectangle;
@@ -422,6 +425,11 @@ private boolean isSetEquipementAddNewButtonClick1;
                             EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
 
                             Image image = null;
+                            System.out.println(type.getImageType());
+                           
+                            if(type.getImageType().indexOf("src/fr/bg/main/assets/")==-1){
+                                type.setImageType("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
+                            }
                             File file = new File(type.getImageType());
                             try {
                                 imgType = ImageIO.read(file);
@@ -593,7 +601,7 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementTableView.setItems(getDataAndAddToEquipementTable());
     }
  @FXML
-    private void setEquipementSaveButtonClick1(Event event) {
+    private void setEquipementSaveButtonClick1(Event event) throws IOException, SQLException {
 
         System.out.println("test Type creation");
 
@@ -605,7 +613,14 @@ private boolean isSetEquipementAddNewButtonClick1;
             type.setLibelleType(equipementTFTypeLibelle1.getText());
             type.setClasse(equipementTFTypeClasse.getValue());
             type.setDureDeVieType(Integer.parseInt(EquipementTFTypeDDV1.getText()));
-          //  type.setImageType(EquipementImageViewImage1.get);
+          
+            if (imgType !=null){
+                type.setImageType(Images.imageSaveBDETLienInterne(imgType));
+                
+            }else{
+                type.setImageType("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
+            }
+            
             
            System.out.println(typeDao.create(type));
            AlertMaker.showSimpleAlert("Ajout", "Type ajouté avec sucées ");
@@ -624,24 +639,27 @@ private boolean isSetEquipementAddNewButtonClick1;
     public void imageChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
-        File file = fileChooser.showOpenDialog(this.application.stage);
+         File file=new File("");;
+           try {
+            file = fileChooser.showOpenDialog(this.application.stage);
+            
+        } catch (Exception e) {
+            
+            //  if(file==null) file = new File("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
+        }
         Image image = null;
         try {
             imgType = ImageIO.read(file);
 
             image = SwingFXUtils.toFXImage(imgType, null);
-        } catch (IOException e) {
+            
+        } catch (Exception e) {
         }
+        
         System.out.println(file);
         EquipementImageViewImage.setImage(image);
 
-        File outputFile = new File("src/fr/bg/main/assets/images/" + "f.png");
-        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
-        try {
-            ImageIO.write(bImage, "png", outputFile);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+     
     }
 
     @FXML
