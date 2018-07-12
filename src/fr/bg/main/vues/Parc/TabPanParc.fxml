@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.sibvisions.rad.ui.javafx.ext.FXButton?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
@@ -222,15 +221,11 @@
                                                 <TextField fx:id="equipementTFTypeReference" disable="true" GridPane.columnIndex="1" />
                                                 <TextField fx:id="equipementTFTypeLibelle" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <TextField fx:id="EquipementTFTypeDDV" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <JFXButton fx:id="EquipementBtnTypeImage" onAction="#imageChooser" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                   <graphic>
-                                                      <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true">
-                                                         <image>
-                                                            <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </JFXButton>
+                                                <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <image>
+                                                      <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="510.0" />
@@ -353,7 +348,7 @@
                                  <items>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <Button fx:id="equipementAddNewButtonClick1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEquipementAddNewButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="AddNew" textFill="WHITE" AnchorPane.leftAnchor="14.0" />
+                                          <Button fx:id="equipementAddNewButtonClick1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEquipementAddNewButtonClick1" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="AddNew" textFill="WHITE" AnchorPane.leftAnchor="14.0" />
                                           <Button fx:id="equipementEditButtonClick1" layoutX="134.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Edit" textFill="WHITE" />
                                           <Button fx:id="equipementDeleteButtonClick1" alignment="CENTER" layoutX="254.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF3F3C; -fx-text-fill: white;" text="Delete" />
                                           <Text fill="#0091ea" layoutX="26.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails d'enregistrement du Type" wrappingWidth="351.2890625" AnchorPane.bottomAnchor="504.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="47.0">
@@ -398,15 +393,6 @@
                                                 <TextField fx:id="equipementTFTypeReference1" disable="true" GridPane.columnIndex="1" />
                                                 <TextField fx:id="equipementTFTypeLibelle1" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <TextField fx:id="EquipementTFTypeDDV1" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <JFXButton fx:id="EquipementBtnTypeImage1" onAction="#imageChooser" text=" " GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                                   <graphic>
-                                                      <ImageView fx:id="EquipementImageViewImage1" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true">
-                                                         <image>
-                                                            <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </JFXButton>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Classe" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="14.0" />
@@ -420,11 +406,20 @@
                                                       </FXCollections>
                                                    </items>
                                                 </ChoiceBox>
+                                                <Button fx:id="EquipementBtnypeImage" mnemonicParsing="false" onAction="#imageChooser" styleClass="btns" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <graphic>
+                                                      <ImageView fx:id="EquipementImageViewImage1" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
                                              </children>
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="510.0" />
-                                          <Button fx:id="equipementClearButtonClick1" disable="true" layoutX="135.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementClearButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF5151; -fx-text-fill: white;" text="Clear" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="521.0" />
-                                          <Button fx:id="equipementSaveButtonClick1" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementSaveButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="521.0" />
+                                          <Button fx:id="equipementClearButtonClick1" disable="true" layoutX="135.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementClearButtonClick1" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF5151; -fx-text-fill: white;" text="Clear" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="521.0" />
+                                          <Button fx:id="equipementSaveButtonClick1" disable="true" layoutX="247.0" layoutY="531.0" mnemonicParsing="false" onAction="#setEquipementSaveButtonClick1" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #408E2F; -fx-text-fill: white;" text="Save" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="521.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="671.0">
