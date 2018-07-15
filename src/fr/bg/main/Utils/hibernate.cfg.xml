@@ -49,6 +49,7 @@ Contributor(s):
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
     <mapping class="fr.bg.main.Utils.Test"/>
+    <mapping class="fr.bg.main.Utils.Images"/>
     <mapping class="fr.bg.main.modele.Parc.Types"/>
     <mapping class="fr.bg.main.modele.Parc.Blocks"/>
     <mapping class="fr.bg.main.modele.Parc.Pieces"/>

@@ -5,8 +5,17 @@
  */
 package fr.bg.main.controleurs.Parc;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.shape.Rectangle;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -20,7 +29,7 @@ public class EquipementTable {
     private final SimpleStringProperty equipementTDReference;
     private final SimpleIntegerProperty equipementTDDDV;
     private final SimpleStringProperty equipementTDDateDeMiseEnPlace;
-    private final SimpleStringProperty equipementTDImage;
+    private final ImageView equipementTDImage;
 
     public EquipementTable(String equipementTDID, int equipementTDNumero, String equipementTDLibelle, String equipementTDReference, int equipementTDDDV, String equipementTDDateDeMiseEnPlace, String equipementTDImage) {
         this.equipementTDID = new SimpleStringProperty(equipementTDID);
@@ -29,7 +38,19 @@ public class EquipementTable {
         this.equipementTDReference = new SimpleStringProperty(equipementTDReference);
         this.equipementTDDDV = new SimpleIntegerProperty(equipementTDDDV);
         this.equipementTDDateDeMiseEnPlace = new SimpleStringProperty(equipementTDDateDeMiseEnPlace);
-        this.equipementTDImage = new SimpleStringProperty(equipementTDImage);
+        
+        File file = new File(equipementTDImage);
+        Image image = null ;
+                            try {
+            BufferedImage imgType = ImageIO.read(file);
+
+             image = SwingFXUtils.toFXImage(imgType, null);
+                            } catch (IOException e) {
+                            }
+        this.equipementTDImage = new ImageView(image);
+          Rectangle r = new Rectangle();
+
+      
     }
 
     public String getEquipementTDID() {
@@ -80,12 +101,10 @@ public class EquipementTable {
          equipementTDDateDeMiseEnPlace.set(date);
     }
 
-    public String getEquipementTDImage() {
-        return equipementTDImage.get();
+    public ImageView getEquipementTDImage() {
+        return equipementTDImage;
     }
-    
-     public void setEquipementTDImage(String image) {
-         equipementTDImage.set(image);
-    }
+ 
 
+ 
 }

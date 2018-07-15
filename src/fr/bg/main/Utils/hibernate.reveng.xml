@@ -45,4 +45,5 @@ Contributor(s):
   <table-filter match-name="pieces"/>
   <table-filter match-name="types"/>
   <table-filter match-name="blocks"/>
+  <table-filter match-name="images"/>
 </hibernate-reverse-engineering>

@@ -187,7 +187,7 @@ private boolean isSetEquipementAddNewButtonClick1;
     private TableColumn<EquipementTable, Integer> equipementTCDDV;
 
     @FXML
-    private TableColumn<EquipementTable, String> equipementTCImage;
+    private TableColumn<EquipementTable, ImageView> equipementTCImage;
 
     BufferedImage imgType = null;
 
@@ -203,7 +203,7 @@ private boolean isSetEquipementAddNewButtonClick1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDImage"));
+        equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, ImageView>("equipementTDImage"));
         equipementTCDDV.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDDDV"));
         equipementTCReference.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDReference"));
         equipementTCLibelle.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDLibelle"));
@@ -263,6 +263,7 @@ private boolean isSetEquipementAddNewButtonClick1;
         EquipementImageViewImage.setPreserveRatio(true);
         EquipementImageViewImage.setSmooth(true);
         EquipementImageViewImage.setCache(true);
+        
 
     }
 
@@ -636,28 +637,29 @@ private boolean isSetEquipementAddNewButtonClick1;
         //equipementTableView.setItems(getDataAndAddToEquipementTable());
     }
     @FXML
-    public void imageChooser() {
+    public void imageChooser() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
-         File file=new File("");;
+         File file=new File("");
+          Image image = null;
            try {
             file = fileChooser.showOpenDialog(this.application.stage);
-            
-        } catch (Exception e) {
-            
-            //  if(file==null) file = new File("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
-        }
-        Image image = null;
-        try {
             imgType = ImageIO.read(file);
 
             image = SwingFXUtils.toFXImage(imgType, null);
-            
+            System.out.println(file+" test1");
         } catch (Exception e) {
+            
+              file = new File("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
+              imgType = ImageIO.read(file);
+
+            image = SwingFXUtils.toFXImage(imgType, null);
         }
+       
         
-        System.out.println(file);
-        EquipementImageViewImage.setImage(image);
+        
+        
+        EquipementImageViewImage1.setImage(image);
 
      
     }
