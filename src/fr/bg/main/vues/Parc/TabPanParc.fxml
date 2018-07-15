@@ -180,19 +180,20 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <Separator layoutX="13.0" layoutY="241.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="241.0" />
-                                          <Text fill="#673ab7" layoutX="13.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information du Type" AnchorPane.bottomAnchor="310.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="213.9501953125" AnchorPane.topAnchor="245.0">
+                                          <Separator layoutX="13.0" layoutY="231.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="231.0" />
+                                          <Text fill="#673ab7" layoutX="17.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information du Type" AnchorPane.bottomAnchor="320.7333984375" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="209.9501953125" AnchorPane.topAnchor="234.6552734375">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <GridPane layoutX="29.0" layoutY="275.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="325.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="275.0">
+                                          <GridPane layoutX="29.0" layoutY="259.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="325.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="259.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="46.0" minHeight="0.0" prefHeight="27.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="27.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="148.0" minHeight="10.0" prefHeight="145.0" vgrow="SOMETIMES" />
@@ -203,29 +204,35 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé" GridPane.rowIndex="1">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Durée de vie" GridPane.rowIndex="2">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Durée de vie" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image" GridPane.rowIndex="3">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
                                                 <TextField fx:id="equipementTFTypeReference" disable="true" GridPane.columnIndex="1" />
-                                                <TextField fx:id="equipementTFTypeLibelle" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="EquipementTFTypeDDV" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <TextField fx:id="equipementTFTypeLibelle" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="EquipementTFTypeDDV" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <ImageView fx:id="EquipementImageViewImage" fitHeight="133.0" fitWidth="152.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <image>
                                                       <Image url="@../../assets/images/icons8_Add_Camera_96px.png" />
                                                    </image>
                                                 </ImageView>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Classe" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="equipementTFTypeClasse" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
                                           <Separator layoutX="13.0" layoutY="520.0" prefHeight="4.0" prefWidth="200.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="510.0" />
@@ -398,7 +405,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <ChoiceBox fx:id="equipementTFTypeClasse" disable="true" prefHeight="25.0" prefWidth="163.0" value="Block" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <ChoiceBox fx:id="equipementCBTypeClasse" disable="true" prefHeight="25.0" prefWidth="163.0" value="Block" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <items>
                                                       <FXCollections fx:factory="observableArrayList">
                                                          <String fx:value="Block" />
@@ -428,15 +435,13 @@
                                           <Button layoutX="721.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="23.0" />
                                           <Button fx:id="equipementViewButtonClick1" layoutX="46.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="View" textFill="WHITE" AnchorPane.leftAnchor="46.0" />
                                           <Button fx:id="equipementRefreshButtonClick1" layoutX="146.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="146.0" />
-                                          <TableView fx:id="equipementTableView1" layoutX="2.0" layoutY="55.0" prefHeight="523.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+                                          <TableView fx:id="typeTableView" layoutX="2.0" layoutY="55.0" prefHeight="523.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
                                              <columns>
-                                                <TableColumn fx:id="equipementTCID1" prefWidth="101.0" text="ID Equipement" />
-                                                <TableColumn fx:id="equipementTCNumero1" minWidth="2.0" prefWidth="64.0" text="Numero" />
-                                                <TableColumn fx:id="equipementTCLibelle1" prefWidth="68.0" text="Libellé" />
-                                                <TableColumn fx:id="equipementTCReference1" prefWidth="64.0" text="Reference" />
-                                                <TableColumn fx:id="equipementTCDDV1" minWidth="6.0" prefWidth="87.0" text="DDV" />
-                                                <TableColumn fx:id="equipementTCDateDeMiseEnPlace1" minWidth="0.0" prefWidth="101.0" text="DDMEP" />
-                                                <TableColumn fx:id="equipementTCImage1" minWidth="0.0" prefWidth="228.0" text="Image" />
+                                                <TableColumn fx:id="typeTCClasse" minWidth="2.0" prefWidth="64.0" text="Classe" />
+                                                <TableColumn fx:id="typeCLibelle" prefWidth="68.0" text="Libellé" />
+                                                <TableColumn fx:id="typeTCReference" prefWidth="64.0" text="Reference" />
+                                                <TableColumn fx:id="typeTCDDV" minWidth="6.0" prefWidth="87.0" text="DDV" />
+                                                <TableColumn fx:id="typeTCImage" minWidth="0.0" prefWidth="228.0" text="Image" />
                                              </columns>
                                           </TableView>
                                           <Button layoutX="234.0" layoutY="4.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css" />

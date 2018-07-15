@@ -91,7 +91,7 @@ public class TabPanParcController implements Initializable {
     private boolean flag = true;
     private boolean isSetEquipementAddNewButtonClick;
     private boolean isSetEquipementEditButtonClick;
-private boolean isSetEquipementAddNewButtonClick1;
+    private boolean isSetEquipementAddNewButtonClick1;
     private boolean isSetEquipementEditButtonClick1;
     //Notre variable d'application
     private Launch application;
@@ -126,7 +126,7 @@ private boolean isSetEquipementAddNewButtonClick1;
     @FXML
     private ChoiceBox<String> equipementCBType;
     @FXML
-    private ChoiceBox<String> equipementTFTypeClasse;
+    private ChoiceBox<String> equipementCBTypeClasse;
     @FXML
     private TextField equipementTFTypeReference;
     @FXML
@@ -140,6 +140,8 @@ private boolean isSetEquipementAddNewButtonClick1;
     @FXML
     private TextField EquipementTFTypeDDV1;
     @FXML
+    private TextField equipementTFTypeClasse;
+    @FXML
     private ImageView EquipementImageViewImage;
     @FXML
     private ImageView EquipementImageViewImage1;
@@ -148,7 +150,7 @@ private boolean isSetEquipementAddNewButtonClick1;
 
     @FXML
     private Button equipementSaveButtonClick;
-        @FXML
+    @FXML
     private Button equipementClearButtonClick1;
 
     @FXML
@@ -157,6 +159,8 @@ private boolean isSetEquipementAddNewButtonClick1;
     @FXML
     private TextField adminTFSearch;
 
+    public TabPanParcController() {
+    }
     @FXML
     private Button equipementViewButtonClick;
 
@@ -189,13 +193,31 @@ private boolean isSetEquipementAddNewButtonClick1;
     @FXML
     private TableColumn<EquipementTable, ImageView> equipementTCImage;
 
+    @FXML
+    private TableView<TypeTable> typeTableView;
+
+    @FXML
+    private TableColumn<TypeTable, String> typeTCClasse;
+
+    @FXML
+    private TableColumn<TypeTable, String> typeCLibelle;
+
+    @FXML
+    private TableColumn<TypeTable, String> typeTCReference;
+
+    @FXML
+    private TableColumn<TypeTable, Integer> typeTCDDV;
+
+    @FXML
+    private TableColumn<TypeTable, ImageView> typeTCImage;
+
     BufferedImage imgType = null;
 
     private TypesDAO typesDao = new TypesDAO();
 
     private BlocksDAO blocksDao = new BlocksDAO();
     private List<Blocks> blocks;
-    private List<Types> typesL;
+    private List<Types> types;
 
     /**
      * Initializes the controller class.
@@ -203,14 +225,28 @@ private boolean isSetEquipementAddNewButtonClick1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, ImageView>("equipementTDImage"));
+        typeTCClasse.setCellValueFactory(new PropertyValueFactory<TypeTable, String>("typeTCClasse"));
+        typeCLibelle.setCellValueFactory(new PropertyValueFactory<TypeTable, String>("typeCLibelle"));
+        typeTCReference.setCellValueFactory(new PropertyValueFactory<TypeTable, String>("typeTCReference"));
+        typeTCDDV.setCellValueFactory(new PropertyValueFactory<TypeTable, Integer>("typeTCDDV"));
+        typeTCImage.setCellValueFactory(new PropertyValueFactory<TypeTable, ImageView>("typeTCImage"));
+        
+        
+        
+         equipementTCImage.setCellValueFactory(new PropertyValueFactory<EquipementTable, ImageView>("equipementTDImage"));
         equipementTCDDV.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDDDV"));
         equipementTCReference.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDReference"));
         equipementTCLibelle.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDLibelle"));
         equipementTCID.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDID"));
         equipementTCDateDeMiseEnPlace.setCellValueFactory(new PropertyValueFactory<EquipementTable, String>("equipementTDDateDeMiseEnPlace"));
         equipementTCNumero.setCellValueFactory(new PropertyValueFactory<EquipementTable, Integer>("equipementTDNumero"));
+        
+        
+        
+        
+        
         equipementSetAllDisable1();
+        equipementSetAllDisable();
     }
 
     @FXML
@@ -222,7 +258,7 @@ private boolean isSetEquipementAddNewButtonClick1;
     private ObservableList getDataAndAddToEquipementTable() {
         ObservableList<EquipementTable> tableData = FXCollections.observableArrayList();
         blocks = blocksDao.findAll();
-        blocks = blocksDao.findAll();
+      
 
         for (Blocks block : blocks) {
             Types type = typesDao.findByReference(block.getReferenceType());
@@ -241,6 +277,24 @@ private boolean isSetEquipementAddNewButtonClick1;
         return tableData;
     }
 
+    private ObservableList getDataAndAddToTypeTable() {
+        ObservableList<TypeTable> tableData = FXCollections.observableArrayList();
+        types = typesDao.findAll();
+
+        for (Types type : types) {
+
+            tableData.add(new TypeTable(
+                    type.getClasse()== null ? "" : type.getClasse(),
+                    type.getDureDeVieType() == null ? 0 : type.getDureDeVieType(),
+                    type.getLibelleType() == null ? "Sans Libelle" : type.getLibelleType(),
+                    type.getReferenceType() == null ? "Sans reference" : type.getReferenceType(),
+                    type.getImageType()== null ? "" : type.getImageType()));
+
+        }
+
+        return tableData;
+    }
+
     public void setApp(Launch application) throws FileNotFoundException {
         this.application = application;
         makeStageDrageable();
@@ -253,6 +307,8 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementDPDateMiseEnPlace.setValue(LocalDate.now());
         equipementTableView.setItems(getDataAndAddToEquipementTable());
 
+        typeTableView.setItems(getDataAndAddToTypeTable());
+        
         Rectangle r = new Rectangle();
 
         r.setWidth(150);
@@ -263,8 +319,16 @@ private boolean isSetEquipementAddNewButtonClick1;
         EquipementImageViewImage.setPreserveRatio(true);
         EquipementImageViewImage.setSmooth(true);
         EquipementImageViewImage.setCache(true);
-        
+ Rectangle r1 = new Rectangle();
 
+        r1.setWidth(150);
+        r1.setHeight(140);
+        r1.setArcWidth(20);
+        r1.setArcHeight(20);
+        EquipementImageViewImage.setClip(r1);
+        EquipementImageViewImage.setPreserveRatio(true);
+        EquipementImageViewImage.setSmooth(true);
+        EquipementImageViewImage.setCache(true);
     }
 
     /*
@@ -405,9 +469,9 @@ private boolean isSetEquipementAddNewButtonClick1;
     private void setEquipementAddNewButtonClick(Event event) {
         equipementSetAllEnable();
         isSetEquipementAddNewButtonClick = true;
-        typesL = typesDao.findAll();
+        types = typesDao.findAll();
         ArrayList libelTypeList = new ArrayList();
-        for (Types type : typesL) {
+        for (Types type : types) {
 
             libelTypeList.add(type.getLibelleType());
         }
@@ -419,16 +483,17 @@ private boolean isSetEquipementAddNewButtonClick1;
             public void changed(ObservableValue<? extends String> observable, //
                     String oldValue, String newValue) {
                 if (newValue != null) {
-                    for (Types type : typesL) {
+                    for (Types type : types) {
                         if (type.getLibelleType() == newValue) {
                             equipementTFTypeReference.setText(type.getReferenceType());
+                            equipementTFTypeClasse.setText(type.getClasse());
                             equipementTFTypeLibelle.setText(type.getLibelleType());
                             EquipementTFTypeDDV.setText(type.getDureDeVieType() + "");
 
                             Image image = null;
                             System.out.println(type.getImageType());
-                           
-                            if(type.getImageType().indexOf("src/fr/bg/main/assets/")==-1){
+
+                            if (type.getImageType().indexOf("src/fr/bg/main/assets/") == -1) {
                                 type.setImageType("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
                             }
                             File file = new File(type.getImageType());
@@ -458,24 +523,19 @@ private boolean isSetEquipementAddNewButtonClick1;
     private void setEquipementAddNewButtonClick1(Event event) {
         equipementSetAllEnable1();
         isSetEquipementAddNewButtonClick1 = true;
-     
-     
 
-                            Image image = null;
-                            File file = new File("");
-                            try {
-                                imgType = ImageIO.read(file);
+        Image image = null;
+        File file = new File("");
+        try {
+            imgType = ImageIO.read(file);
 
-                                image = SwingFXUtils.toFXImage(imgType, null);
-                            } catch (IOException e) {
-                            }
-                            System.out.println(file);
-                            EquipementImageViewImage.setImage(image);
-                        }
-                    
+            image = SwingFXUtils.toFXImage(imgType, null);
+        } catch (IOException e) {
+        }
+        System.out.println(file);
+        EquipementImageViewImage.setImage(image);
+    }
 
-                
-     
     /*
        Pour desactiver tout les champs de saisie
      */
@@ -498,7 +558,7 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementTFTypeReference1.setDisable(false);
         equipementTFTypeLibelle1.setDisable(false);
         EquipementTFTypeDDV1.setDisable(false);
-        equipementTFTypeClasse.setDisable(false);
+        equipementCBTypeClasse.setDisable(false);
         EquipementBtnypeImage.setDisable(false);
         equipementSaveButtonClick1.setDisable(false);
         equipementClearButtonClick1.setDisable(false);
@@ -512,6 +572,7 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementTFID.setDisable(true);
         equipementTFNumero.setDisable(true);
         equipementTFTypeReference.setDisable(true);
+        equipementTFTypeClasse.setDisable(true);
         equipementTFTypeLibelle.setDisable(true);
         EquipementTFTypeDDV.setDisable(true);
         equipementCBType.setDisable(true);
@@ -530,11 +591,11 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementTFTypeReference1.setDisable(true);
         equipementTFTypeLibelle1.setDisable(true);
         EquipementTFTypeDDV1.setDisable(true);
-        equipementTFTypeClasse.setDisable(true);
+        equipementCBTypeClasse.setDisable(true);
         EquipementBtnypeImage.setDisable(true);
         EquipementImageViewImage1.setDisable(true);
         EquipementBtnypeImage.disableProperty();
-           equipementSaveButtonClick1.setDisable(true);
+        equipementSaveButtonClick1.setDisable(true);
         equipementClearButtonClick1.setDisable(true);
 
     }
@@ -543,18 +604,20 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementTFTypeReference1.clear();
         equipementTFTypeLibelle1.clear();
         EquipementTFTypeDDV1.clear();
-    
-       
+
     }
-  private void equipementSetAllClear() {
+
+    private void equipementSetAllClear() {
         equipementTFID.clear();
         equipementTFNumero.clear();
         equipementTFTypeReference.clear();
+        equipementTFTypeClasse.clear();
+
         EquipementTFTypeDDV.clear();
         equipementTFTypeLibelle.clear();
         equipementDPDateMiseEnPlace.setValue(LocalDate.now());
     }
-  
+
     @FXML
     private void setEquipementClearButtonClick(Event event) {
         equipementSetAllClear();
@@ -563,7 +626,8 @@ private boolean isSetEquipementAddNewButtonClick1;
         isSetEquipementEditButtonClick = false;
 
     }
- @FXML
+
+    @FXML
     private void setEquipementClearButtonClick1(Event event) {
         equipementSetAllClear1();
         equipementSetAllDisable1();
@@ -571,6 +635,7 @@ private boolean isSetEquipementAddNewButtonClick1;
         isSetEquipementEditButtonClick1 = false;
 
     }
+
     @FXML
     private void setEquipementSaveButtonClick(Event event) {
 
@@ -601,7 +666,8 @@ private boolean isSetEquipementAddNewButtonClick1;
         isSetEquipementAddNewButtonClick = false;
         equipementTableView.setItems(getDataAndAddToEquipementTable());
     }
- @FXML
+
+    @FXML
     private void setEquipementSaveButtonClick1(Event event) throws IOException, SQLException {
 
         System.out.println("test Type creation");
@@ -612,19 +678,18 @@ private boolean isSetEquipementAddNewButtonClick1;
             Types type = new Types();
             type.setReferenceType(equipementTFTypeReference1.getText());
             type.setLibelleType(equipementTFTypeLibelle1.getText());
-            type.setClasse(equipementTFTypeClasse.getValue());
+            type.setClasse(equipementCBTypeClasse.getValue());
             type.setDureDeVieType(Integer.parseInt(EquipementTFTypeDDV1.getText()));
-          
-            if (imgType !=null){
+
+            if (imgType != null) {
                 type.setImageType(Images.imageSaveBDETLienInterne(imgType));
-                
-            }else{
+
+            } else {
                 type.setImageType("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
             }
-            
-            
-           System.out.println(typeDao.create(type));
-           AlertMaker.showSimpleAlert("Ajout", "Type ajouté avec sucées ");
+
+            System.out.println(typeDao.create(type));
+            AlertMaker.showSimpleAlert("Ajout", "Type ajouté avec sucées ");
 
         } else if (isSetEquipementEditButtonClick) {
 
@@ -634,34 +699,31 @@ private boolean isSetEquipementAddNewButtonClick1;
         equipementSetAllDisable1();
         isSetEquipementEditButtonClick1 = false;
         isSetEquipementAddNewButtonClick1 = false;
-        //equipementTableView.setItems(getDataAndAddToEquipementTable());
+        typeTableView.setItems(getDataAndAddToTypeTable());
     }
+
     @FXML
     public void imageChooser() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
-         File file=new File("");
-          Image image = null;
-           try {
+        File file = new File("");
+        Image image = null;
+        try {
             file = fileChooser.showOpenDialog(this.application.stage);
             imgType = ImageIO.read(file);
 
             image = SwingFXUtils.toFXImage(imgType, null);
-            System.out.println(file+" test1");
+            System.out.println(file + " test1");
         } catch (Exception e) {
-            
-              file = new File("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
-              imgType = ImageIO.read(file);
+
+            file = new File("src/fr/bg/main/assets/images/icons8_Add_Camera_96px.png");
+            imgType = ImageIO.read(file);
 
             image = SwingFXUtils.toFXImage(imgType, null);
         }
-       
-        
-        
-        
+
         EquipementImageViewImage1.setImage(image);
 
-     
     }
 
     @FXML

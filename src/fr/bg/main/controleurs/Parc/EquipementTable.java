@@ -50,7 +50,14 @@ public class EquipementTable {
         this.equipementTDImage = new ImageView(image);
           Rectangle r = new Rectangle();
 
-      
+        r.setWidth(250);
+        r.setHeight(40);
+        r.setArcWidth(10);
+        r.setArcHeight(10);
+        this.equipementTDImage .setClip(r);
+        this.equipementTDImage .setPreserveRatio(true);
+        this.equipementTDImage .setSmooth(true);
+        this.equipementTDImage .setCache(true);
     }
 
     public String getEquipementTDID() {
