@@ -268,7 +268,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Button layoutX="376.0" layoutY="6.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" styleClass="btns1" stylesheets="@../../assets/styles/dashbord.css">
+                                          <Button fx:id="equipementTableToPdfBtn" layoutX="376.0" layoutY="6.0" mnemonicParsing="false" onAction="#equipementTableToPdf" prefHeight="44.0" prefWidth="56.0" styleClass="btns" stylesheets="@../../assets/styles/dashbord.css">
                                              <graphic>
                                                 <ImageView fx:id="imageView12" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true">
                                                    <image>

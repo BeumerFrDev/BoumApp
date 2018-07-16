@@ -1,5 +1,10 @@
 package fr.bg.main.controleurs.Parc;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import fr.bg.main.controleurs.utilisateurs.*;
 import fr.bg.main.controleurs.*;
@@ -67,8 +72,10 @@ import static javafx.util.Duration.millis;
 import fr.bg.main.Utils.AlertMaker;
 import fr.bg.main.Utils.Images;
 import fr.bg.main.Utils.ImagesDAO;
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.input.DragEvent;
@@ -316,21 +323,71 @@ public class TabPanParcController implements Initializable {
         r.setArcWidth(20);
         r.setArcHeight(20);
         EquipementImageViewImage.setClip(r);
-        EquipementImageViewImage.setPreserveRatio(true);
+        EquipementImageViewImage.setPreserveRatio(false);
         EquipementImageViewImage.setSmooth(true);
         EquipementImageViewImage.setCache(true);
- Rectangle r1 = new Rectangle();
-
-        r1.setWidth(150);
-        r1.setHeight(140);
+        
+        Rectangle r1 = new Rectangle();
+        
+        r1.setWidth(200);
+        r1.setHeight(200);
         r1.setArcWidth(20);
         r1.setArcHeight(20);
         EquipementImageViewImage.setClip(r1);
-        EquipementImageViewImage.setPreserveRatio(true);
+        EquipementImageViewImage.setPreserveRatio(false);
         EquipementImageViewImage.setSmooth(true);
         EquipementImageViewImage.setCache(true);
     }
-
+    @FXML 
+    public void equipementTableToPdf() throws FileNotFoundException, DocumentException, IOException{
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("src/fr/bg/main/assets/docs/test.pdf")); 
+            doc.open();
+            doc.add(new Paragraph("Gestion d'équipement :D "));
+            doc.add(new Paragraph("----------------------------------------- "));
+          
+            
+            PdfPTable table = new PdfPTable(7);
+        // header row:
+        table.addCell("Id Equipement");
+        table.addCell("Numéro");
+        table.addCell("Libéllé");
+        table.addCell("Reference");
+        table.addCell("Durée de vie");
+        table.addCell("Date de mise en place");
+        table.addCell("Image");
+        
+        table.setHeaderRows(1);
+        table.setSkipFirstHeader(true);
+        
+        // many data rows:
+        
+        for (int i = 1; i < equipementTableView.getItems().size(); i++) {
+            EquipementTable tablePdf = equipementTableView.getItems().get(i);
+            
+            table.addCell( tablePdf.getEquipementTDID());
+            table.addCell(""+tablePdf.getEquipementTDNumero() );
+            table.addCell( tablePdf.getEquipementTDLibelle());
+            table.addCell( tablePdf.getEquipementTDReference());
+            table.addCell( ""+ tablePdf.getEquipementTDDDV());
+           table.addCell("" + tablePdf.getEquipementTDDateDeMiseEnPlace());
+            table.addCell("Image: " + tablePdf.getEquipementTDImage());
+            
+        }
+        doc.add(table);
+        
+        
+            
+            doc.close();
+            Desktop.getDesktop().open(new File("src/fr/bg/main/assets/docs/test.pdf"));
+        } catch (FileNotFoundException fileNotFoundException) {
+        } catch (DocumentException documentException) {
+        }
+       
+        
+        
+    }
     /*
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
